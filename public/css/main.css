@@ -4,7 +4,18 @@ ol,ul{list-style:none;margin:0;padding:0;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
-/* start editing from here */
+/* start editing */
 .hder {
     background-color: rgba(16, 66, 108, 0.973);
+};
+a{text-decoration: none;};
+.dmuc{
+    display: block;
+    padding-left: 12px;
+    margin-top: 12px;
+    color: #e6eff5; 
+};
+.edate{
+    font-family:'Courier New', Courier, monospace;
+    color: #14486b;
 };
