@@ -1,4 +1,53 @@
 @extends('layouts.app')
 @section('content')
-    <h1>This is home page</h1>
+<div class="container bg-info">
+    <div class="row">
+        @include('layouts.danhmuc')
+        <div class="col-10 bg-info">
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+            <p>fndjn</p>
+
+        </div>
+    </div>
+</div>
 @endsection

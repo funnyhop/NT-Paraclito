@@ -15,7 +15,6 @@
 </head>
 <body>
     @include('layouts.header')
-    @include('layouts.danhmuc')
     @yield('content')
     @include('layouts.footer')
 </body>
