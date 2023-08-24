@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="row">
-        <div class="col-3 hder">
+    <div class="row hder">
+        <div class="col-3">
             <div class="row">
                 <div class="col-12 d-flex" style="padding:0px; height: 50px">
-                    <img class="rounded float-start"
+                    <img class="float-start"
                         src="{{ asset('storage/images/logo.png') }}"
                         height="45"
                         width="45"
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-9">
-            <div class="row hder">
+            <div class="row">
                 <div class="col-5">
                     {{-- <div class="input-group pt-2">
                         <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
@@ -24,7 +24,7 @@
                     </div> --}}
                 </div>
                 <div class="col-3 pt-3">
-                    <input class="float-end" type="date" style="background-color: #e6eff5; border-radius:3px"id="date">
+                    <input class="float-end" type="date" id="date">
                 </div>
                 <div class="col-4">
                     <div class="row py-2">

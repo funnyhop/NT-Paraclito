@@ -4,18 +4,14 @@
     <div class="row">
         @include('layouts.danhmuc')
         <div class="col-10 bg-info">
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
-            <p>fndjn</p>
+            <div>
+                <ul>
+                    <li>
+                        <a class="dmuc" href="" name="dmuc">htkk
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <p>fndjn</p>
             <p>fndjn</p>
             <p>fndjn</p>

@@ -1,6 +1,6 @@
 <div class="col-2 bg-danger">
     <ul>
-        <li><a href="">Tổng quan</a></li>
+        <li><a class="dmuc">Tổng quan</a></li>
         <li><a href="">Bán hàng</a></li>
         <li>
             <a class="d-inline-flex align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#layout-collapse"
@@ -26,3 +26,4 @@
         </li>
     </ul>
 </div>
+

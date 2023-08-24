@@ -5,21 +5,26 @@ blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
 /* start editing */
-
-a{text-decoration: none;};
-.dmuc{
-    display: block;
-    padding-left: 12px;
-    margin-top: 12px;
-    color: #e6eff5; 
-};
-html{
-    border: #124465;
+a{
+    text-decoration:none;
+    font-size: 18px;
+    padding: 2px;
+}
+img{max-width:100%;}
+input[type=date] {
+    background-color: #ffffffc8;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    border: 1px solid #69899b;
 }
 .hder {
     background-color: rgba(16, 66, 108, 0.973);
 };
-.edate{
-    font-family:'Courier New', Courier, monospace;
-    color: #14486b;
+.dmuc{
+    padding-left: 12px;
+    margin-top: 12px;
+    color: #e6eff5;
+    background-color: #27343b;
 };
+
+
