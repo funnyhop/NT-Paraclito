@@ -80,9 +80,14 @@
       </li> --}}
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="">
-            <i class="fa-solid fa-user"></i>
-        </a>
+        {{-- <a class="nav-link" data-toggle="dropdown" href=""> --}}
+
+            <!-- Sidebar user panel (optional) -->
+        <div class="d-flex" data-toggle="dropdown">
+            <a href="#">Đăng nhập</a>
+            <i class="fa-solid fa-user pl-3 pr-2"></i>
+        </div>
+        {{-- </a> --}}
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-header">Thông tin cá nhân</a>

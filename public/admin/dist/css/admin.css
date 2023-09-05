@@ -160,7 +160,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #82b4d7;
   text-decoration: none;
   background-color: transparent;
 }
@@ -13097,9 +13097,21 @@ body.text-sm .control-sidebar {
 }
 
 .nav-pills .nav-link:not(.active):hover {
-  color: #007bff;
+  color: #5dc3d3;
 }
-
+a.nav-dopdown:not(.active):hover{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #666d72;
+  border-radius: 0%;
+}
+a.nav-dopdown:active{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #666d72;
+  border-radius: 0%;
+  color: #5dc3d3;
+}
 .nav-pills .nav-item.dropdown.show .nav-link:hover {
   color: #ffffff;
 }
