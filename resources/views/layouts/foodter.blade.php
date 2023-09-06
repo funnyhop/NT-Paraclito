@@ -1,9 +1,6 @@
   <!-- Main Footer -->
   <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Nhà Thuốc Paraclito
+    <div class="col d-flex justify-content-center ">
+      <p>Nhà Thuốc Paraclito <strong>Copyright &copy; 2023-<a href="#">Group 7</a>.</strong></p>
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2023-<a href="#">Group 7</a>.</strong> All rights reserved.
   </footer>

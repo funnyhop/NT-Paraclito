@@ -19,16 +19,64 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#collapseExample" class="nav-link" data-toggle="collapse" >
+            <a href="#collapse1" class="nav-link" data-toggle="collapse" >
                 <i class="fa-solid fa-pills i-sidebar"></i>
               <p>Thuốc<span class="right badge badge-danger">Medicine</span></p>
             </a>
             <div class="pl-4">
-                <a href="#" class="nav-link nav-dopdown collapse" id="collapseExample">
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Thêm nhóm thuốc</p>
                 </a>
-                <a href="#" class="nav-link nav-dopdown collapse" id="collapseExample">
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Thêm thuốc</p>
+                </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#collapse2" class="nav-link" data-toggle="collapse" >
+                <i class="fa-solid fa-warehouse i-sidebar"></i>
+              <p>Quản lý kho<span class="right badge badge-danger">WM</span></p>
+            </a>
+            <div class="pl-4">
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse2">
+                    <p>Nhập từ nhà cung cấp</p>
+                </a>
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse2">
+                    <p>Tồn kho</p>
+                </a>
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse2">
+                    <p>Nhập tồn</p>
+                </a>
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse2">
+                    <p>Kiểm kho</p>
+                </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#collapse3" class="nav-link" data-toggle="collapse" >
+                <i class="fa-solid fa-user-doctor i-sidebar"></i>
+                <p>Nhân viên<span class="right badge badge-danger">Pharmacist</span></p>
+            </a>
+            <div class="pl-4">
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse3">
+                    <p>Danh sách nhân viên</p>
+                </a>
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse3">
+                    <p>Thêm nhân viên</p>
+                </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="#collapse4" class="nav-link" data-toggle="collapse" >
+                <i class="fa-solid fa-file-invoice i-sidebar"></i>
+              <p>Quản lý hóa đơn<span class="right badge badge-danger">Bill</span></p>
+            </a>
+            <div class="pl-4">
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse4">
+                    <p>Thông tin hóa đơn</p>
+                </a>
+                <a href="#" class="nav-link nav-dopdown collapse" id="collapse4">
+                    <p>Doanh thu</p>
                 </a>
             </div>
           </li>
