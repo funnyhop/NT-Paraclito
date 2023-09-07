@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="admin/dist/img/logo.png" alt="logo" class="brand-image img-circle elevation-3"
+      <img src="admin/img/logo.png" alt="logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">NT Paraclito</span>
     </a>
