@@ -1,4 +1,24 @@
-  <!-- Navbar -->
+  {{-- <!-- Navbar -->
+  <nav class="main-header navbar">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <ul class="pt-1">
+      <li class="dropdown">
+        <div class="d-flex float-end" id="dropdownuser" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="px-2" href="#">Đăng nhập</a>
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownuser">
+          <a href="#" class="dropdown-item">Thông tin cá nhân</a>
+          <a href="#" class="dropdown-item">Đăng xuất</a>
+        </div>
+      </li>
+    </ul>
+  </nav> --}}
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
