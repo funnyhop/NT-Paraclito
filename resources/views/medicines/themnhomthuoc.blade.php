@@ -44,38 +44,22 @@
             {{-- <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
             </div> --}}
-            <div class="col-1"></div>
-            <div class="col-10">
-                <table class="table table-bordered text-center">
-                    <thead>
-                        <tr>
-                            <th>Mã nhóm</th>
-                            <th>Tên nhóm</th>
-                            <th>Cập nhật</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="text-left">John Doe</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="text-left">SmithJane SSmith</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="text-left">Bob JohnsoJohnsoJohnsoJon</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="col-3"></div>
+            <div class="col-7">
+                <form>
+                    <div class="input-group d-flex pb-2">
+                      <label for="exampleInput1" class="pr-2">Mã nhóm thuốc:</label>
+                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="VD NT001">
+                    </div>
+                    <div class="input-group d-flex pb-2">
+                        <label for="exampleInput2" class="pr-2">Tên nhóm thuốc:</label>
+                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="VD kháng sinh">
+                    </div>
+                    <div class="float-right pr-1 pt-2">
+                        <button type="button" class="btn btn-secondary">Hủy</button>
+                        <button type="button" class="btn btn-primary">Thêm</button>
+                    </div>
+                </form>
             </div>
         </div>
       </div><!-- /.container-fluid -->

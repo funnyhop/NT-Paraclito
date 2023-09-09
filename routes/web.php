@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\DruggrController;
 use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\AddstaffController;
@@ -9,12 +10,19 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProducerController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ListstaffController;
+use App\Http\Controllers\PrescriptionsController;
 use App\Http\Controllers\CheckinventoryController;
 use App\Http\Controllers\InventoryentryController;
 
-Route::get('/', function () {
-    return view('index');
-});
+// banhang
+Route::get('/', [
+    SalesController::class,
+    'sales'
+]);
+Route::get('prescriptions', [
+    PrescriptionsController::class,
+    'prescriptions'
+]);
 // thuoc
 Route::get('medicines', [
     MedicineController::class,
@@ -23,6 +31,10 @@ Route::get('medicines', [
 Route::get('druggr', [
     DruggrController::class,
     'druggr'
+]);
+Route::get('themnhomthuoc', [
+    DruggrController::class,
+    'themnhomthuoc'
 ]);
 // kho
 Route::get('producers', [

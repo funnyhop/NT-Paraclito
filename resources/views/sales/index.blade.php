@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Bán hàng</title>
+    <title>Bán thuốc</title>
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Thuốc tây</h1>
+            <h1 class="m-0 text-dark">Bán thuốc</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
