@@ -18,7 +18,7 @@
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
-  --danger: #dc3545;
+  --danger: #dc3546;
   --light: #f8f9fa;
   --dark: #2f4c6b;
   --breakpoint-xs: 0;
@@ -1525,15 +1525,15 @@ li {
   font-weight: 700;
   line-height: 1;
   text-align: center;
+  color: #fefefe;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.badge-danger {
-  color: #ffffff;
-  background-color: #dc3545;
+.badge-tealgr {
+  background-color:#3cad8b;
 }
 
 

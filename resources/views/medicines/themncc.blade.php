@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Nhóm thuốc</title>
+    <title>Nhà cung cấp</title>
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0 text-dark">Nhóm thuốc</h3>
+            <h1 class="m-0 text-dark">Nhà cung cấp</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
@@ -32,25 +32,30 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="float-right d-inline-flex pr-2">
-            <li class="pr-1"><a href="druggr">Danh sách</a></li>
-            <a href="#">/</a>
-            <li class="pl-1"><a href="themnhomthuoc">Thêm</a></li>
-        </div>
-        <div class="row pt-5 pl-4 d-flex">
+        <div class="container-fluid">
+          <div class="float-right d-inline-flex pr-2">
+              <li class="pr-1"><a href="suppliers">Danh sách</a></li>
+              <a href="#">/</a>
+              <li class="pl-1"><a href="themncc">Thêm</a></li>
+          </div>
+          <div class="row pt-5 pl-4 d-flex">
             <div class="col-3"></div>
             <div class="col-7">
                 <form>
                     <div class="input-group d-flex pb-2">
-                      <label for="exampleInput1" class="pr-2">Mã nhóm thuốc:</label>
-                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="KS001">
+                      <label for="exampleInput1" class="pr-2">Mã nhà cung cấp:</label>
+                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="LC207">
                     </div>
                     <div class="input-group d-flex pb-2">
-                        <label for="exampleInput2" class="pr-2">Tên nhóm thuốc:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Kháng sinh">
+                        <label for="exampleInput2" class="pr-2">Tên nhà cung cấp:</label>
+                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Công ty Cổ Phần Dược Phẩm FPT Long Châu">
+                    </div>
+                    <div class="input-group d-flex pb-2">
+                        <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
+                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM">
                     </div>
                     <div class="float-right pr-1 pt-2">
                         <button type="button" class="btn btn-secondary">Hủy</button>
@@ -59,12 +64,10 @@
                 </form>
             </div>
         </div>
-      </div><!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 @endsection
-
-
 

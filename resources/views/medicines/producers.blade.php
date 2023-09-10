@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Thêm thuốc</title>
+    <title>Nhà sản xuất</title>
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Thuốc tây</h1>
+            <h1 class="m-0 text-dark">Nhà sản xuất</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
@@ -32,27 +32,27 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
           <div class="float-right d-inline-flex pr-2">
-              <li class="pr-1"><a href="medicines">Danh sách</a></li>
+              <li class="pr-1"><a href="producers">Danh sách</a></li>
               <a href="#">/</a>
-              <li class="pl-1"><a href="themthuoc">Thêm</a></li>
+              <li class="pl-1"><a href="themnsx">Thêm</a></li>
           </div>
-          <div class="pt-5">
-              <div class="col">
+          <div class="row pt-5 pl-4 d-flex">
+              {{-- <div class="input-group input-group-sm">
+                  <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              </div> --}}
+              <div class="col-1"></div>
+              <div class="col-10">
                   <table class="table table-bordered text-center">
                       <thead>
                           <tr>
-                              <th>Mã thuốc</th>
-                              <th>Tên thuốc</th>
-                              <th>NSX</th>
-                              <th>HSD</th>
-                              <th>Thành phần hoạt chất</th>
-                              <th>Điều trị</th>
-                              <th>Nhóm thuốc</th>
-                              <th>Đối tượng sử dụng</th>
+                              <th>Mã nhà sản xuất</th>
+                              <th>Tên nhà sản xuất</th>
+                              <th>Quốc gia</th>
                               <th>Cập nhật</th>
                               <th>Xóa</th>
                           </tr>
@@ -60,37 +60,22 @@
                       <tbody>
                           <tr>
                               <td>1</td>
-                              <td class="text-left">Amoxicillin</td>
-                              <td>01/01/2019</td>
-                              <td>01/01/2025</td>
-                              <td class="text-left">Amoxicillin</td>
-                              <td class="text-left">Nhiễm trùng hô hấp (viêm phổi, viêm xoang, viêm họng)</td>
-                              <td class="text-left">Kháng viêm</td>
-                              <td class="text-left">Người trưởng thành và người cao tuổi</td>
+                              <td class="text-left">John Doe</td>
+                              <td>Russia</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>
                           <tr>
                               <td>2</td>
-                              <td class="text-left">Aspirin</td>
-                              <td>01/01/2019</td>
-                              <td>01/01/2025</td>
-                              <td class="text-left">Acetylsalicylic acid</td>
-                              <td class="text-left">Điều trị đau và viêm, giảm sốt, và ngăn ngừa các vấn đề tim mạch</td>
-                              <td class="text-left">Kháng viêm</td>
-                              <td class="text-left">Người trưởng thành và người cao tuổi</td>
+                              <td class="text-left">SmithJane ShJane ShJane ShJane SSmith</td>
+                              <td>United States</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>
                           <tr>
                               <td>3</td>
-                              <td class="text-left">Paracetamol</td>
-                              <td>01/01/2019</td>
-                              <td>01/01/2025</td>
-                              <td class="text-left">Paracetamol</td>
-                              <td class="text-left">Giảm đau và hạ sốt</td>
-                              <td class="text-left">Kháng viêm và hạ sốt</td>
-                              <td class="text-left">Người trưởng thành và trẻ em</td>
+                              <td class="text-left">Bob JohnsoJohnsoJohnsoJon</td>
+                              <td>UK</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>
@@ -104,8 +89,4 @@
   </div>
   <!-- /.content-wrapper -->
 @endsection
-
-
-
-
 
