@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class InventoryentryController extends Controller
 {
-    public function inventoryentry(){
-        return view('warehouse.inventoryentry');
+    public function importmedicine(){
+        return view('warehouse.importmedicine');
     }
 }

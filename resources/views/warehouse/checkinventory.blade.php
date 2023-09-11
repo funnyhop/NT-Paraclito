@@ -10,14 +10,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Thuốc tây</h1>
+            <h1 class="m-0 text-dark">Kho thuốc</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
-            {{-- <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol> --}}
                 <!-- SEARCH FORM -->
             <form class="form-inline ml-3 float-right">
                 <div class="input-group input-group-sm">
@@ -36,70 +32,84 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          {{-- <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+        <div class="container-fluid">
+          {{-- <div class="float-right d-inline-flex pr-2">
+              <li class="pr-1"><a href="medicines">Danh sách</a></li>
+              <a href="#">/</a>
+              <li class="pl-1"><a href="themthuoc">Thêm</a></li>
+          </div> --}}
+          <div class="pt-4">
+              <div class="col">
+                  <table class="table table-bordered text-center">
+                      <thead>
+                          <tr>
+                              <th>Mã thuốc</th>
+                              <th>Tên thuốc</th>
+                              <th>HSD</th>
+                              <th>Nhóm thuốc</th>
+                              <th>Mã phiếu nhập</th>
+                              <th>Ngày nhập</th>
+                              <th>Nhà cung cấp</th>
+                              <th>Số lô sản xuất</th>
+                              <th>Số lượng</th>
+                              <th>Đơn vị tính</th>
+                              <th>Giá</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="text-left">KV001</td>
+                              <td class="text-left">Amoxicillin</td>
+                              <td>01/11/2023</td>
+                              <td class="text-left">Kháng sinh</td>
+                              <td class="text-left">PN001</td>
+                              <td>01/01/2019</td>
+                              <td class="text-left">Công ty Cổ Phần Dược Phẩm FPT Long Châu</td>
+                              <td class="text-left">210319</td>
+                              <td class="text-left">10</td>
+                              <td class="text-left">Hộp</td>
+                              <td class="text-left">100000</td>
+                          </tr>
+                          <tr>
+                            <td class="text-left">KVS01</td>
+                            <td class="text-left">Paracetamol</td>
+                            <td>01/09/2022</td>
+                            <td class="text-left">Kháng viêm, hạ sốt</td>
+                            <td class="text-left">PN001</td>
+                            <td>01/01/2019</td>
+                            <td class="text-left">Công ty Cổ Phần Dược Phẩm FPT Long Châu</td>
+                            <td class="text-left">210319</td>
+                            <td class="text-left">300</td>
+                            <td class="text-left">Viên</td>
+                            <td class="text-left">200</td>
+                          </tr>
+                          <tr>
+                            <td class="text-left">KV002</td>
+                            <td class="text-left">Aspirin</td>
+                            <td>01/01/2022</td>
+                            <td class="text-left">Kháng viêm</td>
+                            <td class="text-left">PN002</td>
+                            <td>01/01/2019</td>
+                            <td class="text-left">Công Ty Cổ Phần Dược Phẩm Pharmacity</td>
+                            <td class="text-left">220319</td>
+                            <td class="text-left">100</td>
+                            <td class="text-left">Hộp</td>
+                            <td class="text-left">100000</td>
+                          </tr>
+                      </tbody>
+                  </table>
               </div>
-            </div>
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 --> --}}
-
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 @endsection
+
+
+
+
 

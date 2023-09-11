@@ -2,6 +2,7 @@
 @section('title')
     <title>Thêm thuốc</title>
 @endsection
+
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -34,43 +35,123 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <div class="content">
-        <div class="container-fluid">
-          <div class="float-right d-inline-flex pr-2">
-              <li class="pr-1"><a href="medicines">Danh sách</a></li>
-              <a href="#">/</a>
-              <li class="pl-1"><a href="themthuoc">Thêm</a></li>
-          </div>
-          <div class="row pt-5 pl-4 d-flex">
-            <div class="col-3"></div>
-            <div class="col-7">
-                <form>
-                    <div class="input-group d-flex pb-2">
-                      <label for="exampleInput1" class="pr-2">Mã nhà sản xuất:</label>
-                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="NSX01">
+        <div class="container-fluid pb-5">
+            <div class="float-right d-inline-flex pr-2">
+                <li class="pr-1"><a href="medicines">Danh sách</a></li>
+                <a href="#">/</a>
+                <li class="pl-1"><a href="themthuoc">Thêm</a></li>
+            </div>
+            <div class="row pt-5 pl-5 d-flex">
+                <div class="col-6 d-block">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Mã nhóm thuốc:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="KV001">
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group d-flex pb-2">
-                        <label for="exampleInput2" class="pr-2">Tên nhà sản xuất:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Eli Lilly and Company">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Mã thuốc:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="TKV01">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Tên thuốc:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="Amoxicillin">
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group d-flex pb-2">
-                        <label for="exampleInput2" class="pr-2">Quốc gia:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="United States">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Thành phần hoạt chất:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="Amoxicillin">
+                            </div>
+                        </div>
                     </div>
-                    <div class="float-right pr-1 pt-2">
+                </div>
+                <div class="col-6 d-block">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Mã nhà cung cấp:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="LC207">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Ngày sản xuất:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="01/01/2019">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Hạn sử dụng:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="01/01/2025">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group pb-1">
+                                <label for="exampleInput1">Điều trị:</label>
+                                <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="Nhiễm trùng hô hấp (viêm phổi, viêm xoang,..)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-right pt-2">
                         <button type="button" class="btn btn-secondary">Hủy</button>
                         <button type="button" class="btn btn-primary">Thêm</button>
                     </div>
-                </form>
+                </div>
+                <b class="pb-1 pt-1">Thêm giá bán:</b>
+                <div class="row pr-2">
+                    <div class="col-3">
+                        <div class="input-group pb-1">
+                            <label for="exampleInput1">Mã thuốc:</label>
+                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="KV001">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="input-group pb-1">
+                            <label for="exampleInput1">Ngày:</label>
+                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="01/01/2019">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="input-group pb-1">
+                            <label for="exampleInput1">Đơn vị tính:</label>
+                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="Viên/hộp">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="input-group pb-1">
+                            <label for="exampleInput1">Giá:</label>
+                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="1000/100000">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row pl-5 pr-5 d-flex">
+                <div class="col-11">
+                    <div class="pt-2 float-right pr-3">
+                        <button type="button" class="btn btn-secondary">Hủy</button>
+                        <button type="button" class="btn btn-primary">Thêm</button>
+                    </div>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 @endsection
-
-
 
 
 

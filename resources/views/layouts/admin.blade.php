@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
   @yield('title')
   <!-- Bootstrap css 4 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -22,6 +21,7 @@
     @yield('content')
     @include('layouts.foodter')
 </div>
+
 <!-- jQuery -->
 {{-- <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script> --}}
 <!-- Bootstrap 4 -->

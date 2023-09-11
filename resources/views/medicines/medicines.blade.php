@@ -51,8 +51,8 @@
                               <th>HSD</th>
                               <th>Thành phần hoạt chất</th>
                               <th>Điều trị</th>
-                              <th>Nhóm thuốc</th>
-                              <th>Đối tượng sử dụng</th>
+                              <th>Mã nhóm thuốc</th>
+                              <th>Mã nhà cung cấp</th>
                               <th>Cập nhật</th>
                               <th>Xóa</th>
                           </tr>
@@ -65,8 +65,8 @@
                               <td>01/01/2025</td>
                               <td class="text-left">Amoxicillin</td>
                               <td class="text-left">Nhiễm trùng hô hấp (viêm phổi, viêm xoang, viêm họng)</td>
-                              <td class="text-left">Kháng viêm</td>
-                              <td class="text-left">Người trưởng thành và người cao tuổi</td>
+                              <td class="text-left">KV001</td>
+                              <td class="text-left">LC207</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>
@@ -77,8 +77,8 @@
                               <td>01/01/2025</td>
                               <td class="text-left">Acetylsalicylic acid</td>
                               <td class="text-left">Điều trị đau và viêm, giảm sốt, và ngăn ngừa các vấn đề tim mạch</td>
-                              <td class="text-left">Kháng viêm</td>
-                              <td class="text-left">Người trưởng thành và người cao tuổi</td>
+                              <td class="text-left">KV001</td>
+                              <td class="text-left">PC212</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>
@@ -89,8 +89,8 @@
                               <td>01/01/2025</td>
                               <td class="text-left">Paracetamol</td>
                               <td class="text-left">Giảm đau và hạ sốt</td>
-                              <td class="text-left">Kháng viêm và hạ sốt</td>
-                              <td class="text-left">Người trưởng thành và trẻ em</td>
+                              <td class="text-left">KVHS1</td>
+                              <td class="text-left">OPV950</td>
                               <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
                               <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                           </tr>

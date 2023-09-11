@@ -5,7 +5,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DruggrController;
 use App\Http\Controllers\RevenueController;
-use App\Http\Controllers\BillinfoController;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProducerController;
 use App\Http\Controllers\SupplierController;
@@ -59,8 +59,9 @@ Route::get('themnhomthuoc', [
     'themnhomthuoc'
 ]);
 // kho////////////////////////////////////////
-Route::get('inventoryentry', [
-    InventoryentryController::class
+Route::get('importmedicine', [
+    InventoryentryController::class,
+    'importmedicine'
 ]);
 Route::get('checkinventory', [
     CheckinventoryController::class,
@@ -76,9 +77,9 @@ Route::get('themnv', [
     'themnv'
 ]);
 // hoadon//////////////////////////////////////
-Route::get('billinfo', [
-    BillinfoController::class,
-    'billinfo'
+Route::get('bill', [
+    BillController::class,
+    'bill'
 ]);
 Route::get('revenue', [
     RevenueController::class,

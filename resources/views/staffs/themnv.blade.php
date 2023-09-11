@@ -35,7 +35,7 @@
 
     <!-- Main content -->
     <div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid  pb-5">
           <div class="float-right d-inline-flex pr-2">
               <li class="pr-1"><a href="staffs">Danh sách</a></li>
               <a href="#">/</a>
@@ -71,7 +71,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+          </div>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
