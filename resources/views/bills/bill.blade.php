@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Thông tin hóa đơn</title>
+    <title>Hóa đơn bán</title>
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,14 +10,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Thuốc tây</h1>
+            <h1 class="m-0 text-dark">Hóa đơn bán</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
-            {{-- <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol> --}}
                 <!-- SEARCH FORM -->
             <form class="form-inline ml-3 float-right">
                 <div class="input-group input-group-sm">
@@ -35,68 +31,73 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
-
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          {{-- <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+        <div class="container-fluid">
+          {{-- <div class="float-right d-inline-flex pr-2">
+              <li class="pr-1"><a href="medicines">Danh sách</a></li>
+              <a href="#">/</a>
+              <li class="pl-1"><a href="themthuoc">Thêm</a></li>
+          </div> --}}
+          <div class="pt-5">
+              <div class="col">
+                  <table class="table table-bordered text-center">
+                      <thead>
+                          <tr>
+                              <th>Mã hóa đơn</th>
+                              <th>Ngày lập</th>
+                              <th>Mã nhân viên</th>
+                              <th>Mã khách hàng</th>
+                              <th>Mã toa</th>
+                              <th>Mã thuốc</th>
+                              <th>Số lượng</th>
+                              <th>Đơn vị tính</th>
+                              <th>Đơn giá</th>
+                              <th>Tổng tiền</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>HD001</td>
+                              <td>21/01/2023</td>
+                              <td>BT001</td>
+                              <td>0927384673</td>
+                              <td>T0001</td>
+                              <td>KV001</td>
+                              <td>2</td>
+                              <td>Hộp</td>
+                              <td>100000</td>
+                              <td class="text-left">200000</td>
+                          </tr>
+                          <tr>
+                            <td>HD001</td>
+                              <td>21/01/2023</td>
+                              <td>BT001</td>
+                              <td>0927384673</td>
+                              <td>T0001</td>
+                              <td>KV002</td>
+                              <td>1</td>
+                              <td>Hộp</td>
+                              <td>100000</td>
+                              <td class="text-left">100000</td>
+                          </tr>
+                          <tr>
+                            <td>HD001</td>
+                              <td>21/01/2023</td>
+                              <td>BT001</td>
+                              <td>0927384673</td>
+                              <td>T0001</td>
+                              <td>KVS01</td>
+                              <td>1</td>
+                              <td>Hộp</td>
+                              <td>100000</td>
+                              <td class="text-left">100000</td>
+                          </tr>
+                      </tbody>
+                  </table>
               </div>
-            </div>
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <!-- /.col-md-6 --> --}}
-
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>

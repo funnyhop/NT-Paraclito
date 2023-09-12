@@ -18,10 +18,6 @@ Route::get('/', [
     SalesController::class,
     'sales'
 ]);
-Route::get('prescriptions', [
-    PrescriptionsController::class,
-    'prescriptions'
-]);
 // thuoc//////////////////////////////////////
 Route::get('producers', [
     ProducerController::class,

@@ -21,9 +21,9 @@
                 <a href="/" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Bán thuốc</p>
                 </a>
-                <a href="prescriptions" class="nav-link nav-dopdown collapse" id="salescollapse">
+                {{-- <a href="prescriptions" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Bán theo toa</p>
-                </a>
+                </a> --}}
             </div>
           </li>
           <li class="nav-item">
