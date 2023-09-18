@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="admin/img/logo.png" alt="logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">NT Paraclito</span>
@@ -18,7 +18,7 @@
               <p>Bán hàng<span class="right badge badge-danger">Sales</span></p>
             </a>
             <div class="pl-4">
-                <a href="/" class="nav-link nav-dopdown collapse" id="salescollapse">
+                <a href="sales" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Bán thuốc</p>
                 </a>
                 {{-- <a href="prescriptions" class="nav-link nav-dopdown collapse" id="salescollapse">

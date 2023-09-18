@@ -34,11 +34,6 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-          {{-- <div class="float-right d-inline-flex pr-2">
-              <li class="pr-1"><a href="medicines">Danh sách</a></li>
-              <a href="#">/</a>
-              <li class="pl-1"><a href="themthuoc">Thêm</a></li>
-          </div> --}}
           <div class="pt-5">
               <div class="col">
                   <table class="table table-bordered text-center">

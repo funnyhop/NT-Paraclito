@@ -12,9 +12,11 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PrescriptionsController;
 use App\Http\Controllers\CheckinventoryController;
 use App\Http\Controllers\InventoryentryController;
-
+Route::get('/', function () {
+    return view('welcome');
+});
 // banhang///////////////////////////////////
-Route::get('/', [
+Route::get('sales', [
     SalesController::class,
     'sales'
 ]);
