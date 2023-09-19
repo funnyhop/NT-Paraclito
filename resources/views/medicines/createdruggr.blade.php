@@ -36,25 +36,26 @@
     <div class="content">
       <div class="container-fluid">
         <div class="float-right d-inline-flex pr-2">
-            <li class="pr-1"><a href="druggr">Danh sách</a></li>
+            <li class="pr-1"><a href="/druggr">Danh sách</a></li>
             <a href="#">/</a>
-            <li class="pl-1"><a href="themnhomthuoc">Thêm</a></li>
+            <li class="pl-1"><a href="druggr/create">Thêm</a></li>
         </div>
         <div class="row pt-5 pl-4 d-flex">
             <div class="col-3"></div>
             <div class="col-7">
-                <form>
+                <form action="/druggr" method="post">
+                    @csrf
                     <div class="input-group d-flex pb-2">
                       <label for="exampleInput1" class="pr-2">Mã nhóm thuốc:</label>
-                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="KS001">
+                      <input type="text" class="input-form pl-2" name="ma" id="exampleInput1" placeholder="KS001">
                     </div>
                     <div class="input-group d-flex pb-2">
                         <label for="exampleInput2" class="pr-2">Tên nhóm thuốc:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Kháng sinh">
+                        <input type="text" class="input-form pl-2" name="ten" id="exampleInput2" placeholder="Kháng sinh">
                     </div>
                     <div class="float-right pr-1 pt-2">
-                        <button type="button" class="btn btn-secondary">Hủy</button>
-                        <button type="button" class="btn btn-primary">Thêm</button>
+                        <button type="reset" class="btn btn-secondary">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
                     </div>
                 </form>
             </div>

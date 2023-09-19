@@ -38,7 +38,7 @@
         <div class="float-right d-inline-flex pr-2">
             <li class="pr-1"><a href="druggr">Danh sách</a></li>
             <a href="#">/</a>
-            <li class="pl-1"><a href="themnhomthuoc">Thêm</a></li>
+            <li class="pl-1"><a href="druggr/create">Thêm</a></li>
         </div>
         <div class="row pt-5 pl-4 d-flex">
             {{-- <div class="input-group input-group-sm">
@@ -56,24 +56,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($drs as $dr)
                         <tr>
-                            <td>1</td>
-                            <td class="text-left">John Doe</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td>{{ $dr->Manhom }}</td>
+                            <td class="text-left">{{ $dr->Tennhom }}</td>
+                            <td><a href="druggr/{{ $dr->Manhom }}/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="text-left">SmithJane SSmith</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="text-left">Bob JohnsoJohnsoJohnsoJon</td>
-                            <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

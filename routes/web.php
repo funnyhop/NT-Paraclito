@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DruggrController;
 use App\Http\Controllers\RevenueController;
-use App\Http\Controllers\BillController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\ProducerController;
 use App\Http\Controllers\SupplierController;
@@ -48,14 +48,11 @@ Route::get('themthuoc', [
     'themthuoc'
 ]);
 /////////////////////////////////////////////
-Route::get('druggr', [
-    DruggrController::class,
-    'druggr'
-]);
-Route::get('themnhomthuoc', [
-    DruggrController::class,
-    'themnhomthuoc'
-]);
+// Route::get('/druggr', [
+//     DruggrController::class,
+//     'druggr'
+// ]);
+Route::resource('/druggr', DruggrController::class);
 // kho////////////////////////////////////////
 Route::get('importmedicine', [
     InventoryentryController::class,
@@ -107,4 +104,5 @@ Route::get('revenue', [
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
