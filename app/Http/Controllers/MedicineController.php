@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class MedicineController extends Controller
 {
-    public function medicines(){
+    public function index(){
         return view('medicines.medicines');
     }
-    public function themthuoc(){
-        return view('medicines.themthuoc');
+    public function create(){
+        return view('medicines.createmedicine');
     }
 }

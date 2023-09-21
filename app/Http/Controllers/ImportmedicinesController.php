@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CheckinventoryController extends Controller
+class ImportmedicinesController extends Controller
 {
     public function index(){
-        return view('warehouse.checkinventory');
+        return view('warehouse.importmedicines');
     }
 }

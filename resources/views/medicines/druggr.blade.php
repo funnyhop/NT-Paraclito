@@ -58,10 +58,18 @@
                     <tbody>
                         @foreach ($drs as $dr)
                         <tr>
-                            <td>{{ $dr->Manhom }}</td>
+                            <td>{{ $dr->id }}</td>
                             <td class="text-left">{{ $dr->Tennhom }}</td>
-                            <td><a href="druggr/{{ $dr->Manhom }}/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="druggr/{{ $dr->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td>
+                                <form action="druggr/{{$dr->id}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn-trash">
+                                        <i  class="fa-solid fa-trash "></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

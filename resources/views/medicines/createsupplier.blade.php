@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Nhà sản xuất</title>
+    <title>Nhà cung cấp</title>
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Nhà sản xuất</h1>
+            <h1 class="m-0 text-dark">Nhà cung cấp</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
@@ -37,25 +37,25 @@
     <div class="content">
         <div class="container-fluid">
           <div class="float-right d-inline-flex pr-2">
-              <li class="pr-1"><a href="producers">Danh sách</a></li>
+              <li class="pr-1"><a href="/suppliers">Danh sách</a></li>
               <a href="#">/</a>
-              <li class="pl-1"><a href="themnsx">Thêm</a></li>
+              <li class="pl-1"><a href="#">Thêm</a></li>
           </div>
           <div class="row pt-5 pl-4 d-flex">
             <div class="col-3"></div>
             <div class="col-7">
                 <form>
                     <div class="input-group d-flex pb-2">
-                      <label for="exampleInput1" class="pr-2">Mã nhà sản xuất:</label>
-                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="NSX01">
+                      <label for="exampleInput1" class="pr-2">Mã nhà cung cấp:</label>
+                      <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="LC207">
                     </div>
                     <div class="input-group d-flex pb-2">
-                        <label for="exampleInput2" class="pr-2">Tên nhà sản xuất:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Eli Lilly and Company">
+                        <label for="exampleInput2" class="pr-2">Tên nhà cung cấp:</label>
+                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="Công ty Cổ Phần Dược Phẩm FPT Long Châu">
                     </div>
                     <div class="input-group d-flex pb-2">
-                        <label for="exampleInput2" class="pr-2">Quốc gia:</label>
-                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="United States">
+                        <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
+                        <input type="text" class="input-form pl-2" id="exampleInput2" placeholder="379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM">
                     </div>
                     <div class="float-right pr-1 pt-2">
                         <button type="button" class="btn btn-secondary">Hủy</button>

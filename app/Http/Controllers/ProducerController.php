@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class ProducerController extends Controller
 {
-    public function producers(){
+    public function index(){
         return view('medicines.producers');
     }
-    public function themnsx(){
-        return view('medicines.themnsx');
+    public function create(){
+        return view('medicines.createproducer');
     }
 }

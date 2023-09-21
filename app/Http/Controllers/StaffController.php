@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
-    public function staffs(){
+    public function index(){
         return view('staffs.staffs');
     }
-    public function themnv(){
-        return view('staffs.themnv');
+    public function create(){
+        return view('staffs.createstaff');
     }
 }

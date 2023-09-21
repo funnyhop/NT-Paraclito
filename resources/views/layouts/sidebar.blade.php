@@ -52,7 +52,7 @@
               <p>Quản lý kho</p>
             </a>
             <div class="pl-4">
-                <a href="importmedicine" class="nav-link nav-dopdown collapse" id="collapse2">
+                <a href="importmedicines" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Nhập thuốc từ phiếu</p>
                 </a>
                 <a href="checkinventory" class="nav-link nav-dopdown collapse" id="collapse2">
@@ -72,7 +72,7 @@
               <p>Quản lý hóa đơn</p>
             </a>
             <div class="pl-4">
-                <a href="bill" class="nav-link nav-dopdown collapse" id="collapse4">
+                <a href="bills" class="nav-link nav-dopdown collapse" id="collapse4">
                     <p>Hóa đơn bán</p>
                 </a>
                 <a href="revenue" class="nav-link nav-dopdown collapse" id="collapse4">

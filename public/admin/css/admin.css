@@ -3978,3 +3978,11 @@ a.nav-dopdown:active{
   border-style: groove;
   border-color: #f5f5f5a6
 }
+
+.btn-trash {
+    border: none;
+    background-color: transparent;
+}
+.btn-trash i {
+    color:rgb(197, 40, 72);
+}

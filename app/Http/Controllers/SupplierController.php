@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    public function suppliers(){
+    public function index(){
         return view('medicines.suppliers');
     }
-    public function themncc(){
-        return view('medicines.themncc');
+    public function create(){
+        return view('medicines.createsupplier');
     }
 }

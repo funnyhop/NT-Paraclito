@@ -39,7 +39,7 @@
           <div class="float-right d-inline-flex pr-2">
               <li class="pr-1"><a href="staffs">Danh sách</a></li>
               <a href="#">/</a>
-              <li class="pl-1"><a href="themnv">Thêm</a></li>
+              <li class="pl-1"><a href="staffs/create">Thêm</a></li>
           </div>
           <div class="row pt-5 pl-4 d-flex">
             <div class="col-2"></div>
