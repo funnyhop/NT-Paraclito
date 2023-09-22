@@ -9,6 +9,6 @@ class Druggr extends Model
 {
     use HasFactory;
     protected $tabel = 'druggrs';
-    protected $primaryKey = 'id';
-    protected $fillable = ['id','Tennhom'];
+    protected $primaryKey = 'NhomthuocID';
+    protected $fillable = ['NhomthuocID','Tennhom'];
 }

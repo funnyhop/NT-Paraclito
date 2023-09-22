@@ -9,7 +9,7 @@ class DruggrController extends Controller
 {
     public function index(){
         // $drs = Druggr::all(); //select * from druggrs
-        $drs = DB::table('druggrs')->select('id', 'Tennhom')->get();
+        $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->get();
         return view('medicines.druggr', compact('drs'));
     }
 
@@ -19,31 +19,31 @@ class DruggrController extends Controller
 
     public function store(Request $request){
         // $drs = new Druggr();
-        // $drs->id = $request->input('ma');
+        // $drs->NhomthuocID = $request->input('ma');
         // $drs->Tennhom = $request->input('ten');
         $drs = Druggr::create([
-            'id' => $request->input('ma'),
+            'NhomthuocID' => $request->input('ma'),
             'Tennhom' => $request->input('ten')
         ]);
 
         $drs->save();
-        return redirect('/druggr/create');
+        return redirect('/druggr');
     }
     public function edit($id){
         // $drs = Druggr::find($id)->first();
-        $drs = DB::table('druggrs')->select('id', 'Tennhom')->where('id','=', $id)->first();
+        $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->where('NhomthuocID','=', $id)->first();
         return view('medicines.editdruggr')->with('drs', $drs);
     }
     public function update(Request $request, $id){
-        $drs = DB::table('druggrs')->where('id','=',$id)
+        $drs = DB::table('druggrs')->where('NhomthuocID','=',$id)
         ->update([
-            'id' => $request->input('ma'),
+            'NhomthuocID' => $request->input('ma'),
             'Tennhom' => $request->input('ten')
         ]);
         return redirect('/druggr');
     }
     public function destroy($id){
-        $drs = DB::table('druggrs')->where('id','=',$id);
+        $drs = DB::table('druggrs')->where('NhomthuocID','=',$id);
         $drs->delete();
         return redirect('/druggr');
     }
