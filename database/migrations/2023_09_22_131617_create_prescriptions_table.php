@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suppliers', function (Blueprint $table) {
-            $table->string('NCCID', 10);
-            $table->string('TenNCC',30);
-            $table->string('Diachi',50);
-            $table->primary('NCCID');
-
+        Schema::create('prescriptions', function (Blueprint $table) {
+            $table->String('ToaID', 10);
+            $table->String('TenBS', 30);
+            $table->String('TenBV', 30);
+            $table->primary('ToaID');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('prescriptions');
     }
 };

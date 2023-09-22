@@ -10,4 +10,5 @@ class Supplier extends Model
     use HasFactory;
     protected $tabel = ('suppliers');
     protected $primaryKey = 'NCCID';
+    protected $fillable = ['NCCID', 'TenNCC', 'Diachi'];
 }
