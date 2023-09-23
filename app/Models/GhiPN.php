@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GhiPN extends Model
 {
     use HasFactory;
-    protected $tabel = 'ghipns';
+    protected $table = 'ghipns';
     protected $primaryKey = ['id'];
     protected $fillable = ['id', 'medicine_id','phieunhap_id', 'Soluong','DVT', 'Gia'];
     //one GhiPN belongs to Medicine

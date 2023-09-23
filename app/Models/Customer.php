@@ -11,4 +11,8 @@ class Customer extends Model
     protected $table = 'customers';
     protected $primaryKey = 'KHID';
     protected $fillable = ['KHID', 'TenKH', 'Diachi', 'SDT'];
+    //one customer has many bill
+    public function bills() {
+        return $this->hasMany(Bill::class,'customer_id', 'KHID');
+    }
 }

@@ -11,4 +11,8 @@ class Prescription extends Model
     protected $table = 'prescriptions';
     protected $primaryKey = 'ToaID';
     protected $fillable = ['ToaID', 'TenBS', 'TenBV'];
+    //one prescription belongs to bill
+    public function bill() {
+        return $this->belongsTo(Bill::class, 'bill_id', 'HDID');
+    }
 }

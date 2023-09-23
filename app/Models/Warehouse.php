@@ -11,4 +11,8 @@ class Warehouse extends Model
     protected $table = 'warehouses';
     protected $primaryKey = 'KhoID';
     protected $fillable = ['KhoID', 'Tenkho', 'Diachi'];
+    //one warehouse has many phieunhap
+    public function phieunhaps() {
+        return $this->hasMany(Phieunhap::class, 'warehouse_id', 'KhoID');
+    }
 }
