@@ -11,4 +11,13 @@ class GhiPN extends Model
     protected $tabel = 'ghipns';
     protected $primaryKey = ['id'];
     protected $fillable = ['id', 'medicine_id','phieunhap_id', 'Soluong','DVT', 'Gia'];
+    //one GhiPN belongs to Medicine
+    public function medicine() {
+        return $this->belongsTo(Medicine::class, 'medicine_id', 'ThuocID');
+    }
+    //one GhiPN belongs to phieunhap
+    public function phieunhap() {
+        return $this->belongsTo(Phieunhap::class, 'phieunhap_id', 'PNID');
+    }
+
 }
