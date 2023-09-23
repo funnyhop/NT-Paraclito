@@ -44,22 +44,23 @@
           <div class="row pt-5 pl-4 d-flex">
             <div class="col-3"></div>
             <div class="col-7">
-                <form action="/producers" method="post">
+                <form action="/producers/{{ $producer->NSXID }}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="input-group d-flex pb-2">
                       <label for="exampleInput1" class="pr-2">Mã nhà sản xuất:</label>
-                      <input type="text" class="input-form pl-2" name="id" id="exampleInput1" placeholder="NSX01">
+                      <input type="text" class="input-form pl-2" name="id" id="exampleInput1" value="{{ $producer->NSXID }}" placeholder="NSX01">
                     </div>
                     <div class="input-group d-flex pb-2">
                         <label for="exampleInput2" class="pr-2">Tên nhà sản xuất:</label>
-                        <input type="text" class="input-form pl-2" name="name" id="exampleInput2" placeholder="Eli Lilly and Company">
+                        <input type="text" class="input-form pl-2" name="name" id="exampleInput2" value="{{ $producer->TenNSX }}" placeholder="Eli Lilly and Company">
                     </div>
                     <div class="input-group d-flex pb-2">
                         <label for="exampleInput2" class="pr-2">Quốc gia:</label>
-                        <input type="text" class="input-form pl-2" name="national" id="exampleInput2" placeholder="United States">
+                        <input type="text" class="input-form pl-2" name="national" id="exampleInput2" value="{{ $producer->Quocgia }}" placeholder="United States">
                     </div>
                     <div class="float-right pr-1 pt-2">
-                        <button type="reset" class="btn btn-secondary">Hủy</button>
+                        <a href="/producers" class="btn btn-secondary">Hủy</a>
                         <button type="submit" class="btn btn-primary">Thêm</button>
                     </div>
                 </form>

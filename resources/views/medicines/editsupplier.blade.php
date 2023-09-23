@@ -65,7 +65,7 @@
                                     placeholder="379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM">
                             </div>
                             <div class="float-right pr-1 pt-2">
-                                <button type="reset" class="btn btn-secondary">Hủy</button>
+                                <a href="/suppliers" class="btn btn-secondary" >Hủy</a>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>

@@ -36,7 +36,7 @@
                                     id="exampleInput2" placeholder="Kháng sinh">
                             </div>
                             <div class="float-right pr-1 pt-2">
-                                <button type="reset" class="btn btn-secondary">Hủy</button>
+                                <a href="/druggr" class="btn btn-secondary" >Hủy</a>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>
