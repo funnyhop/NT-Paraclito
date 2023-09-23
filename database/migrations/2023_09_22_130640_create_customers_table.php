@@ -15,7 +15,7 @@ return new class extends Migration
             $table->String('KHID', 10);
             $table->String('TenKH', 30);
             $table->String('SDT', 10);
-            $table->String('Diachi', 50);
+            $table->String('Diachi', 100);
             $table->primary('KHID');
             $table->timestamps();
         });

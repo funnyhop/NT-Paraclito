@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Nhà cung cấp</h1>
+                        <h1 class="m-0 text-dark">Cập nhật thông tin nhà cung cấp</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -45,21 +45,23 @@
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/suppliers" method="post">
+                        <form action="/suppliers/{{ $supplier->NCCID }}" method="post">
                             @csrf
+                            @method('PUT')
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhà cung cấp:</label>
                                 <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                    placeholder="LC207">
+                                    value="{{ $supplier->NCCID }}" placeholder="LC207">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Tên nhà cung cấp:</label>
                                 <input type="text" class="input-form pl-2" name="name" id="exampleInput2"
-                                    placeholder="Công ty Cổ Phần Dược Phẩm FPT Long Châu">
+                                    value="{{ $supplier->TenNCC }}" placeholder="Công ty Cổ Phần Dược Phẩm FPT Long Châu">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
                                 <input type="text" class="input-form pl-2" name="address" id="exampleInput2"
+                                    value="{{ $supplier->Diachi }}"
                                     placeholder="379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM">
                             </div>
                             <div class="float-right pr-1 pt-2">

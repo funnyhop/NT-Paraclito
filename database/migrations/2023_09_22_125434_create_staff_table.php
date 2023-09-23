@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('staffs', function (Blueprint $table) {
             $table->String('NVID', 10);
             $table->String('TenNV', 30);
-            $table->String('Diachi', 50);
+            $table->String('Diachi',100);
             $table->String('SDT', 10);
             $table->String('Chucvu', 30);
             $table->primary('NVID');

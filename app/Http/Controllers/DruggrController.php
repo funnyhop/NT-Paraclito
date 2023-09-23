@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Druggr;
 use Illuminate\Support\Facades\DB;
+
 class DruggrController extends Controller
 {
     public function index(){
