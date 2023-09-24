@@ -11,10 +11,11 @@ class MedicineController extends Controller
     public function index(){
         $medicines = DB::table('medicines')->select('ThuocID', 'Tenthuoc', 'NSX', 'HSD', 'TPhoatchat',
             'Dieutri', 'HDSD', 'Chongchidinh', 'druggr_id', 'supplier_id', 'producer_id')->get();
-
-        return view('medicines.medicines', compact('medicines'));
+        $medicine_price = DB::table('prices')->select('medicine_id', 'ngay_id', 'DVT', 'gia')->get();
+        return view('medicines.medicines', compact('medicines','medicine_price'));
     }
     public function create(){
+        DB::statement('CALL InsertYearlyDate()');
         return view('medicines.createmedicine');
     }
     public function store(Request $request){
