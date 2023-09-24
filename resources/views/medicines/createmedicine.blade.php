@@ -114,14 +114,14 @@
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Ngày sản xuất:</label>
                                             <input type="text" class="input-form pl-2" name="mfg" id="exampleInput1"
-                                                placeholder="01/01/2019">
+                                                placeholder="2023-01-01">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Hạn sử dụng:</label>
                                             <input type="text" class="input-form pl-2" name="exp"
-                                                id="exampleInput1" placeholder="01/01/2025">
+                                                id="exampleInput1" placeholder="2023-10-01">
                                         </div>
                                     </div>
                                 </div>
@@ -153,48 +153,6 @@
                         </div>
                     </form>
                     {{-- </themthuoc> --}}
-                    <b class="pb-1 pt-1">Thêm giá bán:</b>
-                    <form action="/medicines" method="POST">
-                        @csrf
-                        <div class="row pr-2">
-                            <div class="col-3">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Mã thuốc:</label>
-                                    <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
-                                        placeholder="KV001">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Ngày:</label>
-                                    <input type="text" class="input-form pl-2" name="ngay_id" id="exampleInput1"
-                                        placeholder="01/01/2019">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Đơn vị tính:</label>
-                                    <input type="text" class="input-form pl-2" name="dvt" id="exampleInput1"
-                                        placeholder="1viên| 1hộp">
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Giá:</label>
-                                    <input type="text" class="input-form pl-2" name="price" id="exampleInput1"
-                                        placeholder="1000|100000">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pl-5  d-flex">
-                            <div class="col">
-                                <div class="pt-2 float-right pr-2">
-                                    <button type="reset" class="btn btn-secondary">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Thêm</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div><!-- /.container-fluid -->
         </div>

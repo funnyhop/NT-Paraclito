@@ -44,6 +44,9 @@
                 <a href="medicines" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Thêm thuốc</p>
                 </a>
+                <a href="prices" class="nav-link nav-dopdown collapse" id="collapse1">
+                    <p>Giá thuốc</p>
+                </a>
             </div>
           </li>
           <li class="nav-item">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillsController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\DruggrController;
@@ -20,7 +21,7 @@ Route::resource('/sales', SalesController::class);
 
 // thuoc
 Route::resource('/medicines', MedicineController::class);
-
+Route::resource('/prices', PriceController::class);
 ///////////////ncc
 Route::resource('/suppliers', SupplierController::class);
 
