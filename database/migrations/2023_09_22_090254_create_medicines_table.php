@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('Tenthuoc', 30);
             $table->date('NSX');
             $table->date('HSD');
-            $table->string('TPhoatchat', 50);
+            $table->string('TPhoatchat');
             $table->string('Dieutri');
-            $table->string('HDSD', 50);
-            $table->string('Chongchidinh', 50);
+            $table->string('HDSD');
+            $table->string('Chongchidinh');
             $table->string('druggr_id',10);
             $table->string('supplier_id',10);
             $table->string('producer_id',10);

@@ -54,30 +54,41 @@
                                     <th>Điều trị</th>
                                     <th>HDSD</th>
                                     <th>Chống chỉ định</th>
-                                    <th>Mã nhóm thuốc</th>
-                                    <th>Mã NCC</th>
-                                    <th>Mã NSX</th>
+                                    <th>Nhóm thuốc</th>
+                                    <th>NCC</th>
+                                    <th>NSX</th>
                                     <th>Cập nhật</th>
                                     <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="text-left">Amoxicillin</td>
-                                    <td>01/01/2019</td>
-                                    <td>01/01/2025</td>
-                                    <td class="text-left">Amoxicillin</td>
-                                    <td class="text-left">Nhiễm trùng hô hấp (viêm phổi, viêm xoang, viêm họng)</td>
-                                    <td class="text-left">Amoxicillin</td>
-                                    <td class="text-left">Nhiễm trùng hô hấp (viêm phổi, viêm xoang, viêm họng)</td>
-                                    <td class="text-left">KV001</td>
-                                    <td class="text-left">LC207</td>
-                                    <td class="text-left">NSX01</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                    <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                {{-- </tr>
-                                <tr>
+                                @foreach ($medicines as $medicine)
+                                    <tr>
+                                        <td>{{ $medicine->ThuocID }}</td>
+                                        <td class="text-left">{{ $medicine->Tenthuoc }}</td>
+                                        <td>{{ $medicine->NSX }}</td>
+                                        <td>{{ $medicine->HSD }}</td>
+                                        <td class="text-left">{{ $medicine->TPhoatchat }}</td>
+                                        <td class="text-left">{{ $medicine->Dieutri }}</td>
+                                        <td class="text-left">{{ $medicine->HDSD }}</td>
+                                        <td class="text-left">{{ $medicine->Chongchidinh }}</td>
+                                        <td class="text-left">{{ $medicine->druggr_id }}</td>
+                                        <td class="text-left">{{ $medicine->supplier_id }}</td>
+                                        <td class="text-left">{{ $medicine->producer_id }}</td>
+                                        <td><a href="medicines/{{ $medicine->ThuocID }}/edit"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td>
+                                            <form action="medicines/{{ $medicine->ThuocID }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn-trash">
+                                                    <i class="fa-solid fa-trash "></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                {{-- <tr>
                                     <td>2</td>
                                     <td class="text-left">Aspirin</td>
                                     <td>01/01/2019</td>
