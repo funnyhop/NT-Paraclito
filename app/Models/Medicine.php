@@ -28,9 +28,9 @@ class Medicine extends Model
     }
 
     //one medicine has many price
-    // public function prices() {
-    //     return $this->hasMany(Price::class, 'medicine_id', 'ThuocID');
-    // }
+    public function prices() {
+        return $this->hasMany(Price::class, 'medicine_id', 'ThuocID');
+    }
     //one medicine has many ghipns
     public function ghipns() {
         return $this->hasMany(GhiPN::class, 'medicine_id', 'ThuocID');

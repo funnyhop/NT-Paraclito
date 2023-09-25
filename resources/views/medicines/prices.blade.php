@@ -68,7 +68,7 @@
                                         <td><a href="medicines/{{ $pr->id }}/edit"><i
                                                     class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="medicines/{{ $pr->id }}" method="POST">
+                                            <form action="prices/{{ $pr->id }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

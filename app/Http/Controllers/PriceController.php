@@ -14,9 +14,10 @@ class PriceController extends Controller
         return view('medicines.prices', compact('prs'));
     }
     public function create(){
-        // DB::statement('CALL InsertYearlyDate()');
+        DB::statement('CALL InsertYearlyDate()');
         return view('medicines.createprice');
     }
+
     public function store(Request $request){
         $request->validate([
             'medicine_id' => 'required',
@@ -24,32 +25,28 @@ class PriceController extends Controller
             'dvt' => 'required',
             'gia' => 'required|numeric',
         ]);
-//dd($request);
+        //dung cach nay thi phai co cot created_at và updated_at trong csdl
+        $pr = Price::create([
+            'medicine_id' => $request->input('medicine_id'),
+            'ngay_id' => $request->input('ngay_id'),
+            'DVT' => $request->input('dvt'),
+            'Gia' => $request->input('gia')
+        ]);
 
-        try {
-            $pr = new Price(); // Tạo một đối tượng Price mới
-            $pr->medicine_id = $request->input('medicine_id');
-            $pr->ngay_id = $request->input('ngay_id');
-            $pr->DVT = $request->input('dvt');
-            $pr->Gia = $request->input('gia');
-
-            $pr->save(); // Lưu đối tượng vào cơ sở dữ liệu
-            return redirect('/prices');
-        } catch (\Exception $e) {
-            // In ra thông tin lỗi để xem lỗi là gì
-            dd($e->getMessage());
-        }
-
-
-        // $price = Price::create([
+        $pr->save();
+        return redirect('/prices');
+        // DB::enableQueryLog();
+        // ghi truc tiep luon
+        // DB::table('prices')->insert([
         //     'medicine_id' => $request->input('medicine_id'),
         //     'ngay_id' => $request->input('ngay_id'),
         //     'DVT' => $request->input('dvt'),
         //     'Gia' => $request->input('gia')
         // ]);
-        // dd($price);
-        //$price->save();
-        //return redirect('/prices');
+
+        // Lấy danh sách các truy vấn SQL đã thực hiện
+        //$queries = DB::getQueryLog();
+        // dd($queries);
     }
     // public function edit($id){
     //     $price = DB::table('prices')->select('medicine_id', 'ngay_id', 'DVT', 'Gia')->where('id', $id);
@@ -67,9 +64,9 @@ class PriceController extends Controller
     //         ]);
     //     return redirect('/prices');
     // }
-    // public function destroy($id){
-    //     $price = DB::table('prices')->where('id', $id);
-    //     $price->delete();
-    //     return redirect('/prices');
-    // }
+    public function destroy($id){
+        $pr = DB::table('prices')->where('id', $id);
+        $pr->delete();
+        return redirect('/prices');
+    }
 }
