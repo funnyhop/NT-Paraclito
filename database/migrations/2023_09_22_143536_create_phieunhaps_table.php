@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('phieunhaps', function (Blueprint $table) {
             $table->String('PNID', 10);
+            $table->String('Lothuoc', 10);
             $table->string('staff_id',10);
             $table->string('warehouse_id',10);
 

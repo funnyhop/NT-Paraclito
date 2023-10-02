@@ -9,9 +9,9 @@ class PriceController extends Controller
 {
     public function index(){
         $prs = DB::table('prices')->select('medicine_id',
-            'ngay_id', 'DVT', 'Gia')->get();
-
-        return view('medicines.prices', compact('prs'));
+            'ngay_id', 'Gia')->get();
+        $i = 1;
+        return view('medicines.prices', compact('prs','i'));
     }
     public function create(){
         DB::statement('CALL InsertYearlyDate()');
@@ -22,7 +22,6 @@ class PriceController extends Controller
         $request->validate([
             'medicine_id' => 'required',
             'ngay_id' => 'required|date',
-            'dvt' => 'required',
             'gia' => 'required|numeric',
         ]);
         //dung cach nay thi phai co cot created_at và updated_at trong csdl
@@ -41,7 +40,6 @@ class PriceController extends Controller
         DB::table('prices')->insert([
             'medicine_id' => $request->input('medicine_id'),
             'ngay_id' => $request->input('ngay_id'),
-            'DVT' => $request->input('dvt'),
             'Gia' => $request->input('gia')
         ]);
 
@@ -70,7 +68,7 @@ class PriceController extends Controller
     public function priceEdit($ngay_id, $medicine_id)
     {
         $pr = DB::table('prices')
-            ->select('medicine_id', 'ngay_id', 'DVT', 'Gia')
+            ->select('medicine_id', 'ngay_id', 'Gia')
             ->where('ngay_id', $ngay_id)
             ->where('medicine_id', $medicine_id)
             ->first();
@@ -86,7 +84,6 @@ class PriceController extends Controller
                 ->update([
                     'medicine_id' => $request->input('medicine_id'),
                     'ngay_id' => $request->input('ngay_id'),
-                    'DVT' => $request->input('dvt'),
                     'Gia' => $request->input('gia')
                 ]);
             return redirect('/prices');

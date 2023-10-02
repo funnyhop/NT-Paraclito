@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Dieutri');
             $table->string('HDSD');
             $table->string('Chongchidinh');
+            $table->string('DVT', 30);
             $table->string('druggr_id',10);
             $table->string('supplier_id',10);
             $table->string('producer_id',10);

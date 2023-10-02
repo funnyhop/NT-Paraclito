@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Thuốc tây</h1>
+                        <h3 class="m-0 text-dark">Thêm giá cho thuốc</h3>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -43,32 +43,24 @@
                     <li class="pl-1"><a href="#">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-5">
-                    <b class="pb-1 pt-1">Thêm giá bán:</b>
                     <form action="/prices" method="post">
                         @csrf
                         <div class="row pr-2">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Mã thuốc:</label>
                                     <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
                                         placeholder="KV001">
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Ngày:</label>
                                     <input type="text" class="input-form pl-2" name="ngay_id" id="exampleInput1"
                                         placeholder="2023-01-10">
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Đơn vị tính:</label>
-                                    <input type="text" class="input-form pl-2" name="dvt" id="exampleInput1"
-                                        placeholder="1viên| 1hộp">
-                                </div>
-                            </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Giá:</label>
                                     <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"

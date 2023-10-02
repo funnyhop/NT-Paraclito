@@ -15,7 +15,6 @@ return new class extends Migration
             // $table->increments('id');
             $table->string('medicine_id',10);
             $table->date('ngay_id');
-            $table->String('DVT', 10);
             $table->float('Gia', 9, 2);
 
             $table->primary(['medicine_id','ngay_id']);

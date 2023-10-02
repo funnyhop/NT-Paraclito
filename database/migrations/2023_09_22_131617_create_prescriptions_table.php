@@ -15,6 +15,8 @@ return new class extends Migration
             $table->String('ToaID', 10);
             $table->String('TenBS', 30);
             $table->String('TenBV', 30);
+            $table->date('Ngaytao');
+
             $table->primary('ToaID');
             $table->timestamps();
         });

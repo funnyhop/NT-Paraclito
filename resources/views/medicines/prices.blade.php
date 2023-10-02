@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Giá tây</h1>
+                        <h1 class="m-0 text-dark">Giá thuốc tây</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -47,10 +47,9 @@
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
-                                    {{-- <th>STT</th> --}}
+                                    <th>STT</th>
                                     <th>Mã thuốc</th>
                                     <th>Ngày</th>
-                                    <th>Đơn vị tính</th>
                                     <th>Giá</th>
                                     <th>Cập nhật</th>
                                     <th>Xóa</th>
@@ -59,11 +58,9 @@
                             <tbody>
                                 @foreach ($prs as $pr)
                                     <tr>
-                                        {{-- <td>{{ $pr->id }}</td> --}}
+                                        <td>{{ $i++ }}</td>
                                         <td>{{ $pr->medicine_id }}</td>
-                                        {{-- <td class="text-left">{{ $medicine->Tenthuoc }}</td> --}}
                                         <td>{{ $pr->ngay_id }}</td>
-                                        <td>{{ $pr->DVT }}</td>
                                         <td>{{ $pr->Gia }}</td>
                                         <td><a
                                                 href="{{ route('prices.priceEdit', ['ngay_id' => $pr->ngay_id, 'medicine_id' => $pr->medicine_id]) }}">
