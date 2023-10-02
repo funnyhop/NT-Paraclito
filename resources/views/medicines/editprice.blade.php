@@ -36,15 +36,15 @@
         <!-- /.content-header -->
         <!-- Main content -->
         <div class="content">
-            <div class="container-fluid pb-5">
-                <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/medicines">Danh sách</a></li>
+            <div class="container-fluid pb-5 pr-5">
+                {{-- <div class="float-right d-inline-flex pr-2">
+                    <li class="pr-1"><a href="/prices">Danh sách</a></li>
                     <a href="#">/</a>
                     <li class="pl-1"><a href="#">Thêm</a></li>
-                </div>
+                </div> --}}
                 <div class="row pt-5 pl-5">
                     <b class="pb-1 pt-1">Thêm giá bán:</b>
-                    <form action="/prices/{{ $price->id }}" method="POST">
+                    <form action="{{ route('prices.priceUpdate', ['ngay_id' => $pr->ngay_id, 'medicine_id' => $pr->medicine_id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row pr-2">
@@ -52,28 +52,28 @@
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Mã thuốc:</label>
                                     <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
-                                        value="{{ $medicine_price->medicine_id }}" placeholder="KV001">
+                                        value="{{ $pr->medicine_id }}" placeholder="KV001">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Ngày:</label>
                                     <input type="text" class="input-form pl-2" name="ngay_id" id="exampleInput1"
-                                        value="{{ $medicine_price->ngay_id }}" placeholder="2023-01-10">
+                                        value="{{ $pr->ngay_id }}" placeholder="2023-01-10">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Đơn vị tính:</label>
                                     <input type="text" class="input-form pl-2" name="dvt" id="exampleInput1"
-                                        value="{{ $medicine_price->DVT }}" placeholder="1viên| 1hộp">
+                                        value="{{ $pr->DVT }}" placeholder="1viên| 1hộp">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Giá:</label>
-                                    <input type="text" class="input-form pl-2" name="price" id="exampleInput1"
-                                        value="{{ $medicine_price->Gia }}" placeholder="1000|100000">
+                                    <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"
+                                        value="{{ $pr->Gia }}" placeholder="1000|100000">
                                 </div>
                             </div>
                         </div>

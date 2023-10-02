@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->increments('id');
+            // $table->increments('id');
             $table->string('medicine_id',10);
             $table->date('ngay_id');
             $table->String('DVT', 10);
             $table->float('Gia', 9, 2);
+
+            $table->primary(['medicine_id','ngay_id']);
 
             $table->foreign('medicine_id')->references('ThuocID')->on('medicines');
             $table->foreign('ngay_id')->references('Ngay')->on('days');

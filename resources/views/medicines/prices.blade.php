@@ -47,7 +47,7 @@
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
+                                    {{-- <th>STT</th> --}}
                                     <th>Mã thuốc</th>
                                     <th>Ngày</th>
                                     <th>Đơn vị tính</th>
@@ -59,22 +59,25 @@
                             <tbody>
                                 @foreach ($prs as $pr)
                                     <tr>
-                                        <td>{{ $pr->id }}</td>
+                                        {{-- <td>{{ $pr->id }}</td> --}}
                                         <td>{{ $pr->medicine_id }}</td>
                                         {{-- <td class="text-left">{{ $medicine->Tenthuoc }}</td> --}}
                                         <td>{{ $pr->ngay_id }}</td>
                                         <td>{{ $pr->DVT }}</td>
                                         <td>{{ $pr->Gia }}</td>
-                                        <td><a href="medicines/{{ $pr->id }}/edit"><i
-                                                    class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td><a
+                                                href="{{ route('prices.priceEdit', ['ngay_id' => $pr->ngay_id, 'medicine_id' => $pr->medicine_id]) }}">
+                                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                        </td>
                                         <td>
-                                            <form action="prices/{{ $pr->id }}" method="POST">
+                                            <form action="{{ route('prices.priceDestroy', ['ngay_id' => $pr->ngay_id, 'medicine_id' => $pr->medicine_id]) }}" method="POST">
                                                 @csrf
-                                                @method('delete')
+                                                @method('DELETE')
                                                 <button type="submit" class="btn-trash">
-                                                    <i class="fa-solid fa-trash "></i>
+                                                    <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
+
                                         </td>
                                     </tr>
                                 @endforeach
