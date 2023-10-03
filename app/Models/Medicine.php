@@ -12,7 +12,7 @@ class Medicine extends Model
     protected $primaryKey = 'ThuocID';
     protected $fillable = ['ThuocID', 'Tenthuoc', 'NSX',
      'HSD', 'TPhoatchat', 'Dieutri', 'HDSD',
-     'Chongchidinh', 'druggr_id', 'supplier_id', 'producer_id'];
+     'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id'];
     //tip: khoa ngoai luon dung truoc khoa chinh trong belongto tenham khong them s va has many them s de phan biet nhieu voi 1
     //one medicine belongs to druggr
     public function druggr() {

@@ -10,7 +10,7 @@ class Price extends Model
     use HasFactory;
     protected $table = 'prices';
     protected $primaryKey = ['medicine_id','ngay_id'];
-    protected $fillable = ['medicine_id','ngay_id', 'DVT', 'Gia'];
+    protected $fillable = ['medicine_id','ngay_id', 'Gia'];
 
     //one price belongs to medicin
     public function medicine() {

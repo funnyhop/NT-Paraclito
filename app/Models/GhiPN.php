@@ -9,8 +9,8 @@ class GhiPN extends Model
 {
     use HasFactory;
     protected $table = 'ghipns';
-    protected $primaryKey = ['id'];
-    protected $fillable = ['id', 'medicine_id','phieunhap_id', 'Soluong','DVT', 'Gia'];
+    protected $primaryKey = ['medicine_id','phieunhap_id'];
+    protected $fillable = ['medicine_id','phieunhap_id', 'Soluong', 'Gia'];
     //one GhiPN belongs to Medicine
     public function medicine() {
         return $this->belongsTo(Medicine::class, 'medicine_id', 'ThuocID');

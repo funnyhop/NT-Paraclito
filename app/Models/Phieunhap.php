@@ -10,7 +10,7 @@ class Phieunhap extends Model
     use HasFactory;
     protected $table = 'phieunhaps';
     protected $primaryKey = ['PNID'];
-    protected $fillable = ['PNID', 'staff_id','warehouse_id', 'created_at'];
+    protected $fillable = ['PNID', 'Lothuoc', 'staff_id','warehouse_id', 'created_at'];
 
     //one phieunhap has many GhiPN
     public function ghipns() {
