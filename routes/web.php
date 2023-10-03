@@ -17,19 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 // banhang
+Route::resource('/customers', SalesController::class);
 Route::resource('/sales', SalesController::class);
 
 // thuoc
 Route::resource('/medicines', MedicineController::class);
 ////////////
-//Route::get('prices',[PriceController::class,'index']);
 Route::get('prices/{ngay_id}/{medicine_id}/edit', [PriceController::class, 'priceEdit'])->name('prices.priceEdit');
 Route::match(['put', 'patch'], 'prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceUpdate'])->name('prices.priceUpdate');
 Route::delete('prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceDestroy'])->name('prices.priceDestroy');
-
-// Route::get('/prices', 'PriceController@index')->name('prices');
-// Route::get('prices/create', 'PriceController@create')->name('prices.create');
-// Route::delete('prices/{ngay_id}/{medicine_id}', 'PriceController@customDestroy')->name('prices.price-destroy');
 
 Route::resource('/prices', PriceController::class);
 
