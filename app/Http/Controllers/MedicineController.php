@@ -11,7 +11,7 @@ class MedicineController extends Controller
 {
     public function index(){
         $medicines = DB::table('medicines')->select('ThuocID', 'Tenthuoc', 'NSX', 'HSD', 'TPhoatchat',
-            'Dieutri', 'HDSD', 'Chongchidinh', 'druggr_id', 'supplier_id', 'producer_id')->get();
+            'Dieutri', 'HDSD', 'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id')->get();
 
         return view('medicines.medicines', compact('medicines'));
     }
@@ -28,6 +28,7 @@ class MedicineController extends Controller
             'Dieutri' => $request->input('dt'),
             'HDSD' => $request->input('hdsd'),
             'Chongchidinh' => $request->input('ccd'),
+            'DVT' => $request->input('dvt'),
             'druggr_id' => $request->input('dr_id'),
             'supplier_id' => $request->input('sl_id'),
             'producer_id' => $request->input('pd_id')
@@ -38,7 +39,7 @@ class MedicineController extends Controller
     }
     public function edit($id){
         $medicine = DB::table('medicines')->select('ThuocID', 'Tenthuoc', 'NSX', 'HSD', 'TPhoatchat',
-            'Dieutri', 'HDSD', 'Chongchidinh', 'druggr_id', 'supplier_id', 'producer_id')
+            'Dieutri', 'HDSD', 'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id')
             ->where('ThuocID',$id)->first();
 
         return view('medicines.editmedicine')->with('medicine', $medicine);
@@ -54,6 +55,7 @@ class MedicineController extends Controller
                 'Dieutri' => $request->input('dt'),
                 'HDSD' => $request->input('hdsd'),
                 'Chongchidinh' => $request->input('ccd'),
+                'DVT' => $request->input('dvt'),
                 'druggr_id' => $request->input('dr_id'),
                 'supplier_id' => $request->input('sl_id'),
                 'producer_id' => $request->input('pd_id')

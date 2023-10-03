@@ -49,7 +49,14 @@
                         <div class="d-flex">
                             <div class="col-6 d-block">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã thuốc:</label>
+                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
+                                                placeholder="TKV01">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhóm thuốc:</label>
                                             <input type="text" class="input-form pl-2" name="dr_id" id="exampleInput1"
@@ -60,16 +67,16 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                                placeholder="TKV01">
+                                            <label for="exampleInput1">Tên thuốc:</label>
+                                            <input type="text" class="input-form pl-2" name="name" id="exampleInput1"
+                                                placeholder="Amoxicillin">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Tên thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="name" id="exampleInput1"
-                                                placeholder="Amoxicillin">
+                                            <label for="exampleInput1">Đơn vị tính:</label>
+                                            <input type="text" class="input-form pl-2" name="dvt" id="exampleInput1"
+                                                placeholder="10Viênx5Vỉx1Hộp">
                                         </div>
                                     </div>
                                 </div>

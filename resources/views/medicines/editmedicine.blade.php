@@ -50,7 +50,14 @@
                         <div class="d-flex">
                             <div class="col-6 d-block">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã thuốc:</label>
+                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
+                                                value="{{ $medicine->ThuocID }}" placeholder="TKV01">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhóm thuốc:</label>
                                             <input type="text" class="input-form pl-2" name="dr_id" id="exampleInput1"
@@ -61,16 +68,16 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                                value="{{ $medicine->ThuocID }}" placeholder="TKV01">
+                                            <label for="exampleInput1">Tên thuốc:</label>
+                                            <input type="text" class="input-form pl-2" name="name" id="exampleInput1"
+                                                value="{{ $medicine->Tenthuoc }}" placeholder="Amoxicillin">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Tên thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="name" id="exampleInput1"
-                                                value="{{ $medicine->Tenthuoc }}" placeholder="Amoxicillin">
+                                            <label for="exampleInput1">Đơn vị tính:</label>
+                                            <input type="text" class="input-form pl-2" name="dvt" id="exampleInput1"
+                                                value="{{ $medicine->DVT }}" placeholder="10Viênx5Vỉx1Hộp">
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +113,9 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhà sản xuất:</label>
-                                            <input type="text" class="input-form pl-2" name="pd_id" id="exampleInput1"
-                                                value="{{ $medicine->producer_id }}" placeholder="NSX01">
+                                            <input type="text" class="input-form pl-2" name="pd_id"
+                                                id="exampleInput1" value="{{ $medicine->producer_id }}"
+                                                placeholder="NSX01">
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +131,8 @@
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Hạn sử dụng:</label>
                                             <input type="text" class="input-form pl-2" name="exp"
-                                                id="exampleInput1" value="{{ $medicine->HSD }}" placeholder="2023-10-01">
+                                                id="exampleInput1" value="{{ $medicine->HSD }}"
+                                                placeholder="2023-10-01">
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +164,7 @@
                         </div>
                     </form>
                     {{-- </themthuoc> --}}
-                    <b class="pb-1 pt-1">Thêm giá bán:</b>
+                    {{-- <b class="pb-1 pt-1">Thêm giá bán:</b>
                     <form action="/medicines/{{ $medicine_price->id }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -197,7 +206,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div><!-- /.container-fluid -->
         </div>

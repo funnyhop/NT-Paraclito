@@ -48,6 +48,7 @@
                                 <tr>
                                     <th>Mã thuốc</th>
                                     <th>Tên thuốc</th>
+                                    <th>ĐVT</th>
                                     <th>NSX</th>
                                     <th>HSD</th>
                                     <th>Thành phần hoạt chất</th>
@@ -66,6 +67,7 @@
                                     <tr>
                                         <td>{{ $medicine->ThuocID }}</td>
                                         <td class="text-left">{{ $medicine->Tenthuoc }}</td>
+                                        <td>{{ $medicine->DVT }}</td>
                                         <td>{{ $medicine->NSX }}</td>
                                         <td>{{ $medicine->HSD }}</td>
                                         <td class="text-left">{{ $medicine->TPhoatchat }}</td>
