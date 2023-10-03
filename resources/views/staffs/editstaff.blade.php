@@ -37,43 +37,40 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid  pb-5">
-                <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/staffs">Danh sách</a></li>
-                    <a href="#">/</a>
-                    <li class="pl-1"><a href="#">Thêm</a></li>
-                </div>
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/staffs" method="POST">
+                        <form action="/staffs/{{ $staff->NVID }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
                                 <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                    placeholder="BT001">
+                                    value="{{ $staff->NVID }}" placeholder="BT001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Tên nhân viên:</label>
-                                <input type="text" class="input-form pl-2" name="name" id="exampleInput2"
-                                    placeholder="Nguyen Van A">
+                                <input type="text" class="input-form pl-2" name="name" value="{{ $staff->TenNV }}"
+                                    id="exampleInput2" placeholder="Nguyen Van A">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Số điện thoại:</label>
                                 <input type="text" class="input-form pl-2" name="sdt" id="exampleInput2"
-                                    placeholder="0912012122">
+                                    value="{{ $staff->SDT }}" placeholder="0912012122">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
                                 <input type="text" class="input-form pl-2" name="address" id="exampleInput2"
+                                    value="{{ $staff->Diachi }}"
                                     placeholder="63/6 Khu dân cư Hậu Thạnh Mỹ, Lê Bình, Cái Răng-Cần Thơ">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Chức vụ:</label>
                                 <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
-                                    placeholder="Bán thuốc">
+                                    value="{{ $staff->Chucvu }}" placeholder="Bán thuốc">
                             </div>
                             <div class="float-right pr-1 pt-2">
-                                <button type="reset" class="btn btn-secondary">Hủy</button>
+                                <a href="/staffs" class="btn btn-secondary">Hủy</a>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>

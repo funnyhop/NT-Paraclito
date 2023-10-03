@@ -41,7 +41,7 @@
                     <a href="#">/</a>
                     <li class="pl-1"><a href="customers/create">Thêm</a></li>
                 </div>
-                <div class="pt-5 col-10">
+                <div class="pt-5 pl-4 col-10">
                     <table class="table table-bordered text-center">
                         <thead>
                             <th>ID</th>
