@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 // banhang
 Route::resource('/customers', SalesController::class);
-Route::resource('/sales', SalesController::class);
+Route::get('sales', [SalesController::class, 'salesindex'])->name('/sales');
+//Route::resource('/sales', SalesController::class);
 
 // thuoc
 Route::resource('/medicines', MedicineController::class);

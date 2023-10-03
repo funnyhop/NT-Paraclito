@@ -8,6 +8,7 @@ use App\Models\Customer;
 
 class SalesController extends Controller
 {
+    // <khachhang>
     public function index(){
         $customers = DB::table('customers')->select('KHID', 'TenKH', 'SDT', 'Diachi')->get();
         return view('sales.customers', compact('customers'));
@@ -43,5 +44,9 @@ class SalesController extends Controller
         $customer = DB::table('customers')->where('KHID',$id);
         $customer->delete();
         return redirect('/customers');
+    }
+    // </khachhang>
+    public function salesindex(){
+        return view('sales.index');
     }
 }
