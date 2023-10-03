@@ -27,16 +27,27 @@ class Medicine extends Model
         return $this->belongsTo(Producer::class, 'producer_id','NSXID');
     }
 
-    //one medicine has many price
-    public function prices() {
-        return $this->hasMany(Price::class, 'medicine_id', 'ThuocID');
+    //many medicine has many day
+    public function dayprices()
+    {
+        return $this->belongsToMany(Day::class, 'prices', 'medicine_id', 'ngay_id')
+                    ->withPivot('Gia');
     }
-    //one medicine has many ghipns
-    public function ghipns() {
-        return $this->hasMany(GhiPN::class, 'medicine_id', 'ThuocID');
+
+    //many medicine has many phieunhap
+    public function phieunhapghipns() {
+        return $this->belongsToMany(Phieunhap::class, 'ghipns', 'medicine_id', 'phieunhap_id')
+                    ->withPivot('Gia','Soluong');
     }
-    //one medicine has many ghihds // trong GhiHD co chua nhieu dong khoa ngoai(medicine_id) trung nhau dang tham chieu den 1 dong du lieu o Medicine
-    public function ghihds () {
-        return $this->hasMany(GhiHD::class, 'medicine_id', 'ThuocID');
+
+    //many medicine has many bill
+    public function billghihds() {
+        return $this->belongsToMany(Bill::class, 'ghihds', 'medicine_id', 'bill_id')
+                    ->withPivot('Soluong');
     }
+
+    // //one medicine has many ghihds // trong GhiHD co chua nhieu dong khoa ngoai(medicine_id) trung nhau dang tham chieu den 1 dong du lieu o Medicine
+    // public function ghihds () {
+    //     return $this->hasMany(GhiHD::class, 'medicine_id', 'ThuocID');
+    // }
 }

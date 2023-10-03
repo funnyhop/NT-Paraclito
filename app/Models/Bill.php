@@ -11,9 +11,10 @@ class Bill extends Model
     protected $table = 'bills';
     protected $primaryKey = 'HDID';
     protected $fillable = ['HDID', 'DoituongSD', 'Tongtien', 'created_at', 'staff_id', 'prescription_id', 'customer_id'];
-    //one bill has many GhiHD
-    public function ghihds() {
-        return $this->hasMany(GhiHD::class, 'bill_id', 'HDID');
+    //many bill has many medicine
+    public function medicineghihds() {
+        return $this->belongsToMany(Medicine::class, 'ghihds', 'medicine_id', 'bill_id')
+                    ->withPivot('Soluong');
     }
     //one bill belongs to staff
     public function staff() {

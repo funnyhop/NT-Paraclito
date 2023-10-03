@@ -11,8 +11,11 @@ class Day extends Model
     protected $table = 'days';
     protected $primaryKey = 'Ngay';
     protected $fillable = ['Ngay'];
-    //one day has many price
-    public function prices() {
-        return $this->hasMany(Price::class, 'ngay_id', 'Ngay');
+    //many day has many Medicine
+    public function medicineprices()
+    {
+        return $this->belongsToMany(Medicine::class, 'prices', 'ngay_id', 'medicine_id')
+                    ->withPivot('gia');
     }
+
 }

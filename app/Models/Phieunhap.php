@@ -12,9 +12,10 @@ class Phieunhap extends Model
     protected $primaryKey = ['PNID'];
     protected $fillable = ['PNID', 'Lothuoc', 'staff_id','warehouse_id', 'created_at'];
 
-    //one phieunhap has many GhiPN
-    public function ghipns() {
-        return $this->hasMany(GhiPN::class, 'phieunhap_id', 'PNID');
+    //many phieunhap has many medicine
+    public function medicineghipns() {
+        return $this->belongsToMany(Medicine::class, 'ghipns', 'medicine_id', 'phieunhap_id')
+                    ->withPivot('Gia','Soluong');
     }
     //one phieu nhap belongs to staff
     public function staff() {

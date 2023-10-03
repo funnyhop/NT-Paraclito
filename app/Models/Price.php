@@ -12,7 +12,7 @@ class Price extends Model
     protected $primaryKey = ['medicine_id','ngay_id'];
     protected $fillable = ['medicine_id','ngay_id', 'Gia'];
 
-    //one price belongs to medicin
+    //one price belongs to medicine
     public function medicine() {
         return $this->belongsTo(Medicine::class, 'medicine_id', 'ThuocID');
     }
