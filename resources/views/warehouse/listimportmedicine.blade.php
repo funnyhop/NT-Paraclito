@@ -42,32 +42,40 @@
                     <a href="#">/</a>
                     <li class="pl-1"><a href="items/create">Thêm</a></li>
                 </div>
-                <div class="pt-5 pl-4 col-10">
+                <div class="pt-5 pl-4 col-11">
                     <table class="table table-bordered text-center">
                         <thead>
                             <th>IDPN</th>
-                            <th>IDKho</th>
+                            <th>Tên kho</th>
                             <th>Ngày nhập</th>
-                            <th>IDThuốc</th>
+                            <th>Tên nhân viên</th>
                             <th>Số lô sản xuất</th>
+                            <th>Tên thuốc</th>
                             <th>Số lượng</th>
                             <th>Giá</th>
                         </thead>
                         <tbody>
-                            @foreach ($list as $item)
+                            @foreach ($listpn as $item)
                                 <tr>
-                                    <td>{{ $item-> }}</td>
-                                    <td>{{ $item-> }}</td>
-                                    <td>{{ $item-> }}</td>
-                                    @foreach ($values as $value)
-                                        <td>{{ $value-> }}</td>
-                                        <td>{{ $value-> }}</td>
-                                        <td>{{ $value-> }}</td>
-                                        <td>{{ $value-> }}</td>
+                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->PNID }}</td>
+                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->Tenkho }}</td>
+                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->created_at }}
+                                    </td>
+                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->TenNV }}</td>
+                                    @foreach ($listgpn as $value)
+                                        @if ($value->phieunhap_id == $item->PNID)
+                                            <tr>
+                                                <td>{{ $value->Lothuoc }}</td>
+                                                <td>{{ $value->Tenthuoc }}</td>
+                                                <td>{{ $value->Soluong }}</td>
+                                                <td>{{ $value->Gia }} vnđ</td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div><!-- /.container-fluid -->

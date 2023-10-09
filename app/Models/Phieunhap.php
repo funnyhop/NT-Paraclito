@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
+
 
 class Phieunhap extends Model
 {
@@ -12,6 +14,15 @@ class Phieunhap extends Model
     protected $primaryKey = ['PNID'];
     protected $fillable = ['PNID', 'Lothuoc', 'staff_id','warehouse_id', 'created_at'];
 
+    public function listphieunhap(){
+        $list = DB::table('phieunhaps')
+                ->join('warehouses', 'phieunhaps.warehouse_id', '=', 'warehouses.KhoID')
+                ->join('staffs', 'phieunhaps.staff_id', '=', 'staffs.NVID')
+                ->select('PNID', 'staffs.TenNV', 'warehouses.Tenkho', 'phieunhaps.created_at')
+                ->get();
+            return $list;
+            // dd($list);
+    }
     //many phieunhap has many medicine
     public function medicineghipns() {
         return $this->belongsToMany(Medicine::class, 'ghipns', 'medicine_id', 'phieunhap_id')
