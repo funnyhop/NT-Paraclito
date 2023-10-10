@@ -55,10 +55,10 @@
               <p>Quản lý kho</p>
             </a>
             <div class="pl-4">
-                <a href="importmedicines/create" class="nav-link nav-dopdown collapse" id="collapse2">
+                <a href="{{ route('importmedicines.createpn') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Nhập thuốc từ phiếu</p>
                 </a>
-                <a href="importmedicines" class="nav-link nav-dopdown collapse" id="collapse2">
+                <a href="{{ route('importmedicines') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Danh sách phiếu nhập</p>
                 </a>
                 <a href="checkinventory" class="nav-link nav-dopdown collapse" id="collapse2">

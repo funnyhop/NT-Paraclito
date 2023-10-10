@@ -45,19 +45,20 @@
                     {{-- <formthem> --}}
                     <div class="col-6">
                         <form action="" method="POST">
+                            @csrf
                             <div class="d-block">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã phiếu nhập:</label>
-                                            <input type="text" class="input-form pl-2" id="exampleInput1"
+                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
                                                 placeholder="PN001">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã kho:</label>
-                                            <input type="text" class="input-form pl-2" id="exampleInput1"
+                                            <input type="text" class="input-form pl-2" name="warehouse_id" id="exampleInput1"
                                                 placeholder="K0001">
                                         </div>
                                     </div>
@@ -70,11 +71,18 @@
                                                 placeholder="210319">
                                         </div>
                                     </div>
-                                    <div class="col-6 float-right">
-                                        <div class="pt-1 mt-4 pb-1 float-right ">
-                                            <button type="reset" class="btn btn-secondary">Hủy</button>
-                                            <button type="submit" class="btn btn-primary">Thêm</button>
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã nhân viên:</label>
+                                            <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
+                                                placeholder="210319">
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="float-right">
+                                    <div class="pt-2 pb-1 float-right ">
+                                        <button type="reset" class="btn btn-secondary">Hủy</button>
+                                        <button type="submit" class="btn btn-primary">Thêm</button>
                                     </div>
                                 </div>
                             </div>
@@ -84,19 +92,20 @@
                     {{-- <formghi> --}}
                     <div class="col-6">
                         <form action="" method="POST">
+                            @csrf
                             <div class="d-block">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã phiếu nhập:</label>
-                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
+                                            <input type="text" class="input-form pl-2" name="phieunhap_id" id="exampleInput1"
                                                 placeholder="PN001">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="thuoc" id="exampleInput1"
+                                            <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
                                                 placeholder="KV001">
                                         </div>
                                     </div>
@@ -105,13 +114,13 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo hộp)</i></label>
-                                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="">
+                                            <input type="text" class="input-form pl-2" name="sl" id="exampleInput1" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx5vỉx1hộp)</i></label>
-                                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="">
+                                            <input type="text" class="input-form pl-2" name="gia" id="exampleInput1" placeholder="">
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +133,6 @@
                     </div>
                     {{-- </formghi> --}}
                 </div>
-
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
