@@ -42,75 +42,87 @@
                     <b class="col-6 pl-4 pt-4 pb-1">Ghi phiếu nhập:</b>
                 </div>
                 <div class="row pl-5 d-flex">
-                    <div class="col-6 d-block">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Mã phiếu nhập:</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="PN001">
+                    {{-- <formthem> --}}
+                    <div class="col-6">
+                        <form action="" method="POST">
+                            <div class="d-block">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã phiếu nhập:</label>
+                                            <input type="text" class="input-form pl-2" id="exampleInput1"
+                                                placeholder="PN001">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã kho:</label>
+                                            <input type="text" class="input-form pl-2" id="exampleInput1"
+                                                placeholder="K0001">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Số lô sản xuất:</label>
+                                            <input type="text" class="input-form pl-2" name="solo" id="exampleInput1"
+                                                placeholder="210319">
+                                        </div>
+                                    </div>
+                                    <div class="col-6 float-right">
+                                        <div class="pt-1 mt-4 pb-1 float-right ">
+                                            <button type="reset" class="btn btn-secondary">Hủy</button>
+                                            <button type="submit" class="btn btn-primary">Thêm</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Mã kho:</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="K0001">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="float-right col">
-                                <div class="pt-1 mt-4 pb-1 float-right ">
-                                    <button type="button" class="btn btn-secondary">Hủy</button>
-                                    <button type="button" class="btn btn-primary">Thêm</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-                    <div class="col-6 d-block pr-5">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Mã phiếu nhập:</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="PN001">
+                    {{-- </formthem> --}}
+                    {{-- <formghi> --}}
+                    <div class="col-6">
+                        <form action="" method="POST">
+                            <div class="d-block">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã phiếu nhập:</label>
+                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
+                                                placeholder="PN001">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Mã thuốc:</label>
+                                            <input type="text" class="input-form pl-2" name="thuoc" id="exampleInput1"
+                                                placeholder="KV001">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo hộp)</i></label>
+                                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group pb-1">
+                                            <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx5vỉx1hộp)</i></label>
+                                            <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Mã thuốc:</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="KV001">
-                                </div>
+                            <div class="pt-2 float-right ">
+                                <button type="reset" class="btn btn-secondary">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Số lô sản xuất:</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="210319">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo hộp)</label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-group pb-1">
-                                    <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx5vỉx1hộp)</i></label>
-                                    <input type="text" class="input-form pl-2" id="exampleInput1"
-                                        placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="pt-2 mt-4 pb-1 float-right ">
-                                    <button type="button" class="btn btn-secondary">Hủy</button>
-                                    <button type="button" class="btn btn-primary">Thêm</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+                    {{-- </formghi> --}}
                 </div>
 
             </div><!-- /.container-fluid -->

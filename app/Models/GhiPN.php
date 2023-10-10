@@ -14,13 +14,13 @@ class GhiPN extends Model
     protected $table = 'ghipns';
     protected $primaryKey = ['medicine_id','phieunhap_id'];
     protected $keyType = 'array';
-    protected $fillable = ['medicine_id','phieunhap_id', 'Soluong', 'Gia', 'Tenthuoc', 'Lothuoc'];
+    protected $fillable = ['medicine_id','phieunhap_id', 'Soluong', 'Gia'];
 
     public function listghipn(){
         $values = DB::table('ghipns')
         ->join('medicines', 'ghipns.medicine_id', '=', 'medicines.ThuocID')
         ->join('phieunhaps', 'ghipns.phieunhap_id', '=', 'phieunhaps.PNID')
-        ->select('ghipns.phieunhap_id','medicines.Tenthuoc', 'phieunhaps.Lothuoc', 'Soluong', 'Gia')
+        ->select('ghipns.phieunhap_id','medicines.Tenthuoc', 'Soluong', 'Gia')
        ->get();
         return $values;
     }

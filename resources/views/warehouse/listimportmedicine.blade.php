@@ -48,8 +48,8 @@
                             <th>IDPN</th>
                             <th>Tên kho</th>
                             <th>Ngày nhập</th>
-                            <th>Tên nhân viên</th>
                             <th>Số lô sản xuất</th>
+                            <th>Tên nhân viên</th>
                             <th>Tên thuốc</th>
                             <th>Số lượng</th>
                             <th>Giá</th>
@@ -61,11 +61,11 @@
                                     <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->Tenkho }}</td>
                                     <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->created_at }}
                                     </td>
+                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->Lothuoc }}</td>
                                     <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->TenNV }}</td>
                                     @foreach ($listgpn as $value)
                                         @if ($value->phieunhap_id == $item->PNID)
                                             <tr>
-                                                <td>{{ $value->Lothuoc }}</td>
                                                 <td>{{ $value->Tenthuoc }}</td>
                                                 <td>{{ $value->Soluong }}</td>
                                                 <td>{{ $value->Gia }} vnđ</td>

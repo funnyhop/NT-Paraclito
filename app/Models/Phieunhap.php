@@ -18,7 +18,7 @@ class Phieunhap extends Model
         $list = DB::table('phieunhaps')
                 ->join('warehouses', 'phieunhaps.warehouse_id', '=', 'warehouses.KhoID')
                 ->join('staffs', 'phieunhaps.staff_id', '=', 'staffs.NVID')
-                ->select('PNID', 'staffs.TenNV', 'warehouses.Tenkho', 'phieunhaps.created_at')
+                ->select('PNID', 'phieunhaps.Lothuoc', 'staffs.TenNV', 'warehouses.Tenkho', 'phieunhaps.created_at')
                 ->get();
             return $list;
             // dd($list);

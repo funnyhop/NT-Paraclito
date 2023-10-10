@@ -42,6 +42,8 @@ Route::resource('/producers', ProducerController::class);
 Route::resource('/druggr', DruggrController::class);
 
 // kho
+// Route::get('/importmedicines/{PNID}', [ImportmedicinesController::class, 'createpn'])->name('importmedicines.createpn');
+// Route::get('/importmedicines/{ghipn}', [ImportmedicinesController::class, 'createghipn'])->name('importmedicines.createghipn');
 Route::resource('/importmedicines', ImportmedicinesController::class);//phieunhap
 Route::resource('/checkinventory', CheckinventoryController::class);//kiemkho
 
