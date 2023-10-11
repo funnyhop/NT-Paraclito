@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->String('HDID', 10);
             $table->String('DoituongSD', 50);
-            $table->float('Tongtien', 9, 2);
+            $table->float('Tongtien', 9, 2)->nullable();
             $table->string('staff_id',10);
             $table->string('prescription_id',10)->nullable();
             $table->string('customer_id',10);

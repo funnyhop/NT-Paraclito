@@ -45,8 +45,8 @@
                               <th>Mã khách hàng</th>
                               <th>Mã toa</th>
                               <th>Mã thuốc</th>
-                              <th>Số lượng</th>
-                              <th>Đơn vị tính</th>
+                              <th>Số lượng <i>(viên)</i></th>
+                              {{-- <th>Đơn vị tính</th> --}}
                               <th>Đơn giá</th>
                               <th>Tổng tiền</th>
                           </tr>
@@ -60,7 +60,7 @@
                               <td>T0001</td>
                               <td>KV001</td>
                               <td>2</td>
-                              <td>Hộp</td>
+                              {{-- <td>Hộp</td> --}}
                               <td>100000</td>
                               <td class="text-left">200000</td>
                           </tr>
@@ -72,7 +72,7 @@
                               <td>T0001</td>
                               <td>KV002</td>
                               <td>1</td>
-                              <td>Hộp</td>
+                              {{-- <td>Hộp</td> --}}
                               <td>100000</td>
                               <td class="text-left">100000</td>
                           </tr>
@@ -84,7 +84,7 @@
                               <td>T0001</td>
                               <td>KVS01</td>
                               <td>1</td>
-                              <td>Hộp</td>
+                              {{-- <td>Hộp</td> --}}
                               <td>100000</td>
                               <td class="text-left">100000</td>
                           </tr>
