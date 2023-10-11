@@ -20,7 +20,7 @@ class GhiPN extends Model
         $values = DB::table('ghipns')
         ->join('medicines', 'ghipns.medicine_id', '=', 'medicines.ThuocID')
         ->join('phieunhaps', 'ghipns.phieunhap_id', '=', 'phieunhaps.PNID')
-        ->select('ghipns.phieunhap_id','medicines.Tenthuoc', 'Soluong', 'Gia')
+        ->select('ghipns.phieunhap_id', 'ghipns.medicine_id','medicines.Tenthuoc', 'Soluong', 'Gia')
        ->get();
         return $values;
     }

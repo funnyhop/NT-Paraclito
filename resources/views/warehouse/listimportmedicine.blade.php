@@ -56,23 +56,23 @@
                         </thead>
                         <tbody>
                             @foreach ($listpn as $item)
+                                @php $rowCount = count($listgpn->where('phieunhap_id', $item->PNID)) @endphp
                                 <tr>
-                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->PNID }}</td>
-                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->Tenkho }}</td>
-                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->created_at }}
-                                    </td>
-                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->Lothuoc }}</td>
-                                    <td rowspan="{{ $item->PNID ? (int) $item->PNID + 3 : 1 }}">{{ $item->TenNV }}</td>
+                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->PNID }}</td>
+                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Tenkho }}</td>
+                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
+                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
+                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->TenNV }}</td>
                                     @foreach ($listgpn as $value)
                                         @if ($value->phieunhap_id == $item->PNID)
-                                            <tr>
-                                                <td>{{ $value->Tenthuoc }}</td>
-                                                <td>{{ $value->Soluong }}</td>
-                                                <td>{{ $value->Gia }} vnđ</td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
+                                <tr>
+                                    <td>{{ $value->Tenthuoc }}</td>
+                                    <td>{{ $value->Soluong }}</td>
+                                    <td>{{ $value->Gia }} vnđ</td>
                                 </tr>
+                            @endif
+                            @endforeach
+                            </tr>
                             @endforeach
                         </tbody>
 
