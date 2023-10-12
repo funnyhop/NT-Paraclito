@@ -50,7 +50,7 @@
                 </div>
                 <div class="row pt-1 pl-5">
                     <div class="col-4">
-                        <form action="/customers" method="POST">
+                        <form action="/customers" method="">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã khách hàng:</label>

@@ -44,7 +44,7 @@
                 <div class="row pl-5 d-flex">
                     {{-- <formthem> --}}
                     <div class="col-6">
-                        <form action="" method="POST">
+                        <form action="{{ route('importmedicines.createAndStore') }}" method="POST">
                             @csrf
                             <div class="d-block">
                                 <div class="row">
@@ -91,7 +91,7 @@
                     {{-- </formthem> --}}
                     {{-- <formghi> --}}
                     <div class="col-6">
-                        <form action="" method="POST">
+                        <form action="{{ route('importmedicines.createAndStore') }}" method="POST">
                             @csrf
                             <div class="d-block">
                                 <div class="row">

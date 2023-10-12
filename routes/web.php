@@ -17,9 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 // banhang
-Route::resource('/customers', SalesController::class);
 Route::get('sales', [SalesController::class, 'salesindex'])->name('/sales');
-//Route::resource('/sales', SalesController::class);
+Route::resource('/customers', SalesController::class);
+
+Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription');
+Route::match(['get','post'],'/prescription', [SalesController::class, 'pre_create'])->name('prescription.pre_create');
+// Route::post('/prescription', [SalesController::class, 'pre_store'])->name('prescription.pre_store');
+Route::get('/prescription/{ToaID}', [SalesController::class, 'pre_edit'])->name('prescription.pre_edit');
+Route::get('/prescription', [SalesController::class, 'pre_update'])->name('prescription.pre_update');
+Route::get('/prescription', [SalesController::class, 'pre_destroy'])->name('prescription.pre_destroy');
 
 // thuoc
 Route::resource('/medicines', MedicineController::class);
