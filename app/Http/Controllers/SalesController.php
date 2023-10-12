@@ -8,22 +8,21 @@ use App\Models\Customer;
 
 class SalesController extends Controller
 {
-    // <khachhang>
+    //<khachhang>
+    private $customer;
+    public function __construct() {
+        $this->customer = new Customer();
+    }
     public function index(){
-        $customers = DB::table('customers')->select('KHID', 'TenKH', 'SDT', 'Diachi')->get();
+        $customers = $this->customer->displaycus();
         return view('sales.customers', compact('customers'));
     }
     public function create(){
         return view('sales.createcustomer');
     }
     public function store(Request $request){
-        $customer = Customer::create([
-            'KHID' => $request->input('id'),
-            'TenKH' => $request->input('name'),
-            'SDT' => $request->input('sdt'),
-            'Diachi' => $request->input('address')
-        ]);
-        $customer->save();
+        $createdCustomer = $this->customer->insertcus($request);
+        $createdCustomer->save();
         return redirect('/customers');
     }
     public function edit($id){
