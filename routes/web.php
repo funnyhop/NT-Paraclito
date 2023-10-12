@@ -16,51 +16,52 @@ use App\Http\Controllers\ImportmedicinesController;
 Route::get('/', function () {
     return view('welcome');
 });
-// banhang
-Route::get('sales', [SalesController::class, 'salesindex'])->name('/sales');
-Route::resource('/customers', SalesController::class);
+//<banhang>
+    Route::get('sales', [SalesController::class, 'salesindex'])->name('/sales');
+    Route::resource('/customers', SalesController::class);//khach hang
+    //<toa>
+        Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription');
+        Route::get('/pre_create', [SalesController::class, 'pre_create'])->name('prescription.pre_create');
+        Route::post('/pre_create', [SalesController::class, 'pre_store'])->name('prescription.pre_store');
+        Route::get('/prescription/{ToaID}', [SalesController::class, 'pre_edit'])->name('prescription.pre_edit');
+        Route::match(['put','patch'],'/prescription/{ToaID}', [SalesController::class, 'pre_update'])->name('prescription.pre_update');
+        Route::delete('/prescription/{ToaID}', [SalesController::class, 'pre_destroy'])->name('prescription.pre_destroy');
+    //</toa>
+//</banhang>
+//<thuoc>
+    Route::resource('/medicines', MedicineController::class);
+//</thuoc>
+//<price>
+    Route::get('prices/{ngay_id}/{medicine_id}/edit', [PriceController::class, 'priceEdit'])->name('prices.priceEdit');
+    Route::match(['put', 'patch'], 'prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceUpdate'])->name('prices.priceUpdate');
+    Route::delete('prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceDestroy'])->name('prices.priceDestroy');
+    Route::resource('/prices', PriceController::class);
+//</price>
 
-Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription');
-Route::match(['get','post'],'/prescription', [SalesController::class, 'pre_create'])->name('prescription.pre_create');
-// Route::post('/prescription', [SalesController::class, 'pre_store'])->name('prescription.pre_store');
-Route::get('/prescription/{ToaID}', [SalesController::class, 'pre_edit'])->name('prescription.pre_edit');
-Route::get('/prescription', [SalesController::class, 'pre_update'])->name('prescription.pre_update');
-Route::get('/prescription', [SalesController::class, 'pre_destroy'])->name('prescription.pre_destroy');
-
-// thuoc
-Route::resource('/medicines', MedicineController::class);
-////////////
-Route::get('prices/{ngay_id}/{medicine_id}/edit', [PriceController::class, 'priceEdit'])->name('prices.priceEdit');
-Route::match(['put', 'patch'], 'prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceUpdate'])->name('prices.priceUpdate');
-Route::delete('prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceDestroy'])->name('prices.priceDestroy');
-
-Route::resource('/prices', PriceController::class);
-
-//
-//
-///////////////ncc
-Route::resource('/suppliers', SupplierController::class);
-
-///////////////nsx
-Route::resource('/producers', ProducerController::class);
-
-///////////////nhomthuoc
-Route::resource('/druggr', DruggrController::class);
-
-// kho
-Route::get('/createpn', [ImportmedicinesController::class, 'createpn'])->name('importmedicines.createpn');
-Route::post('/createpn', [ImportmedicinesController::class, 'createAndStore'])->name('importmedicines.createAndStore');
-Route::match(['get', 'head'],'/importmedicines', [ImportmedicinesController::class, 'index'])->name('importmedicines');
-
-Route::resource('/checkinventory', CheckinventoryController::class);//kiemkho
-
-// nhanvien
-Route::resource('/staffs', StaffController::class);
-
-// hoadon
-Route::resource('/bills', BillsController::class); //hoadonban
-Route::resource('/revenue', RevenueController::class); //doanhthu
-
+//<ncc>
+    Route::resource('/suppliers', SupplierController::class);
+//</ncc>
+//<nsx>
+    Route::resource('/producers', ProducerController::class);
+//</nsx>
+//<nhomthuoc>
+    Route::resource('/druggr', DruggrController::class);
+//</nhomthuoc>
+//<kho>
+    Route::get('/createpn', [ImportmedicinesController::class, 'createpn'])->name('importmedicines.createpn');
+    Route::post('/createpn', [ImportmedicinesController::class, 'createAndStore'])->name('importmedicines.createAndStore');
+    Route::match(['get', 'head'],'/importmedicines', [ImportmedicinesController::class, 'index'])->name('importmedicines');
+//</kho>
+//<kiemkho>
+    Route::resource('/checkinventory', CheckinventoryController::class);
+//</kiemkho>
+//<nhanvien>
+    Route::resource('/staffs', StaffController::class);
+//</nhanvien>
+//<hoadon>
+    Route::resource('/bills', BillsController::class); //hoadonban
+    Route::resource('/revenue', RevenueController::class); //doanhthu
+//</hoadon>
 
 /*
 |--------------------------------------------------------------------------
