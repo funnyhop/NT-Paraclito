@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Phieunhap;
 use App\Models\GhiPN;
+use App\Models\Medicine;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
+// use Illuminate\View\View;
 
 class ImportmedicinesController extends Controller
 {
@@ -25,7 +26,11 @@ class ImportmedicinesController extends Controller
     }
     public function createpn()
     {
-        return view('warehouse.importmedicines');
+        $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();
+        $whs = DB::table('warehouses')->select('KhoID', 'Tenkho')->get();
+        $drs = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
+        $pn = DB::table('phieunhaps')->select('PNID')->get();
+        return view('warehouse.importmedicines', compact('pn','drs','whs','staffs'));
     }
 
     public function storepn(Request $request)
@@ -38,11 +43,11 @@ class ImportmedicinesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
         return redirect(route('importmedicines.createpn'));
     }
     public function storeghipn(Request $request)
     {
+        // dd($request);
         $gpn = DB::table('ghipns')->insert([
             'phieunhap_id' => $request->input('phieunhap_id'),
             'medicine_id' => $request->input('medicine_id'),
@@ -51,7 +56,6 @@ class ImportmedicinesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
         return redirect(route('importmedicines.createpn'));
     }
     public function createAndStore(Request $request)

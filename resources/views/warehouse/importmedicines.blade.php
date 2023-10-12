@@ -57,9 +57,15 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã kho:</label>
-                                            <input type="text" class="input-form pl-2" name="warehouse_id" id="exampleInput1"
-                                                placeholder="K0001">
+                                            <label for="makho">Mã kho:</label>
+                                            {{-- <input type="text" class="input-form pl-2" name="warehouse_id"
+                                                id="exampleInput1" placeholder="K0001"> --}}
+                                            <select class="input-select pl-2" name="warehouse_id" id="makho">
+                                                <option selected disabled>Chọn kho</option>
+                                                @foreach ($whs as $wh)
+                                                    <option value="{{ $wh->KhoID }}">{{ $wh->Tenkho }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -73,9 +79,15 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã nhân viên:</label>
-                                            <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
-                                                placeholder="210319">
+                                            <label for="manv">Mã nhân viên:</label>
+                                            {{-- <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
+                                                placeholder="210319"> --}}
+                                            <select class="input-select pl-2" name="staff_id" id="manv">
+                                                <option selected disabled>Chọn nhân viên</option>
+                                                @foreach ($staffs as $staff)
+                                                    <option value="{{ $staff->NVID }}">{{ $staff->TenNV }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -97,16 +109,28 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã phiếu nhập:</label>
-                                            <input type="text" class="input-form pl-2" name="phieunhap_id" id="exampleInput1"
-                                                placeholder="PN001">
+                                            <label for="mapn">Mã phiếu nhập:</label>
+                                            {{-- <input type="text" class="input-form pl-2" name="phieunhap_id" id="exampleInput1"
+                                                placeholder="PN001"> --}}
+                                            <select class="input-select pl-2" name="phieunhap_id" id="mapn">
+                                                <option selected disabled>Chọn mã</option>
+                                                @foreach ($pn as $item)
+                                                    <option value="{{ $item->PNID }}">{{ $item->PNID }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
-                                                placeholder="KV001">
+                                            <label for="mat">Mã thuốc:</label>
+                                            {{-- <input type="text" class="input-form pl-2" name="medicine_id"
+                                                id="exampleInput1" placeholder="KV001"> --}}
+                                            <select class="input-select pl-2" name="medicine_id" id="mat">
+                                                <option selected disabled>Chọn thuốc</option>
+                                                @foreach ($drs as $dr)
+                                                    <option value="{{ $dr->ThuocID }}">{{ $dr->Tenthuoc }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -114,13 +138,15 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo hộp)</i></label>
-                                            <input type="text" class="input-form pl-2" name="sl" id="exampleInput1" placeholder="">
+                                            <input type="text" class="input-form pl-2" name="sl" id="exampleInput1"
+                                                placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx5vỉx1hộp)</i></label>
-                                            <input type="text" class="input-form pl-2" name="gia" id="exampleInput1" placeholder="">
+                                            <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"
+                                                placeholder="">
                                         </div>
                                     </div>
                                 </div>

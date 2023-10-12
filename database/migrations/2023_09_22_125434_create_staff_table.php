@@ -17,6 +17,7 @@ return new class extends Migration
             $table->String('Diachi',100);
             $table->String('SDT', 10);
             $table->String('Chucvu', 30);
+            $table->String('Matkhau', 30);
             $table->primary('NVID');
             $table->timestamps();
         });

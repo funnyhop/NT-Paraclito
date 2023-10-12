@@ -4619,5 +4619,23 @@ a.nav-dopdown:active {
 .btn-trash i {
     color: rgb(197, 40, 72);
 }
+.input-select {
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #e8f8f3;
+    border: 1px solid #80d5ff76;
+    border-radius: 0.55rem;
 
+}
+.input-select:focus{
+    color: #495057;
+    border: 2px solid #80bdff;
+    background-color: #e8f8f3;
+    border-color: #80bdff;
+	outline: none;
+}
 
