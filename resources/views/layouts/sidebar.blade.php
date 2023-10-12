@@ -21,7 +21,7 @@
                 <a href="sales" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Bán thuốc</p>
                 </a>
-                <a href="#" class="nav-link nav-dopdown collapse" id="salescollapse">
+                <a href="{{ route('prescription') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Toa thuốc</p>
                 </a>
                 <a href="customers" class="nav-link nav-dopdown collapse" id="salescollapse">
