@@ -15,7 +15,7 @@
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
+                        {{-- <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
                                 <input class="form-control form-control-navbar" type="search" placeholder="Search"
                                     aria-label="Search">
@@ -27,7 +27,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -50,7 +50,7 @@
                 </div>
                 <div class="row pt-1 pl-5">
                     <div class="col-4">
-                        <form action="/customers" method="">
+                        <form action="/sales" method="post">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã khách hàng:</label>
@@ -77,13 +77,12 @@
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>
-
                     </div>
                     <div class="col-4 pl-2 pr-2">
-                        <form action="">
+                        <form action="/sales" method="post">
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã hóa đơn:</label>
-                                <input type="text" class="input-form" id="exampleInput1" placeholder="HD001">
+                                <input type="text" class="input-form" name="idhd" id="exampleInput1" placeholder="HD001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Toa thuốc:</label>
@@ -118,16 +117,16 @@
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Đối tượng sử dụng:</label>
-                                <input type="text" class="input-form" id="exampleInput1" placeholder="TE001">
+                                <input type="text" class="input-form" name="DoituongSD" id="exampleInput1" placeholder="TE001">
                             </div>
                             <div class="float-right pt-2 pb-5">
-                                <button type="button" class="btn btn-secondary">Hủy</button>
-                                <button type="button" class="btn btn-primary">Thêm</button>
+                                <button type="reset" class="btn btn-secondary">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-4 pr-5 pb-5">
-                        <form action="" class="pb-1">
+                        <form action="/sales" class="pb-1" method="post">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="input-group d-flex pb-2">
@@ -142,7 +141,7 @@
                                     </div>
                                     <div class="input-group d-flex pb-2">
                                         <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(viên)</i></label>
-                                        <input type="text" class="input-form" id="exampleInput1" placeholder="1">
+                                        <input type="text" class="input-form" name="sl" id="exampleInput1" placeholder="1">
                                     </div>
                                 </div>
                                 <div class="col-6">
