@@ -49,8 +49,14 @@
                             <div class="col-4">
                                 <div class="input-group pb-1">
                                     <label for="exampleInput1">Mã thuốc:</label>
-                                    <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
-                                        placeholder="KV001">
+                                    {{-- <input type="text" class="input-form pl-2" name="medicine_id" id="exampleInput1"
+                                        placeholder="KV001"> --}}
+                                    <select class="input-select pl-2" name="medicine_id" id="mat">
+                                        <option selected disabled>Chọn thuốc</option>
+                                        @foreach ($medicines as $medicine)
+                                            <option value="{{ $medicine->ThuocID }}">{{ $medicine->Tenthuoc }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -62,7 +68,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group pb-1">
-                                    <label for="exampleInput1">Giá:</label>
+                                    <label for="exampleInput1">Giá: &nbsp;<i>(viên)</i></label>
                                     <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"
                                         placeholder="1000|100000">
                                 </div>

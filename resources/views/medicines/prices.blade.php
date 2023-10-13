@@ -50,7 +50,7 @@
                                     <th>STT</th>
                                     <th>Mã thuốc</th>
                                     <th>Ngày</th>
-                                    <th>Giá</th>
+                                    <th>Giá <i>(viên)</i></th>
                                     <th>Cập nhật</th>
                                     <th>Xóa</th>
                                 </tr>

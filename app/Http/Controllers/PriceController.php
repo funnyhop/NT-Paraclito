@@ -15,7 +15,8 @@ class PriceController extends Controller
     }
     public function create(){
         DB::statement('CALL InsertYearlyDate()');
-        return view('medicines.createprice');
+        $medicines = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
+        return view('medicines.createprice')->with('medicines', $medicines);
     }
 
     public function store(Request $request){

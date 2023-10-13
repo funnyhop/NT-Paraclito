@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group pb-1">
-                                    <label for="exampleInput1">Giá:</label>
+                                    <label for="exampleInput1">Giá: &nbsp;<i>(viên)</i></label>
                                     <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"
                                         value="{{ $pr->Gia }}" placeholder="1000|100000">
                                 </div>
