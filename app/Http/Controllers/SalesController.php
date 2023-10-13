@@ -40,7 +40,7 @@ class SalesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        return redirect(route('sales'));
+        return redirect('/sales');
     }
     public function storeghd(Request $request)
     {
@@ -76,7 +76,7 @@ class SalesController extends Controller
 
             if (!empty($request->input('bill_id')) && !empty($request->input('medicine_id'))) {
                 // Có thông tin về phiếu nhập và thuốc, lưu thông tin liên quan
-                $this->storeghihd($request);
+                $this->storeghd($request);
             }
 
             // Nếu mọi thứ đều ổn, commit giao dịch

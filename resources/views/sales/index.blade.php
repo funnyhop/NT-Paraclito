@@ -80,6 +80,7 @@
                     </div>
                     <div class="col-4 pl-2 pr-2">
                         <form action="/sales" method="post">
+                            @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã hóa đơn:</label>
                                 <input type="text" class="input-form" name="idhd" id="exampleInput1" placeholder="HD001">
@@ -89,7 +90,7 @@
                                 {{-- <input type="text" class="input-form" id="exampleInput1"
                                     placeholder="T0000/không có toa"> --}}
                                 <select class="input-select pl-2" name="prescription_id" id="manv">
-                                    <option selected disabled>Chọn toa thuốc</option>
+                                    <option value="" selected disabled>Chọn toa thuốc</option>
                                     @foreach ($pres as $pre)
                                         <option value="{{ $pre->ToaID }}">{{ $pre->ToaID }}</option>
                                     @endforeach
@@ -127,6 +128,7 @@
                     </div>
                     <div class="col-4 pr-5 pb-5">
                         <form action="/sales" class="pb-1" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-6">
                                     <div class="input-group d-flex pb-2">
@@ -156,7 +158,7 @@
                                         </select>
                                     </div>
                                     <div class="pt-1 mt-4 pb-1 float-right ">
-                                        <button type="button" class="btn btn-primary">Ghi</button>
+                                        <button type="submit" class="btn btn-primary">Ghi</button>
                                     </div>
                                 </div>
                             </div>
@@ -196,3 +198,4 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
