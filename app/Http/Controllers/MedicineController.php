@@ -16,7 +16,10 @@ class MedicineController extends Controller
         return view('medicines.medicines', compact('medicines'));
     }
     public function create(){
-        return view('medicines.createmedicine');
+        $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->get();
+        $suppliers = DB::table('suppliers')->select('NCCID', 'TenNCC')->get();
+        $producers = DB::table('producers')->select('NSXID', 'TenNSX')->get();
+        return view('medicines.createmedicine', compact('drs','producers','suppliers'));
     }
     public function store(Request $request){
         $medicine = Medicine::create([

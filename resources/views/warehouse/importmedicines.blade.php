@@ -14,20 +14,6 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -137,14 +123,14 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo hộp)</i></label>
+                                            <label for="exampleInput1">Số lượng:&nbsp;&nbsp;<i>(tính theo viên)</i></label>
                                             <input type="text" class="input-form pl-2" name="sl" id="exampleInput1"
                                                 placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx5vỉx1hộp)</i></label>
+                                            <label for="exampleInput1">Giá:&nbsp;&nbsp;<i>(vd: 30viênx3vỉx1hộp)</i></label>
                                             <input type="text" class="input-form pl-2" name="gia" id="exampleInput1"
                                                 placeholder="">
                                         </div>

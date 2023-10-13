@@ -58,9 +58,15 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
-                                            <label for="exampleInput1">Mã nhóm thuốc:</label>
-                                            <input type="text" class="input-form pl-2" name="dr_id" id="exampleInput1"
-                                                placeholder="KV001">
+                                            <label for="mant">Mã nhóm thuốc:</label>
+                                            {{-- <input type="text" class="input-form pl-2" name="dr_id" id="exampleInput1"
+                                                placeholder="KV001"> --}}
+                                            <select class="input-select pl-2" name="dr_id" id="mant">
+                                                <option selected disabled>Chọn nhóm thuốc</option>
+                                                @foreach ($drs as $dr)
+                                                    <option value="{{ $dr->NhomthuocID }}">{{ $dr->Tennhom }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -104,15 +110,27 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhà cung cấp:</label>
-                                            <input type="text" class="input-form pl-2" name="sl_id" id="exampleInput1"
-                                                placeholder="LC207">
+                                            {{-- <input type="text" class="input-form pl-2" name="sl_id" id="exampleInput1"
+                                                placeholder="LC207"> --}}
+                                            <select class="input-select pl-2" name="sl_id" id="mant">
+                                                <option selected disabled>Chọn NCC</option>
+                                                @foreach ($suppliers as $supplier)
+                                                    <option value="{{ $supplier->NCCID }}">{{ $supplier->TenNCC }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhà sản xuất:</label>
-                                            <input type="text" class="input-form pl-2" name="pd_id" id="exampleInput1"
-                                                placeholder="NSX01">
+                                            {{-- <input type="text" class="input-form pl-2" name="pd_id" id="exampleInput1"
+                                                placeholder="NSX01"> --}}
+                                            <select class="input-select pl-2" name="pd_id" id="mant">
+                                                <option selected disabled>Chọn NSX</option>
+                                                @foreach ($producers as $producer)
+                                                    <option value="{{ $producer->NSXID }}">{{ $producer->TenNSX }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -120,8 +138,8 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Ngày sản xuất:</label>
-                                            <input type="text" class="input-form pl-2" name="mfg" id="exampleInput1"
-                                                placeholder="2023-01-01">
+                                            <input type="text" class="input-form pl-2" name="mfg"
+                                                id="exampleInput1" placeholder="2023-01-01">
                                         </div>
                                     </div>
                                     <div class="col-6">
