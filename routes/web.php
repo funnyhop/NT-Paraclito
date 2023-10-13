@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 //<banhang>
-    Route::get('sales', [SalesController::class, 'salesindex'])->name('/sales');
+    Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales');
+
     Route::resource('/customers', SalesController::class);//khach hang
     //<toa>
         Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription');

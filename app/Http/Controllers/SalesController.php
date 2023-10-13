@@ -10,7 +10,12 @@ use App\Models\Prescription;
 class SalesController extends Controller
 {
     public function salesindex(){
-        return view('sales.index');
+        $pres = DB::table('prescriptions')->select('ToaID')->get();
+        $bills = DB::table('bills')->select('HDID')->get();
+        $customers = DB::table('customers')->select('KHID', 'TenKH')->get();
+        $drs = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
+        $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();
+        return view('sales.index', compact('staffs', 'drs', 'customers', 'bills', 'pres'));
     }
     private $customer;
     private $prescription;

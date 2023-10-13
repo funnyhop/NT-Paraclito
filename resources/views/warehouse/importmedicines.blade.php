@@ -58,7 +58,7 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="makho">Mã kho:</label>
-                                            {{-- <input type="text" class="input-form pl-2" name="warehouse_id"
+                                            {{-- <input type="text" class="input-form pl-2" name="makho"
                                                 id="exampleInput1" placeholder="K0001"> --}}
                                             <select class="input-select pl-2" name="warehouse_id" id="makho">
                                                 <option selected disabled>Chọn kho</option>
@@ -110,7 +110,7 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="mapn">Mã phiếu nhập:</label>
-                                            {{-- <input type="text" class="input-form pl-2" name="phieunhap_id" id="exampleInput1"
+                                            {{-- <input type="text" class="input-form pl-2" name="phieunhap_id" id="mapn"
                                                 placeholder="PN001"> --}}
                                             <select class="input-select pl-2" name="phieunhap_id" id="mapn">
                                                 <option selected disabled>Chọn mã</option>
@@ -124,7 +124,7 @@
                                         <div class="input-group pb-1">
                                             <label for="mat">Mã thuốc:</label>
                                             {{-- <input type="text" class="input-form pl-2" name="medicine_id"
-                                                id="exampleInput1" placeholder="KV001"> --}}
+                                                id="mat" placeholder="KV001"> --}}
                                             <select class="input-select pl-2" name="medicine_id" id="mat">
                                                 <option selected disabled>Chọn thuốc</option>
                                                 @foreach ($drs as $dr)
