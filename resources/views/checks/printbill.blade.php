@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Hóa đơn bán</title>
+    <title>Thanh toán</title>
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -10,24 +10,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Hóa đơn bán</h1>
+                        <h3 class="m-0 text-dark">Thanh toán</h3>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -35,21 +21,24 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="pt-5">
-                    <div style="border: 1px solid #bfdfd5">
-                        <form action="">
-                            <div class="d-block text-lg-center pt-3 mb-3">
+                <div class="pt-2 pb-5">
+                    <div style="border: 1px solid #bfdfd5" class="col-4 mx-auto">
+                        <form action="{{ route('updatehd', ['HDID' => $bill->first()->HDID]) }}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="d-block pt-3 mb-2 text-lg-center">
                                 <b>NHÀ THUỐC PARACLITO</b>
                                 <p class="m-0">CT262/01/07, 304/D2-CTU</p>
                                 <b>Hotline: 0909056789</b>
                             </div>
-                            <div class="d-block text-lg-center mb-2">
+                            <div class="d-block mb-2 text-lg-center">
                                 <b class="">HOÁ ĐƠN</b>
-                                <p class="m-0">Ngày: 12/02/2023</p>
-                                <p class="m-0">Mã hóa đơn: HD001</p>
-                                <p class="m-0">Nhân viên: Nguyễn Văn B</p>
-                                <p class="m-0">Khách hàng: Nguyễn Văn A</p>
-                                <p class="m-0">ĐT: 0927354758</p>
+                                <p class="m-0">Ngày: {{ $bill->first()->created_at }}
+                                </p>
+                                <p class="m-0">Mã hóa đơn: {{ $bill->first()->HDID }}</p>
+                                <p class="m-0">Nhân viên: {{ $bill->first()->TenNV }}</p>
+                                <p class="m-0">Khách hàng: {{ $bill->first()->TenKH }}</p>
+                                <p class="m-0">ĐT: {{ $bill->first()->SDT }}</p>
                             </div>
                             <div class="pl-1 pr-1">
                                 <table class="table table-bordered">
@@ -62,19 +51,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Amoxicillin</td>
-                                            <td>30 viên</td>
-                                            <td>1000</td>
-                                            <td>30000</td>
-                                        </tr>
+                                        @foreach ($ghd as $ghi)
+                                            <tr>
+                                                <td>{{ $ghi->Tenthuoc }}</td>
+                                                <td>{{ $ghi->Soluong }} <i>(viên)</i></td>
+                                                @foreach ($prices as $price)
+                                                    @if ($ghi->medicine_id == $price->medicine_id)
+                                                        <td>{{ $price->Gia }}</td>
+                                                    @endif
+                                                @endforeach
+                                                <td>30000</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
-                                <i style="font-size: 15px;">(*)Cảm ơn quý khách đã sử dụng dịch vụ Nhà thuốc
-                                    Paralito</i>
                             </div>
-                            <div class="float-right pt-1">
-                                <button type="button" class="btn btn-primary">In</button>
+                            <div>
+                                <p><i style="font-size: 15px;">(*)Cảm ơn quý khách đã sử dụng dịch vụ Nhà thuốc
+                                        Paralito</i></p>
+                            </div>
+                            <div class="float-right pt-1 row">
+                                <button type="submit" class="btn btn-primary">In</button>
                             </div>
                         </form>
                     </div>

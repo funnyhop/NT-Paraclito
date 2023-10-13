@@ -63,7 +63,7 @@
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->prescription_id }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->DoituongSD }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
-                                            <a href=""><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
                                         </td>
                                         @foreach ($listghd as $value)
                                             @if ($value->bill_id == $item->HDID)

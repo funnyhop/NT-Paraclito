@@ -61,10 +61,13 @@ Route::get('/', function () {
 //<nhanvien>
     Route::resource('/staffs', StaffController::class);
 //</nhanvien>
-//<hoadon>
-    Route::resource('/bills', BillsController::class); //hoadonban
+//<checks>
+    Route::get('/bills', [BillsController::class, 'index'])->name('bills'); //hoadonban
+    Route::get('pay/{HDID}', [BillsController::class, 'indexpay'])->name('pay');
+    Route::match(['put', 'patch'], 'pay/{HDID}', [BillsController::class, 'updatehd'])->name('updatehd');
+
     Route::resource('/revenue', RevenueController::class); //doanhthu
-//</hoadon>
+//</checks>
 
 /*
 |--------------------------------------------------------------------------

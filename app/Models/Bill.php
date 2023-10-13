@@ -21,7 +21,7 @@ class Bill extends Model
                 ->join('prescriptions', 'bills.prescription_id', '=', 'prescriptions.ToaID')
                 ->join('staffs', 'bills.staff_id', '=', 'staffs.NVID')
                 ->join('customers', 'bills.customer_id', '=', 'customers.KHID')
-                ->select('HDID', 'DoituongSD', 'bills.created_at', 'staffs.TenNV', 'prescription_id', 'customers.TenKH')
+                ->select('HDID', 'Tongtien', 'DoituongSD', 'bills.created_at', 'staffs.TenNV', 'prescription_id', 'customers.TenKH', 'customers.SDT')
                 ->get();
             return $list;
             // dd($list);
