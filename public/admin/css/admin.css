@@ -4639,3 +4639,30 @@ a.nav-dopdown:active {
 	outline: none;
 }
 
+.fa-2xl {
+    font-size: 3em;
+    line-height: .03125em;
+    vertical-align: -46.875px;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+}
+.card-content {
+    flex: 1;
+    padding: 16px;
+}
+.card-deck {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-right: 10px;
+}
+.card-deck .card {
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    margin-right: 10px;
+    margin-bottom: 0;
+    margin-left: 10px;
+}

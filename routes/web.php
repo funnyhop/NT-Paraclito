@@ -66,7 +66,8 @@ Route::get('/', function () {
     Route::get('pay/{HDID}', [BillsController::class, 'indexpay'])->name('pay');
     Route::match(['put', 'patch'], 'pay/{HDID}', [BillsController::class, 'updatehd'])->name('updatehd');
 
-    Route::resource('/revenue', RevenueController::class); //doanhthu
+    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue');
+    Route::post('/revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
 //</checks>
 
 /*
