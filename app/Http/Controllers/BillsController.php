@@ -38,11 +38,21 @@ class BillsController extends Controller
         ->join('customers', 'bills.customer_id', '=', 'customers.KHID')
         ->select('HDID', 'Tongtien', 'DoituongSD', 'bills.created_at', 'staffs.TenNV', 'prescription_id', 'customers.TenKH', 'customers.SDT')
         ->where('HDID', $id)
-        ->get();
+        ->first();
         // dd($bill, $ghd);
         $prices = DB::table('prices')->select('medicine_id', 'Gia', 'ngay_id')->get();
 
         return view('checks.printbill', compact('bill', 'ghd', 'prices'));
+    }
+    public function updatehd(Request $request, $id)
+    {
+        $drs = DB::table('bills')
+        ->where('HDID', '=', $id)
+        ->update([
+            'Tongtien' => $request->input('sum')
+        ]);
+
+    return redirect('/bills');
     }
 
 }

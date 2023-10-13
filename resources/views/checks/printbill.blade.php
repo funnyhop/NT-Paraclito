@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <div class="pt-2 pb-5">
                     <div style="border: 1px solid #bfdfd5" class="col-4 mx-auto">
-                        <form action="{{ route('updatehd', ['HDID' => $bill->first()->HDID]) }}" method="post">
+                        <form action="{{ route('updatehd', ['HDID' => $bill->HDID]) }}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="d-block pt-3 mb-2 text-lg-center">
@@ -33,12 +33,12 @@
                             </div>
                             <div class="d-block mb-2 text-lg-center">
                                 <b class="">HOÁ ĐƠN</b>
-                                <p class="m-0">Ngày: {{ $bill->first()->created_at }}
+                                <p class="m-0">Ngày: {{ $bill->created_at }}
                                 </p>
-                                <p class="m-0">Mã hóa đơn: {{ $bill->first()->HDID }}</p>
-                                <p class="m-0">Nhân viên: {{ $bill->first()->TenNV }}</p>
-                                <p class="m-0">Khách hàng: {{ $bill->first()->TenKH }}</p>
-                                <p class="m-0">ĐT: {{ $bill->first()->SDT }}</p>
+                                <p class="m-0">Mã hóa đơn: {{ $bill->HDID }}</p>
+                                <p class="m-0">Nhân viên: {{ $bill->TenNV }}</p>
+                                <p class="m-0">Khách hàng: {{ $bill->TenKH }}</p>
+                                <p class="m-0">ĐT: {{ $bill->SDT }}</p>
                             </div>
                             <div class="pl-1 pr-1">
                                 <table class="table table-bordered">
@@ -51,18 +51,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $sum = 0; ?>
                                         @foreach ($ghd as $ghi)
                                             <tr>
                                                 <td>{{ $ghi->Tenthuoc }}</td>
                                                 <td>{{ $ghi->Soluong }} <i>(viên)</i></td>
                                                 @foreach ($prices as $price)
                                                     @if ($ghi->medicine_id == $price->medicine_id)
+                                                    <?php
+                                                        $gia = $ghi->Soluong * $price->Gia;
+                                                        $sum+=$gia;
+                                                    ?>
                                                         <td>{{ $price->Gia }}</td>
+                                                        <td>{{$gia}}</td>
                                                     @endif
                                                 @endforeach
-                                                <td>30000</td>
                                             </tr>
                                         @endforeach
+                                        <td colspan="4"><b>Tổng giá: </b><i>{{ $sum }}vnđ</i></td>
+                                        <input type="hidden" name="sum" value="{{ $sum }}">
                                     </tbody>
                                 </table>
                             </div>

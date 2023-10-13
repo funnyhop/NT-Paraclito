@@ -46,6 +46,7 @@
                                     <th>Khách hàng</th>
                                     <th>Mã toa</th>
                                     <th>Đối tượng SD</th>
+                                    <th>Trị giá</th>
                                     <th>Thanh toán</th>
                                     <th>Tên thuốc</th>
                                     <th>Số lượng <i>(viên)</i></th>
@@ -62,6 +63,7 @@
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->TenKH }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->prescription_id }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->DoituongSD }}</td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->Tongtien }}<i>vnđ</i></td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
                                             <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
                                         </td>
