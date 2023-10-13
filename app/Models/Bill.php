@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
+use App\Models\Staff;
+use App\Models\Prescription;
+use App\Models\Customer;
 
 class Bill extends Model
 {
@@ -11,6 +15,17 @@ class Bill extends Model
     protected $table = 'bills';
     protected $primaryKey = 'HDID';
     protected $fillable = ['HDID', 'DoituongSD', 'Tongtien', 'created_at', 'staff_id', 'prescription_id', 'customer_id'];
+
+    public function listhoadon(){
+        $list = DB::table('bills')
+                ->join('prescriptions', 'bills.prescription_id', '=', 'prescriptions.ToaID')
+                ->join('staffs', 'bills.staff_id', '=', 'staffs.NVID')
+                ->join('customers', 'bills.customer_id', '=', 'customers.KHID')
+                ->select('HDID', 'DoituongSD', 'bills.created_at', 'staffs.TenNV', 'prescription_id', 'customers.TenKH')
+                ->get();
+            return $list;
+            // dd($list);
+    }
     //many bill has many medicine
     public function medicineghihds() {
         return $this->belongsToMany(Medicine::class, 'ghihds', 'medicine_id', 'bill_id')
