@@ -10,9 +10,10 @@ use App\Models\Price;
 class MedicineController extends Controller
 {
     public function index(){
-        $medicines = DB::table('medicines')->select('ThuocID', 'Tenthuoc', 'NSX', 'HSD', 'TPhoatchat',
-            'Dieutri', 'HDSD', 'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id')->get();
-
+        // $medicines = DB::table('medicines')->select('ThuocID', 'Tenthuoc', 'NSX', 'HSD', 'TPhoatchat',
+        //     'Dieutri', 'HDSD', 'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id')->get();
+        $key = request()->key;
+        $medicines = Medicine::search($key)->get();
         return view('medicines.medicines', compact('medicines'));
     }
     public function create(){

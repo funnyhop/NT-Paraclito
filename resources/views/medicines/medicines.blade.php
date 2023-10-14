@@ -17,7 +17,7 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" name="key" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
@@ -41,7 +41,7 @@
                     <a href="#">/</a>
                     <li class="pl-1"><a href="medicines/create">Thêm</a></li>
                 </div>
-                <div class="pt-5">
+                <div class="pt-5 pb-5">
                     <div class="table-responsive">
                         <table class="table table-bordered text-center">
                             <thead>
@@ -90,31 +90,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                {{-- <tr>
-                                    <td>2</td>
-                                    <td class="text-left">Aspirin</td>
-                                    <td>01/01/2019</td>
-                                    <td>01/01/2025</td>
-                                    <td class="text-left">Acetylsalicylic acid</td>
-                                    <td class="text-left">Điều trị đau và viêm, giảm sốt, và ngăn ngừa các vấn đề tim mạch
-                                    </td>
-                                    <td class="text-left">KV001</td>
-                                    <td class="text-left">PC212</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                    <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="text-left">Paracetamol</td>
-                                    <td>01/01/2019</td>
-                                    <td>01/01/2025</td>
-                                    <td class="text-left">Paracetamol</td>
-                                    <td class="text-left">Giảm đau và hạ sốt</td>
-                                    <td class="text-left">KVHS1</td>
-                                    <td class="text-left">OPV950</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                    <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>

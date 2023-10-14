@@ -14,7 +14,7 @@ class Medicine extends Model
     protected $fillable = ['ThuocID', 'Tenthuoc', 'NSX',
      'HSD', 'TPhoatchat', 'Dieutri', 'HDSD',
      'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id'];
-
+    protected $keyType = 'string';
     public function checkinventory(){
         $checks = DB::table('medicines')
             ->join('suppliers', 'medicines.supplier_id', '=', 'suppliers.NCCID')
@@ -35,6 +35,18 @@ class Medicine extends Model
             ->get();
 
         return $checks;
+    }
+    public function scopeSearch($query, $key) {
+        // $key = request()->key; // Retrieve the key from the request;
+        if ($key = request()->key) {
+            return $query->where('ThuocID', 'like', '%' . $key . '%')
+                ->orWhere('Tenthuoc', 'like', '%' . $key . '%')
+                ->orWhere('druggr_id', 'like', '%' . $key . '%')
+                ->orWhere('producer_id', 'like', '%' . $key . '%')
+                ->orWhere('HSD', 'like', '%' . $key . '%')
+                ->orWhere('supplier_id', 'like', '%' . $key . '%');
+        }
+        return $query;
     }
 
 
