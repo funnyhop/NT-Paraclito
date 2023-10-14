@@ -11,7 +11,7 @@ class Phieunhap extends Model
 {
     use HasFactory;
     protected $table = 'phieunhaps';
-    protected $primaryKey = ['PNID'];
+    protected $primaryKey = 'PNID';
     protected $fillable = ['PNID', 'Lothuoc', 'staff_id','warehouse_id', 'created_at'];
     protected $keyType = 'string';
     public function listphieunhap(){
@@ -35,12 +35,15 @@ class Phieunhap extends Model
     //         }
     //     });
     // }
-    // public function scopeSearch($query, $key){
-    //     if($key){
-    //         $query->where('PNID', 'like','%'.$key.'%')
-    //                 ->orWhere('Lothuoc', 'like','%'.$key.'%');
-    //     }
-    // }
+    public function scopeSearch($query, $key){
+        if($key){
+            $query->where('PNID', 'like','%'.$key.'%')
+                    ->orWhere('staff_id', 'like','%'.$key.'%')
+                    ->orWhere('warehouse_id', 'like','%'.$key.'%')
+                    ->orWhere('created_at', 'like','%'.$key.'%')
+                    ->orWhere('Lothuoc', 'like','%'.$key.'%');
+        }
+    }
     //many phieunhap has many medicine
     public function medicineghipns() {
         return $this->belongsToMany(Medicine::class, 'ghipns', 'medicine_id', 'phieunhap_id')

@@ -21,6 +21,9 @@ class ImportmedicinesController extends Controller
     {
         $listgpn = $this->values->listghipn();
         $listpn=$this->list->listphieunhap();
+        $key = request()->key;
+        $listpn = Phieunhap::search($key)->get();
+        // dd($listpn);
 
         return view('warehouse.listimportmedicine', compact('listgpn', 'listpn'));
     }

@@ -14,6 +14,7 @@ class Bill extends Model
     use HasFactory;
     protected $table = 'bills';
     protected $primaryKey = 'HDID';
+    protected $keyType = 'string';
     protected $fillable = ['HDID', 'DoituongSD', 'Tongtien', 'created_at', 'staff_id', 'prescription_id', 'customer_id'];
 
     public function listhoadon(){
@@ -25,6 +26,17 @@ class Bill extends Model
                 ->get();
             return $list;
             // dd($list);
+    }
+    public function scopeSearch($query, $key) {
+        // $key = request()->key; // Retrieve the key from the request;
+        if ($key = request()->key) {
+            return $query->where('HDID', 'like', '%' . $key . '%')
+                ->orWhere('staff_id', 'like', '%' . $key . '%')
+                ->orWhere('customer_id', 'like', '%' . $key . '%')
+                ->orWhere('created_at', 'like', '%' . $key . '%')
+                ->orWhere('DoituongSD', 'like', '%' . $key . '%');
+        }
+        return $query;
     }
     //many bill has many medicine
     public function medicineghihds() {

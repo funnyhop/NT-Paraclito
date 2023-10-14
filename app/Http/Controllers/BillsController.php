@@ -19,7 +19,10 @@ class BillsController extends Controller
 
     public function index(){
         $listghd = $this->values->listghihd();
-        $listhd=$this->list->listhoadon();
+        // $listhd=$this->list->listhoadon();
+        $key = request()->key;
+        $listhd = Bill::search($key)->get();
+        // dd($listhd);
         $prices = DB::table('prices')->select('medicine_id', 'Gia', 'ngay_id')->get();
         return view('checks.bills', compact('listghd', 'listhd', 'prices'));
     }

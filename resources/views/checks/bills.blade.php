@@ -17,7 +17,7 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" name="key" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
@@ -54,13 +54,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $rowCount = count($listghd->where('bill_id', $listhd->first()->HDID)) @endphp
                                 @foreach ($listhd as $item)
-                                    @php $rowCount = count($listghd->where('bill_id', $item->HDID)) @endphp
                                     <tr>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->HDID }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
-                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->TenNV }}</td>
-                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->TenKH }}</td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->staff_id }}</td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->customer_id }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->prescription_id }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->DoituongSD }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
