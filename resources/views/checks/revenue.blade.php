@@ -163,11 +163,11 @@
                                     <div class="card-content">
                                         <h6><i>Cảnh báo thuốc:</i></h6>
                                         <p style="font-size: 18px">
-                                            {{-- @if (!empty($day_dangerous) && $day_dangerous->dangerous != 0)
+                                            @if (!empty($day_dangerous) && $day_dangerous->dangerous != 0)
                                                 <b>Còn hàng!!!</b>
                                             @else
                                                 <b>Sắp hết hàng!!</b>
-                                            @endif --}}
+                                            @endif
                                         </p>
                                     </div>
                                 </div>

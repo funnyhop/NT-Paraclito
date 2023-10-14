@@ -44,10 +44,11 @@ class RevenueController extends Controller
             ->whereRaw('MONTH(bills.created_at) = MONTH(NOW())')
             ->first();
 
-        $day_dangerous = DB::table('ghipns')
-            ->join('phieunhaps', 'ghipns.phieunhap_id', '=', 'phieunhaps.PNID')
-            ->select(DB::raw('SUM(Soluong*Gia) as pay'))
-            ->whereRaw('MONTH(phieunhaps.created_at) = MONTH(NOW())')
+        $day_dangerous = DB::table('medicines')
+            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
+            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
+            ->whereRaw('(ghipns.Soluong - ghihds.Soluong) > 1000')
+            ->select(DB::raw('ThuocID as dangerous'))
             ->first();
 
         return view('checks.revenue', compact('day_dangerous','month_increment','month_pay','months', 'years', 'day_revenue','month_revenue'));
@@ -94,6 +95,14 @@ class RevenueController extends Controller
             ->select(DB::raw('(prices.Gia*ghihds.Soluong - ghipns.Gia*ghihds.Soluong) as increment'))
             ->whereRaw('MONTH(bills.created_at) = ?', [$this->month])
             ->first();
-        return view('checks.revenue', compact('month_increment','month_pay','months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
+
+        $day_dangerous = DB::table('medicines')
+            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
+            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
+            ->whereRaw('(ghipns.Soluong - ghihds.Soluong) > 1000')
+            ->select(DB::raw('ThuocID as dangerous'))
+            ->first();
+
+        return view('checks.revenue', compact('day_dangerous','month_increment','month_pay','months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
     }
 }
