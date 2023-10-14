@@ -15,7 +15,7 @@ return new class extends Migration
             // $table->increments('id');
             $table->string('medicine_id',10);
             $table->string('bill_id',10);
-            $table->tinyInteger('Soluong');
+            $table->Integer('Soluong');
             // $table->String('DVT', 10);
             // $table->float('Gia', 9, 2);
 

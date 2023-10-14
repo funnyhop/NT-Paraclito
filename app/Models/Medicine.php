@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Medicine extends Model
 {
@@ -13,6 +14,30 @@ class Medicine extends Model
     protected $fillable = ['ThuocID', 'Tenthuoc', 'NSX',
      'HSD', 'TPhoatchat', 'Dieutri', 'HDSD',
      'Chongchidinh', 'DVT', 'druggr_id', 'supplier_id', 'producer_id'];
+
+    public function checkinventory(){
+        $checks = DB::table('medicines')
+            ->join('suppliers', 'medicines.supplier_id', '=', 'suppliers.NCCID')
+            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
+            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
+            ->join('druggrs', 'medicines.druggr_id', '=', 'druggrs.NhomthuocID')
+            ->select(
+                'medicines.ThuocID',
+                'medicines.Tenthuoc',
+                'medicines.HSD',
+                'medicines.DVT',
+                'suppliers.TenNCC',
+                'druggrs.Tennhom',
+                'ghipns.phieunhap_id',
+                'ghihds.Soluong'
+            )
+            ->distinct('medicines.ThuocID')
+            ->get();
+
+        return $checks;
+    }
+
+
     //tip: khoa ngoai luon dung truoc khoa chinh trong belongto tenham khong them s va has many them s de phan biet nhieu voi 1
     //one medicine belongs to druggr
     public function druggr() {

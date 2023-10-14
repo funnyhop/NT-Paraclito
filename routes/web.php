@@ -56,7 +56,7 @@ Route::get('/', function () {
     Route::match(['get', 'head'],'/importmedicines', [ImportmedicinesController::class, 'index'])->name('importmedicines');
 //</kho>
 //<kiemkho>
-    Route::resource('/checkinventory', CheckinventoryController::class);
+    Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory');
 //</kiemkho>
 //<nhanvien>
     Route::resource('/staffs', StaffController::class);
