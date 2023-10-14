@@ -11,6 +11,10 @@ class DruggrController extends Controller
     public function index(){
         // $drs = Druggr::all(); //select * from druggrs
         $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->get();
+        //search
+        if ($key = request()->key) {
+            $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->where('Tennhom', 'like', '%' . $key . '%')->get();
+        }
         return view('medicines.druggr', compact('drs'));
     }
 

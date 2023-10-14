@@ -146,6 +146,7 @@
                                         <p style="font-size: 20px"><b>
                                                 @if (!empty($month_increment) && $month_increment->increment != 0)
                                                     {{ number_format($month_increment->increment * 0.9, 2, '.', ',') }}
+                                                    {{-- thuế 10% = 0.1 --}}
                                                 @else
                                                     0
                                                 @endif

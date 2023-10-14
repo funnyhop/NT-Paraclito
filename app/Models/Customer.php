@@ -11,6 +11,7 @@ class Customer extends Model
     use HasFactory;
     protected $table = 'customers';
     protected $primaryKey = 'KHID';
+    protected $keyType = 'string';
     protected $fillable = ['KHID', 'TenKH', 'Diachi', 'SDT'];
 
     public function displaycus(){
@@ -26,6 +27,16 @@ class Customer extends Model
         ]);
         return $customer;
     }
+
+    public function scopeSearch($query, $key) {
+        if ($key) {
+            $query->where('KHID', 'like', '%' . $key . '%')
+                  ->orWhere('TenKH', 'like', '%' . $key . '%');
+        }
+    }
+
+
+
     //one customer has many bill
     public function bills() {
         return $this->hasMany(Bill::class,'customer_id', 'KHID');

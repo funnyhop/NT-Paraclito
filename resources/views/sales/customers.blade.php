@@ -15,9 +15,9 @@
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
+                        <form action="" class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" type="search" name="key" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"

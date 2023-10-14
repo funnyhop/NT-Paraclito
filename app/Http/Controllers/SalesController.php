@@ -96,6 +96,9 @@ class SalesController extends Controller
     //<khachhang>
     public function index(){
         $customers = $this->customer->displaycus();
+        $key = request()->key; // Retrieve the key from the request;
+        $customers = Customer::search($key)->get();
+        // dd($customers);
         return view('sales.customers', compact('customers'));
     }
     public function create(){
