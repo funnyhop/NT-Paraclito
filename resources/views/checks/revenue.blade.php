@@ -14,6 +14,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
+                        <a href="{{ route('revenue') }}" class="float-right"><i class="fa-solid fa-arrow-rotate-right fa-xl" style="color: #5c85c7;"></i></a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
