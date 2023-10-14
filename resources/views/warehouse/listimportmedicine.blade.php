@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    <title>Nhập thuốc từ phiếu</title>
+    <title>Danh sách phiếu nhập</title>
 @endsection
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -10,14 +10,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Nhập thuốc</h1>
+                        <h1 class="m-0 text-dark">Phiếu nhập</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
+                        {{-- <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" type="search" name="key" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
@@ -27,7 +27,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -55,24 +55,27 @@
                             <th>Giá</th>
                         </thead>
                         <tbody>
-                            @foreach ($listpn as $item)
-                                @php $rowCount = count($listgpn->where('phieunhap_id', $item->PNID)) @endphp
-                                <tr>
-                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->PNID }}</td>
-                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Tenkho }}</td>
-                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
-                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
-                                    <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->TenNV }}</td>
-                                    @foreach ($listgpn as $value)
-                                        @if ($value->phieunhap_id == $item->PNID)
-                                <tr>
-                                    <td>{{ $value->Tenthuoc }}</td>
-                                    <td>{{ $value->Soluong }}</td>
-                                    <td>{{ $value->Gia }} vnđ</td>
-                                </tr>
-                            @endif
-                            @endforeach
-                            </tr>
+                            @php
+                                $uniquePNIDs = $listpn->unique('PNID');
+                            @endphp
+                            @foreach ($uniquePNIDs as $item)
+                            @php $rowCount = count($listgpn->where('phieunhap_id', $item->PNID)) @endphp
+                                    <tr>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->PNID }}</td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Tenkho }}</td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->TenNV }}</td>
+                                        @foreach ($listgpn as $value)
+                                            @if ($value->phieunhap_id == $item->PNID)
+                                                <tr>
+                                                    <td>{{ $value->Tenthuoc }}</td>
+                                                    <td>{{ $value->Soluong }}</td>
+                                                    <td>{{ $value->Gia }} vnđ</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tr>
                             @endforeach
                         </tbody>
 

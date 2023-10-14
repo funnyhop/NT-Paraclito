@@ -11,6 +11,7 @@ class Prescription extends Model
     protected $table = 'prescriptions';
     protected $primaryKey = 'ToaID';
     protected $fillable = ['ToaID', 'TenBS', 'TenBV', 'Ngaytao'];
+    protected $keyType = 'string';
 
     public function displayprescription() {
         $prescription = DB::table('prescriptions')->select('ToaID', 'TenBS', 'TenBV', 'Ngaytao')->get();
@@ -44,6 +45,15 @@ class Prescription extends Model
         return $prescription;
     }
 
+    public function scopeSearch($query, $key) {
+        // $key = request()->key; // Retrieve the key from the request;
+        if ($key = request()->key) {
+            return $query->where('ToaID', 'like', '%' . $key . '%')
+                ->orWhere('TenBS', 'like', '%' . $key . '%')
+                ->orWhere('TenBV', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
     //one prescription belongs to bill
     public function bill() {
         return $this->belongsTo(Bill::class, 'bill_id', 'HDID');

@@ -95,10 +95,10 @@ class SalesController extends Controller
     //</sale>
     //<khachhang>
     public function index(){
-        $customers = $this->customer->displaycus();
+        // $customers = $this->customer->displaycus();
         $key = request()->key; // Retrieve the key from the request;
         $customers = Customer::search($key)->get();
-        // dd($customers);
+
         return view('sales.customers', compact('customers'));
     }
     public function create(){
@@ -130,8 +130,11 @@ class SalesController extends Controller
     }
     // </khachhang>
     // <themtoathuoc>
-    public function pre_index(){
-        $prs = $this->prescription->displayprescription();
+    public function pre_index(Request $request){
+        $key = request()->key;
+        $prs = Prescription::search($key)->get();
+        // $prs = $this->prescription->displayprescription();
+
         return view('sales.prescription', compact('prs'));
     }
     public function pre_create(){

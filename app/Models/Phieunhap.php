@@ -13,7 +13,7 @@ class Phieunhap extends Model
     protected $table = 'phieunhaps';
     protected $primaryKey = ['PNID'];
     protected $fillable = ['PNID', 'Lothuoc', 'staff_id','warehouse_id', 'created_at'];
-
+    protected $keyType = 'string';
     public function listphieunhap(){
         $list = DB::table('phieunhaps')
                 ->join('warehouses', 'phieunhaps.warehouse_id', '=', 'warehouses.KhoID')
@@ -24,6 +24,23 @@ class Phieunhap extends Model
             return $list;
             // dd($list);
     }
+    // protected static function boot(){
+    //     parent::boot();
+    //     // Đăng ký global scope
+    //     static::addGlobalScope('search', function (Builder $builder){
+    //         $key = $request()->key;
+    //         if($key){
+    //             $builder->where('PNID', 'like','%'.$key.'%')
+    //             ->orWhere('Lothuoc', 'like','%'.$key.'%');
+    //         }
+    //     });
+    // }
+    // public function scopeSearch($query, $key){
+    //     if($key){
+    //         $query->where('PNID', 'like','%'.$key.'%')
+    //                 ->orWhere('Lothuoc', 'like','%'.$key.'%');
+    //     }
+    // }
     //many phieunhap has many medicine
     public function medicineghipns() {
         return $this->belongsToMany(Medicine::class, 'ghipns', 'medicine_id', 'phieunhap_id')
