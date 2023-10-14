@@ -48,19 +48,19 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row pl-3">
+                <div class="row pl-3 pb-3">
                     <div class="card-deck">
                         <div class="card">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <i class="fa-solid fa-circle-dollar-to-slot fa-2xl" style="color: #2bc6e2;"></i>
+                                    <i class="fa-solid fa-circle-dollar-to-slot fa-2xl" style="color: #42b76f"></i>
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="card-content">
                                         <h6><i>Tổng doanh thu:</i></h6>
                                         <p style="font-size: 20px"><b>
                                                 @if (!empty($year_revenue) && $year_revenue->revenue != 0)
-                                                    {{ $year_revenue->revenue }}
+                                                    {{ number_format($year_revenue->revenue, 2, '.', ',') }}
                                                 @else
                                                     0
                                                 @endif
@@ -73,14 +73,14 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <i class="fa-solid fa-sack-dollar fa-2xl" style="color: #e22b2b;"></i>
+                                    <i class="fa-solid fa-sack-dollar fa-2xl" style="color: #43aa8b;"></i>
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="card-content">
                                         <h6><i>Doanh thu tháng:</i></h6>
                                         <p style="font-size: 20px"><b>
                                                 @if (!empty($month_revenue) && $month_revenue->revenue != 0)
-                                                    {{ $month_revenue->revenue }}
+                                                    {{ number_format($month_revenue->revenue, 2, '.', ',') }}
                                                 @else
                                                     0
                                                 @endif
@@ -93,14 +93,14 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <i class="fa-solid fa-hand-holding-dollar fa-2xl" style="color: #e22b2b;"></i>
+                                    <i class="fa-solid fa-hand-holding-dollar fa-2xl" style="color: #eb3b3b;"></i>
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="card-content">
                                         <h6><i>Doanh thu hôm nay:</i></h6>
                                         <p style="font-size: 20px"><b>
                                                 @if (!empty($day_revenue) && $day_revenue->revenue != 0)
-                                                    {{ $day_revenue->revenue }}
+                                                    {{ number_format($day_revenue->revenue, 2, '.', ',') }}
                                                 @else
                                                     0
                                                 @endif
@@ -113,18 +113,61 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <i class="fa-solid fa-basket-shopping fa-2xl" style="color: #e22b2b;"></i>
+                                    <i class="fa-solid fa-basket-shopping fa-2xl" style="color: #eb3b3b;"></i>
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="card-content">
                                         <h6><i>Chi tiêu tháng này:</i></h6>
                                         <p style="font-size: 20px"><b>
                                                 @if (!empty($month_pay) && $month_pay->pay != 0)
-                                                    {{ $month_pay->pay }}
+                                                    {{ number_format($month_pay->pay, 2, '.', ',') }}
                                                 @else
                                                     0
                                                 @endif
                                             </b><i> vnđ</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-3 float-right pb-3">
+                    <div class="card-deck">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <i class="fa-solid fa-chart-line fa-2xl" style="color: #fb8500;"></i>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="card-content">
+                                        <h6><i>Lợi nhuận tháng:</i></h6>
+                                        <p style="font-size: 20px"><b>
+                                                @if (!empty($month_increment) && $month_increment->increment != 0)
+                                                    {{ number_format($month_increment->increment * 0.9, 2, '.', ',') }}
+                                                @else
+                                                    0
+                                                @endif
+                                            </b><i> vnđ</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #fb8500;"></i>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="card-content">
+                                        <h6><i>Cảnh báo thuốc:</i></h6>
+                                        <p style="font-size: 18px">
+                                            {{-- @if (!empty($day_dangerous) && $day_dangerous->dangerous != 0)
+                                                <b>Còn hàng!!!</b>
+                                            @else
+                                                <b>Sắp hết hàng!!</b>
+                                            @endif --}}
                                         </p>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->Integer('Soluong');
             // $table->integer('SoloSX');
             // $table->String('DVT', 10);
-            $table->float('Gia', 9, 2);
+            $table->DECIMAL('Gia', 10, 2);
 
             $table->primary(['medicine_id','phieunhap_id']);
 
