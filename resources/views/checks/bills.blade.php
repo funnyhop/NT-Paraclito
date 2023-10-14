@@ -46,7 +46,7 @@
                                     <th>Khách hàng</th>
                                     <th>Mã toa</th>
                                     <th>Đối tượng SD</th>
-                                    <th>Trị giá</th>
+                                    <th>Trị giá <i>(vnđ)</i></th>
                                     <th>Thanh toán</th>
                                     <th>Tên thuốc</th>
                                     <th>Số lượng <i>(viên)</i></th>
@@ -63,7 +63,7 @@
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->TenKH }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->prescription_id }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->DoituongSD }}</td>
-                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->Tongtien }}<i>vnđ</i></td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
                                             <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
                                         </td>
@@ -74,7 +74,7 @@
                                                 <td>{{ $value->Soluong }}</td>
                                                 @foreach ($prices as $price)
                                                     @if ($value->medicine_id == $price->medicine_id)
-                                                        <td>{{ $price->Gia }}</td>
+                                                        <td>{{ number_format($price->Gia,2) }}</td>
                                                     @endif
                                                 @endforeach
                                             </tr>

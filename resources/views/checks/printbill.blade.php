@@ -62,13 +62,13 @@
                                                         $gia = $ghi->Soluong * $price->Gia;
                                                         $sum+=$gia;
                                                     ?>
-                                                        <td>{{ $price->Gia }}</td>
-                                                        <td>{{$gia}}</td>
+                                                        <td>{{ number_format($price->Gia, 2) }}</td>
+                                                        <td>{{number_format($gia, 2)}}</td>
                                                     @endif
                                                 @endforeach
                                             </tr>
                                         @endforeach
-                                        <td colspan="4"><b>Tổng giá: </b><i>{{ $sum }}vnđ</i></td>
+                                        <td colspan="4"><b>Tổng giá: </b><i>{{ number_format($sum, 2) }}vnđ</i></td>
                                         <input type="hidden" name="sum" value="{{ $sum }}">
                                     </tbody>
                                 </table>
