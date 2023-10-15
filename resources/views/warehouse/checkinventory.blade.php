@@ -74,14 +74,8 @@
                                                 $previousThuocID = $medicine->ThuocID;
                                             @endphp
                                         @endif
-
-                                        @if ($medicine->phieunhap_id == $phieunhaps->first()->PNID)
-                                            @php
-                                                $soluong = $phieunhaps->first()->Soluong - $medicine->Soluong;
-                                            @endphp
-                                            <td>{{ $soluong }}</td>
-                                            <td>{{ $medicine->DVT }}</td>
-                                        @endif
+                                        <td>{{ $tonkho->Soluong }}</td>
+                                        <td>{{ $medicine->DVT }}</td>
                                     </tr>
                                 @endforeach
 

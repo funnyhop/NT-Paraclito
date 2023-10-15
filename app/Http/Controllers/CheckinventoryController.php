@@ -10,15 +10,16 @@ use App\Models\Medicine;
 class CheckinventoryController extends Controller
 {
     private $medicine;
-    private $phieunhap;
+    // private $phieunhap;
     public function __construct(){
         $this->medicine = new Medicine();
-        $this->phieunhap = new Phieunhap();
+        // $this->phieunhap = new Phieunhap();
 
     }
     public function index(){
         $medicines = $this->medicine->checkinventory();
-        $phieunhaps = $this->phieunhap->listphieunhap();
-        return view('warehouse.checkinventory', compact('medicines', 'phieunhaps'));
+        // $phieunhaps = $this->phieunhap->listphieunhap();
+        $tonkho = DB::table('tonkhos')->select('medicine_id', 'warehouse_id', 'Soluong')->first();
+        return view('warehouse.checkinventory', compact('medicines', 'tonkho'));
     }
 }

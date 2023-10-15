@@ -29,29 +29,27 @@ class RevenueController extends Controller
             ->select(DB::raw('SUM(Tongtien) as revenue'))
             ->whereRaw('MONTH(created_at) = MONTH(NOW())')
             ->first();
+        $year_revenue = DB::table('bills')
+            ->select(DB::raw('SUM(Tongtien) as revenue'))
+            ->whereRaw('YEAR(created_at) = YEAR(NOW())')
+            ->first();
+        // dd($year_revenue);
         $month_pay = DB::table('ghipns')
             ->join('phieunhaps', 'ghipns.phieunhap_id', '=', 'phieunhaps.PNID')
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
             ->whereRaw('MONTH(phieunhaps.created_at) = MONTH(NOW())')
             ->first();
 //(giaban x soluong bán - gia nhập x soluong bán) - (giaban x soluong bán - gia nhập x soluong bán)*10%
-        $month_increment = DB::table('medicines')
-            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
-            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
-            ->join('bills', 'ghihds.bill_id', '=', 'bills.HDID')
-            ->join('prices', 'medicines.ThuocID', '=', 'prices.medicine_id')
-            ->select(DB::raw('(prices.Gia*ghihds.Soluong - ghipns.Gia*ghihds.Soluong) as increment'))
-            ->whereRaw('MONTH(bills.created_at) = MONTH(NOW())')
-            ->first();
+        $month_increment = ($month_revenue->revenue - $month_pay->pay)* 0.9;
 
+            // dd($month_increment);
         $day_dangerous = DB::table('medicines')
-            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
-            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
-            ->whereRaw('(ghipns.Soluong - ghihds.Soluong) > 1000')
+            ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
+            ->whereRaw('(tonkhos.Soluong) > 1000')
             ->select(DB::raw('ThuocID as dangerous'))
             ->first();
 
-        return view('checks.revenue', compact('day_dangerous','month_increment','month_pay','months', 'years', 'day_revenue','month_revenue'));
+        return view('checks.revenue', compact('day_dangerous','month_increment', 'year_revenue','month_pay','months', 'years', 'day_revenue','month_revenue'));
     }
     public function see_revenue(Request $request)
     {
@@ -85,21 +83,13 @@ class RevenueController extends Controller
         $month_pay = DB::table('ghipns')
             ->join('phieunhaps', 'ghipns.phieunhap_id', '=', 'phieunhaps.PNID')
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
-            ->whereRaw('MONTH(phieunhaps.created_at) = MONTH(NOW())')
+            ->whereRaw('MONTH(phieunhaps.created_at) = ?', [$this->month])
             ->first();
-        $month_increment = DB::table('medicines')
-            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
-            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
-            ->join('bills', 'ghihds.bill_id', '=', 'bills.HDID')
-            ->join('prices', 'medicines.ThuocID', '=', 'prices.medicine_id')
-            ->select(DB::raw('(prices.Gia*ghihds.Soluong - ghipns.Gia*ghihds.Soluong) as increment'))
-            ->whereRaw('MONTH(bills.created_at) = ?', [$this->month])
-            ->first();
+        $month_increment = ($month_revenue->revenue - $month_pay->pay)* 0.9;
 
         $day_dangerous = DB::table('medicines')
-            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
-            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
-            ->whereRaw('(ghipns.Soluong - ghihds.Soluong) > 1000')
+            ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
+            ->whereRaw('(tonkhos.Soluong) > 1000')
             ->select(DB::raw('ThuocID as dangerous'))
             ->first();
 
