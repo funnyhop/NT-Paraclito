@@ -44,7 +44,9 @@ class SalesController extends Controller
     }
     public function storeghd(Request $request)
     {
+        // Thêm ghi chú hoặc log để theo dõi dữ liệu
         // dd($request);
+
         $ghd = DB::table('ghihds')->insert([
             'bill_id' => $request->input('bill_id'),
             'medicine_id' => $request->input('medicine_id'),
@@ -52,8 +54,48 @@ class SalesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        return redirect(route('sales'));
-    }
+
+        $get_idwarehouse = DB::table('ghihds')
+            ->join('medicines', 'ghihds.medicine_id', '=', 'medicines.ThuocID')
+            ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
+            ->where('tonkhos.medicine_id', $request->input('medicine_id'))
+            ->select('tonkhos.warehouse_id')
+            ->first();
+        // dd($get_idwarehouse);
+        // Kiểm tra sự tồn tại của bản ghi trong tonkhos
+        $tonkhoRecord = DB::table('tonkhos')
+            ->where('medicine_id', $request->input('medicine_id'))
+            ->where('warehouse_id', $get_idwarehouse->warehouse_id)
+            ->first();
+
+        if ($tonkhoRecord) {
+            // Bản ghi tồn tại, thực hiện cập nhật
+            $currentSoluong = $tonkhoRecord->Soluong;
+
+            // Debug
+            // dd("Before Update", $request->input('sl'), $currentSoluong);
+
+            // Tính toán giá trị mới của Soluong
+            $newSoluong = $currentSoluong - (int)$request->input('sl');
+
+            // Cập nhật Soluong trong cơ sở dữ liệu
+            $ud_soluong = DB::table('tonkhos')
+                ->where('medicine_id', $request->input('medicine_id'))
+                ->where('warehouse_id', $get_idwarehouse->warehouse_id)
+                ->update([
+                    'Soluong' => $newSoluong
+                ]);
+
+            // Debug
+            // dd("After Update", $ud_soluong);
+        } else {
+            // Bản ghi không tồn tại, có thể xử lý theo ý của bạn
+            dd("Thuốc hết");
+        }
+
+    return redirect(route('sales'));
+}
+
     public function createAndStore(Request $request)
     {
         // Bắt đầu một giao dịch
