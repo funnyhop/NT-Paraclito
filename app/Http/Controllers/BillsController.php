@@ -55,6 +55,33 @@ class BillsController extends Controller
             'Tongtien' => $request->input('sum')
         ]);
 
+         // Debugging
+    $currentSoluong = DB::table('ghipns')
+        ->where('medicine_id', $request->input('medicine_id'))
+        ->value('Soluong');
+
+    // Debugging
+    // dd('Before Update', $request->input('sl'), $currentSoluong);
+    // Enable query log
+    DB::enableQueryLog();
+    // Build and execute the update query
+    $ud_soluong = DB::table('ghipns')
+        ->join('phieunhaps','ghipns.phieunhap_id','=','phieunhaps.PNID')
+        ->where('medicine_id', $request->input('medicine_id'))
+        ->update([
+            'Soluong' => DB::raw('Soluong - ' . (int)$request->input('sl'))
+        ]);
+    // Get the executed query
+    $query = DB::getQueryLog();
+    // Print or log the executed query
+    dd($query);
+    // Debugging
+    $updatedSoluong = DB::table('ghipns')
+        ->where('medicine_id', $request->input('medicine_id'))
+        ->value('Soluong');
+    // Debugging
+    // dd('After Update', $updatedSoluong, $ud_soluong);
+
     return redirect('/bills');
     }
 

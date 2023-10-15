@@ -15,7 +15,7 @@ class SalesController extends Controller
         $this->customer = new Customer();
         $this->prescription = new Prescription();
     }
-    //<sale>
+//<sale>
     public function salesindex(){
         $pres = DB::table('prescriptions')->select('ToaID')->get();
         $bills = DB::table('bills')->select('HDID')->get();
@@ -92,8 +92,8 @@ class SalesController extends Controller
             return redirect()->back()->with('error', 'Có lỗi xảy ra.');
         }
     }
-    //</sale>
-    //<khachhang>
+//</sale>
+//<khachhang>
     public function index(){
         // $customers = $this->customer->displaycus();
         $key = request()->key; // Retrieve the key from the request;
@@ -128,8 +128,8 @@ class SalesController extends Controller
         $customer->delete();
         return redirect('/customers');
     }
-    // </khachhang>
-    // <themtoathuoc>
+// </khachhang>
+// <themtoathuoc>
     public function pre_index(Request $request){
         $key = request()->key;
         $prs = Prescription::search($key)->get();
@@ -158,5 +158,5 @@ class SalesController extends Controller
         $pre->delete();
         return redirect('/prescription');
     }
-    // </themtoathuoc>
+// </themtoathuoc>
 }

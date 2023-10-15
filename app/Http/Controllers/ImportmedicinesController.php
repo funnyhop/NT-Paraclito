@@ -50,7 +50,6 @@ class ImportmedicinesController extends Controller
     }
     public function storeghipn(Request $request)
     {
-        // dd($request);
         $gpn = DB::table('ghipns')->insert([
             'phieunhap_id' => $request->input('phieunhap_id'),
             'medicine_id' => $request->input('medicine_id'),
@@ -59,8 +58,49 @@ class ImportmedicinesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        $get_idwarehouse = DB::table('warehouses')
+            ->join('phieunhaps', 'warehouses.KhoID', '=', 'phieunhaps.warehouse_id')
+            ->where('phieunhaps.PNID', $request->input('phieunhap_id'))
+            ->select('phieunhaps.warehouse_id')
+            ->first();
+
+        // Kiểm tra sự tồn tại của bản ghi trong tonkhos
+        $tonkhoRecord = DB::table('tonkhos')
+            ->where('medicine_id', $request->input('medicine_id'))
+            ->where('warehouse_id', $get_idwarehouse->warehouse_id)
+            ->first();
+
+        if ($tonkhoRecord) {
+            // Bản ghi tồn tại, thực hiện cập nhật
+            $currentSoluong = $tonkhoRecord->Soluong;
+            // Debug
+            // dd("Before Update", $request->input('sl'), $currentSoluong);
+            $ud_soluong = DB::table('tonkhos')
+                ->where('medicine_id', $request->input('medicine_id'))
+                ->where('warehouse_id', $get_idwarehouse->warehouse_id)
+                ->update([
+                    'Soluong' => $currentSoluong + (int)$request->input('sl')
+                ]);
+            // Debug
+            // dd("After Update", $ud_soluong);
+        } else {
+            // Bản ghi không tồn tại, thực hiện thêm mới
+            // Debug
+            // dd("Before Insert", $request->input('sl'));
+            $add_warehouse = DB::table('tonkhos')
+                ->insert([
+                    'Soluong' => $request->input('sl'),
+                    'medicine_id' => $request->input('medicine_id'),
+                    'warehouse_id' => $get_idwarehouse->warehouse_id
+                ]);
+            // Debug
+            // dd("After Insert", $add_warehouse);
+        }
+
         return redirect(route('importmedicines.createpn'));
     }
+
     public function createAndStore(Request $request)
     {
         // Bắt đầu một giao dịch
