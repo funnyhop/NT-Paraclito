@@ -24,6 +24,9 @@ Route::middleware(['web','guest'])->group(function () {
 Route::middleware(['web','auth'])->group(function () {
     Route::get('/', [Login::class, 'home'])->name('home');
     Route::get('/logout', [Login::class, 'logout'])->name('logout');
+    Route::get('/profile', [Login::class, 'show'])->name('profile');
+    Route::get('profile/{NVID}', [Login::class, 'edit'])->name('profile.edit');
+    Route::match(['put','patch'], 'profile/{NVID}', [Login::class, 'update'])->name('profile.update');
 
 });
 //<banhang>

@@ -64,6 +64,30 @@ class Login extends Controller
 
         return redirect()->route('login');
     }
+    public function show()
+    {
+        $user = Auth::user();
+        // dd($user);
+        return view('profile', compact('user'));
+    }
+    public function edit($id) {
+        $user = DB::table('staffs')->where('NVID', $id)->first();
+        return view('editprofile', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id){
+        $staff = DB::table('staffs')->where('NVID', $id)
+            ->update([
+                'NVID' => $request->input('id'),
+                'TenNV' => $request->input('name'),
+                'SDT' => $request->input('sdt'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'Diachi' => $request->input('address'),
+                'Chucvu' => $request->input('cv')
+            ]);
+        return redirect('/profile');
+    }
     // public function postauthlogin(Request $request)
     // {
     //     $arr = [

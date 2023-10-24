@@ -11,10 +11,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="d-flex" data-toggle="dropdown">
                 <a href="#">Welcome, {{ Auth::check() && Auth::user()->NVID ? Auth::user()->TenNV : '' }}</a>
-                <i class="fa-solid fa-user pl-3 pr-2"></i>
+                <i class="fa-solid fa-user pl-3 pr-2" style="color: rgb(244, 0, 0)"></i>
             </div>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
+                <a href="{{ route('profile') }}" class="dropdown-item dropdown-header">Thông tin cá nhân</a>
                 <a href="{{ route('logout') }}" class="dropdown-item dropdown-header">Đăng xuất</a>
             </div>
         </li>
