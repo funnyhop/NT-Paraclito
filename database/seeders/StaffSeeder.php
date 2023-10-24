@@ -15,13 +15,14 @@ class StaffSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'NVID' => 'BT000',
+            'NVID' => 'A0000',
             'email' => 'hop@gmail.com',
             'password' => bcrypt('123'),
-            'Chucvu' => 'NV',
+            'Chucvu' => 'Admin',
             'TenNV' => 'Dinh Thai Hop',
-            'DiaChi' => 'Cần Thơ',
+            'DiaChi' => 'Ninh Kiều-Cần Thơ',
             'SDT' => '0123456789',
+            'role_id' => 1,
             'created_at' => new Datetime(),
             'updated_at' => new Datetime(),
         ];

@@ -28,7 +28,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('profile/{NVID}', [Login::class, 'edit'])->name('profile.edit');
     Route::match(['put','patch'], 'profile/{NVID}', [Login::class, 'update'])->name('profile.update');
 
-});
+
 //<banhang>
     //<route_sale>
         Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales');
@@ -72,7 +72,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory');
 //</kiemkho>
 //<nhanvien>
-    Route::resource('/staffs', StaffController::class);
+    Route::resource('/staffs', StaffController::class)->middleware('permission.checker:admin');
 //</nhanvien>
 //<checks>
     Route::get('/bills', [BillsController::class, 'index'])->name('bills'); //hoadonban
@@ -83,6 +83,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::post('/revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
 //</checks>
 
+});
 /*
 |--------------------------------------------------------------------------
 | Web Routes

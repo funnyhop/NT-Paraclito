@@ -35,6 +35,7 @@
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
                                     <th>Chức vụ</th>
+                                    <th>Vai trò</th>
                                     <th>Chỉnh sửa</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                         <td class="text-left">{{ $user->email }}</td>
                                         <td class="text-left">{{ $user->Diachi }}</td>
                                         <td class="text-left">{{ $user->Chucvu }}</td>
+                                        <td class="text-left">{{ $user->role_id }}</td>
                                         <td><a href="{{ route('profile.edit', ['NVID' => $user->NVID]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                     </tr>
                             </tbody>

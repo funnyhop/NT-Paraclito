@@ -19,6 +19,7 @@ return new class extends Migration
             $table->String('Chucvu', 30);
             $table->String('email');
             $table->String('password');
+            $table->tinyInteger('role_id');
             $table->primary('NVID');
             $table->timestamps();
         });

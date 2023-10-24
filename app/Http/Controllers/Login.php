@@ -84,7 +84,6 @@ class Login extends Controller
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
                 'Diachi' => $request->input('address'),
-                'Chucvu' => $request->input('cv')
             ]);
         return redirect('/profile');
     }

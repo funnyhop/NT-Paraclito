@@ -60,13 +60,8 @@
                                     value="{{ $user->Diachi }}"
                                     placeholder="63/6 Khu dân cư Hậu Thạnh Mỹ, Lê Bình, Cái Răng-Cần Thơ">
                             </div>
-                            <div class="input-group d-flex pb-2">
-                                <label for="exampleInput2" class="pr-2">Chức vụ:</label>
-                                <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
-                                    value="{{ $user->Chucvu }}" placeholder="Bán thuốc">
-                            </div>
                             <div class="float-right pr-1 pt-2">
-                                <a href="/users" class="btn btn-secondary">Hủy</a>
+                                <a href="{{ route('profile') }}" class="btn btn-secondary">Hủy</a>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </div>
                         </form>
