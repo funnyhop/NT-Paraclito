@@ -13,34 +13,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin/css/admin.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body style="background-image: url('{{ asset('images/bg-login.jpg') }}'); background-size: 38cm 16.18cm;">
-<div class="d-block pt-5">
+<body style="background-image: url('{{ asset('admin/img/bg.png') }}'); background-size: 34cm 16.18cm;">
+<div class="d-block pt-4">
     <div>
-        <img src="{{ asset('images/logo-nha-hang.png') }}" alt="logo"
-        class="" style="width: 70px; height: 70px; border-radius:50%;margin-left: 47%;">
+        <img src="{{ asset('admin/img/logo.png') }}" alt="logo"
+        class="" style="width: 100px; height: 100px; border-radius:50%;margin-left: 47%;">
     </div>
-    <div class="d-flex justify-content-center text-info" style="padding-top:2rem">
+    <div class="d-flex justify-content-center text-info" style="padding-top:1rem">
         <div class="card bg-light mb-3" style="width: 40%;">
-            <div class="card-body" style="background-color: #ECE4D9">
-                <h5 class="text-center"><b class="card-title" style="font-family:Figtree; color:brown">Đăng nhập</b></h5>
+            <div class="card-body" style="background-color: #c3e1e308">
+                <h5 class="text-center"><b class="card-title" style="font-family:Figtree; color:#197EA7">Đăng nhập</b></h5>
                 <form action="{{ route('login') }}" method="POST">
                     {{-- @csrf --}}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="">
                         <div class="form-group">
                             <label for="inputEmail4">Email</label>
-                            <input type="email" name="email" class="form-control" id="inputEmail4"
+                            <input style="background-color: rgba(255, 255, 255, 0.82)" type="email" name="email" class="form-control" id="inputEmail4"
                                 placeholder="Email">
                         </div>
                         <div class="form-group pb-2">
                             <label for="inputPassword4">Password</label>
-                            <input type="password" name="password" class="form-control" id="inputPassword4"
+                            <input style="background-color: rgba(255, 255, 255, 0.82)" type="password" name="password" class="form-control" id="inputPassword4"
                                 placeholder="Password">
                         </div>
                         @if (isset($errors))
