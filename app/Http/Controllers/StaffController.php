@@ -20,6 +20,8 @@ class StaffController extends Controller
             'NVID' => $request->input('id'),
             'TenNV' => $request->input('name'),
             'SDT' => $request->input('sdt'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
             'Diachi' => $request->input('address'),
             'Chucvu' => $request->input('cv')
         ]);
@@ -27,7 +29,7 @@ class StaffController extends Controller
         return redirect('/staffs');
     }
     public function edit($id){
-        $staff = DB::table('staffs')->select('NVID', 'TenNV', 'SDT', 'Diachi', 'Chucvu')->where('NVID', $id)->first();
+        $staff = DB::table('staffs')->select('NVID', 'TenNV', 'SDT', 'Diachi', 'Chucvu', 'email', 'password')->where('NVID', $id)->first();
         return view('staffs.editstaff')->with('staff', $staff);
     }
     public function update(Request $request, $id){
@@ -36,6 +38,8 @@ class StaffController extends Controller
                 'NVID' => $request->input('id'),
                 'TenNV' => $request->input('name'),
                 'SDT' => $request->input('sdt'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
                 'Diachi' => $request->input('address'),
                 'Chucvu' => $request->input('cv')
             ]);

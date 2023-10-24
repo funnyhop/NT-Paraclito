@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillsController;
 use App\Http\Controllers\PriceController;
@@ -13,8 +14,17 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PrescriptionsController;
 use App\Http\Controllers\CheckinventoryController;
 use App\Http\Controllers\ImportmedicinesController;
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::middleware(['web','guest'])->group(function () {
+    Route::match(['get', 'post'], 'login', [Login::class, 'index'])->name('login');
+});
+
+Route::middleware(['web','auth'])->group(function () {
+    Route::get('/', [Login::class, 'home'])->name('home');
+    Route::get('/logout', [Login::class, 'logout'])->name('logout');
+
 });
 //<banhang>
     //<route_sale>

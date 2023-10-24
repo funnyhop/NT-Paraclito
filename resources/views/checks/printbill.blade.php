@@ -41,7 +41,7 @@
                                 <p class="m-0">ĐT: {{ $bill->SDT }}</p>
                             </div>
                             <div class="pl-1 pr-1">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" style="max-width: 500px;">
                                     <thead>
                                         <tr>
                                             <th>Tên sản phẩm</th>

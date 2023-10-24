@@ -63,6 +63,16 @@
                                     placeholder="0912012122">
                             </div>
                             <div class="input-group d-flex pb-2">
+                                <label for="exampleInput2" class="pr-2">Email:</label>
+                                <input type="text" class="input-form pl-2" name="email" id="exampleInput2"
+                                    placeholder="email@gmail.com">
+                            </div>
+                            <div class="input-group d-flex pb-2">
+                                <label for="exampleInput2" class="pr-2">Password:</label>
+                                <input type="text" class="input-form pl-2" name="password" id="exampleInput2"
+                                    placeholder="123">
+                            </div>
+                            <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Địa chỉ:</label>
                                 <input type="text" class="input-form pl-2" name="address" id="exampleInput2"
                                     placeholder="63/6 Khu dân cư Hậu Thạnh Mỹ, Lê Bình, Cái Răng-Cần Thơ">
