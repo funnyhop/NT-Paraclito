@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\View;
 
 class Login extends Controller
 {
@@ -21,7 +22,7 @@ class Login extends Controller
 
     public function index(Request $request)
     {
-        DB::statement('CALL InsertYearlyDate()');
+
         if($request->isMethod('post')){
             $arr = [
                 'email' => $request->input('email'),
@@ -80,6 +81,7 @@ class Login extends Controller
 
     public function home(Request $request)
     {
+        DB::statement('CALL InsertYearlyDate()');
         $NVID = $request->session()->get('NVID');
         return redirect()->route('sales', ['NVID' => $NVID]);
     }
