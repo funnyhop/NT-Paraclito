@@ -95,4 +95,7 @@ class RevenueController extends Controller
 
         return view('checks.revenue', compact('day_dangerous','month_increment','month_pay','months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
     }
+    public function index403(){
+        return view('403');
+    }
 }

@@ -29,39 +29,39 @@ Route::middleware(['web','auth'])->group(function () {
     Route::match(['put','patch'], 'profile/{NVID}', [Login::class, 'update'])->name('profile.update');
 
 
-//<banhang>
+//<banhang> ->middleware('permission.checker:admin|staff');
     //<route_sale>
-        Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales');
-        Route::post('/sales', [SalesController::class, 'createAndStore'])->name('sales.createAndStore');
+        Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales')->middleware('permission.checker:admin|staff');
+        Route::post('/sales', [SalesController::class, 'createAndStore'])->name('sales.createAndStore')->middleware('permission.checker:admin|staff');
     //</route_sale>
-    Route::resource('/customers', SalesController::class);//khach hang
+    Route::resource('/customers', SalesController::class)->middleware('permission.checker:admin|staff');//khach hang
     //<toa>
-        Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription');
-        Route::get('/pre_create', [SalesController::class, 'pre_create'])->name('prescription.pre_create');
-        Route::post('/pre_create', [SalesController::class, 'pre_store'])->name('prescription.pre_store');
-        Route::get('/prescription/{ToaID}', [SalesController::class, 'pre_edit'])->name('prescription.pre_edit');
-        Route::match(['put','patch'],'/prescription/{ToaID}', [SalesController::class, 'pre_update'])->name('prescription.pre_update');
-        Route::delete('/prescription/{ToaID}', [SalesController::class, 'pre_destroy'])->name('prescription.pre_destroy');
+        Route::get('/prescription', [SalesController::class, 'pre_index'])->name('prescription')->middleware('permission.checker:admin|staff');
+        Route::get('/pre_create', [SalesController::class, 'pre_create'])->name('prescription.pre_create')->middleware('permission.checker:admin|staff');
+        Route::post('/pre_create', [SalesController::class, 'pre_store'])->name('prescription.pre_store')->middleware('permission.checker:admin|staff');
+        Route::get('/prescription/{ToaID}', [SalesController::class, 'pre_edit'])->name('prescription.pre_edit')->middleware('permission.checker:admin|staff');
+        Route::match(['put','patch'],'/prescription/{ToaID}', [SalesController::class, 'pre_update'])->name('prescription.pre_update')->middleware('permission.checker:admin|staff');
+        Route::delete('/prescription/{ToaID}', [SalesController::class, 'pre_destroy'])->name('prescription.pre_destroy')->middleware('permission.checker:admin|staff');
     //</toa>
 //</banhang>
 //<thuoc>
-    Route::resource('/medicines', MedicineController::class);
+    Route::resource('/medicines', MedicineController::class)->middleware('permission.checker:admin|staff');
 //</thuoc>
 //<price>
-    Route::get('prices/{ngay_id}/{medicine_id}/edit', [PriceController::class, 'priceEdit'])->name('prices.priceEdit');
-    Route::match(['put', 'patch'], 'prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceUpdate'])->name('prices.priceUpdate');
-    Route::delete('prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceDestroy'])->name('prices.priceDestroy');
+    Route::get('prices/{ngay_id}/{medicine_id}/edit', [PriceController::class, 'priceEdit'])->name('prices.priceEdit')->middleware('permission.checker:admin');
+    Route::match(['put', 'patch'], 'prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceUpdate'])->name('prices.priceUpdate')->middleware('permission.checker:admin');
+    Route::delete('prices/{ngay_id}/{medicine_id}', [PriceController::class, 'priceDestroy'])->name('prices.priceDestroy')->middleware('permission.checker:admin');
     Route::resource('/prices', PriceController::class);
 //</price>
 
 //<ncc>
-    Route::resource('/suppliers', SupplierController::class);
+    Route::resource('/suppliers', SupplierController::class)->middleware('permission.checker:admin|staff');
 //</ncc>
 //<nsx>
-    Route::resource('/producers', ProducerController::class);
+    Route::resource('/producers', ProducerController::class)->middleware('permission.checker:admin|staff');
 //</nsx>
 //<nhomthuoc>
-    Route::resource('/druggr', DruggrController::class);
+    Route::resource('/druggr', DruggrController::class)->middleware('permission.checker:admin|staff');
 //</nhomthuoc>
 //<kho>
     Route::get('/createpn', [ImportmedicinesController::class, 'createpn'])->name('importmedicines.createpn');
@@ -79,8 +79,11 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('pay/{HDID}', [BillsController::class, 'indexpay'])->name('pay');
     Route::match(['put', 'patch'], 'pay/{HDID}', [BillsController::class, 'updatehd'])->name('updatehd');
 
-    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue');
-    Route::post('/revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue');
+    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue')->middleware('permission.checker:admin');
+    Route::post('/revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue')->middleware('permission.checker:admin');
+    //<403>
+        Route::get('403', [RevenueController::class, 'index403'])->name('403');
+    //</403>
 //</checks>
 
 });

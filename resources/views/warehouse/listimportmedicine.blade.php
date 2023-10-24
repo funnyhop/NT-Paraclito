@@ -37,11 +37,6 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/items">Danh sách</a></li>
-                    <a href="#">/</a>
-                    <li class="pl-1"><a href="items/create">Thêm</a></li>
-                </div>
                 <div class="pt-5 pl-4 col-11">
                     <table class="table table-bordered text-center">
                         <thead>
