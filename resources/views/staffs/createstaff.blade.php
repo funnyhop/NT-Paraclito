@@ -38,14 +38,14 @@
         <div class="content">
             <div class="container-fluid  pb-5">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/staffs">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('staffs') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="#">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('staffs.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/staffs" method="POST">
+                        <form action="{{ route('staffs.store') }}" method="POST">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
@@ -81,6 +81,11 @@
                                 <label for="exampleInput2" class="pr-2">Chức vụ:</label>
                                 <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
                                     placeholder="Bán thuốc">
+                            </div>
+                            <div class="input-group d-flex pb-2">
+                                <label for="exampleInput2" class="pr-2">Vai trò:</label>
+                                <input type="text" class="input-form pl-2" name="role_id" id="exampleInput2"
+                                    placeholder="1|2">
                             </div>
                             <div class="float-right pr-1 pt-2">
                                 <button type="reset" class="btn btn-secondary">Hủy</button>

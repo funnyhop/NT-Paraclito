@@ -110,9 +110,9 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs')->middleware('permission.checker:admin|cashier|staff');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create')->middleware('permission.checker:admin');
     Route::post('staffs',[StaffController::class,'store'])->name('staffs.store')->middleware('permission.checker:admin');
-    Route::get('staffs/{NhomthuocID}', [StaffController::class, 'edit'])->name('staffs.edit')->middleware('permission.checker:admin');
-    Route::match(['put','patch'],'staffs/{NhomthuocID}', [StaffController::class, 'update'])->name('staffs.update')->middleware('permission.checker:admin');
-    Route::delete('staffs/{NhomthuocID}',[StaffController::class, 'destroy'])->name('staffs.destroy')->middleware('permission.checker:admin');
+    Route::get('staffs/{NVID}', [StaffController::class, 'edit'])->name('staffs.edit')->middleware('permission.checker:admin');
+    Route::match(['put','patch'],'staffs/{NVID}', [StaffController::class, 'update'])->name('staffs.update')->middleware('permission.checker:admin');
+    Route::delete('staffs/{NVID}',[StaffController::class, 'destroy'])->name('staffs.destroy')->middleware('permission.checker:admin');
     // Route::resource('/staffs', StaffController::class)->middleware('permission.checker:admin');
 //</nhanvien>
 //<checks>

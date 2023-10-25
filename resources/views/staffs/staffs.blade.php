@@ -38,9 +38,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="staffs">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('staffs') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="staffs/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('staffs.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-2"></div>
@@ -53,6 +53,7 @@
                                     <th>SDT</th>
                                     <th>Địa chỉ</th>
                                     <th>Chức vụ</th>
+                                    <th>Vai trò</th>
                                     <th>Cập nhật</th>
                                     <th>Xóa</th>
                                 </tr>
@@ -61,13 +62,14 @@
                                 @foreach ($staffs as $staff)
                                     <tr>
                                         <td>{{ $staff->NVID }}</td>
-                                        <td class="text-left">{{ $staff->TenNV }}</td>
-                                        <td class="text-left">{{ $staff->SDT }}</td>
-                                        <td class="text-left">{{ $staff->Diachi }}</td>
-                                        <td class="text-left">{{ $staff->Chucvu }}</td>
-                                        <td><a href="staffs/{{ $staff->NVID }}/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td>{{ $staff->TenNV }}</td>
+                                        <td>{{ $staff->SDT }}</td>
+                                        <td>{{ $staff->Diachi }}</td>
+                                        <td>{{ $staff->Chucvu }}</td>
+                                        <td>{{ $staff->role_id }}</td>
+                                        <td><a href="{{ route('staffs.edit', ['NVID' => $staff->NVID]) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="/staffs/{{ $staff->NVID }}" method="post">
+                                            <form action="{{ route('staffs.destroy', ['NVID' => $staff->NVID]) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

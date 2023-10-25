@@ -40,7 +40,7 @@
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/staffs/{{ $staff->NVID }}" method="POST">
+                        <form action="{{ route('staffs.update', ['NVID' => $staff->NVID]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="input-group d-flex pb-2">
@@ -78,6 +78,11 @@
                                 <label for="exampleInput2" class="pr-2">Chức vụ:</label>
                                 <input type="text" class="input-form pl-2" name="cv" id="exampleInput2"
                                     value="{{ $staff->Chucvu }}" placeholder="Bán thuốc">
+                            </div>
+                            <div class="input-group d-flex pb-2">
+                                <label for="exampleInput2" class="pr-2">Vai trò:</label>
+                                <input type="text" class="input-form pl-2" name="role_id" id="exampleInput2"
+                                    value="{{ $staff->role_id }}" placeholder="1|2">
                             </div>
                             <div class="float-right pr-1 pt-2">
                                 <a href="/staffs" class="btn btn-secondary">Hủy</a>
