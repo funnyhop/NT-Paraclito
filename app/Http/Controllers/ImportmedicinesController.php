@@ -50,6 +50,7 @@ class ImportmedicinesController extends Controller
     }
     public function storeghipn(Request $request)
     {
+
         $gpn = DB::table('ghipns')->insert([
             'phieunhap_id' => $request->input('phieunhap_id'),
             'medicine_id' => $request->input('medicine_id'),
@@ -58,6 +59,7 @@ class ImportmedicinesController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
 
         $get_idwarehouse = DB::table('warehouses')
             ->join('phieunhaps', 'warehouses.KhoID', '=', 'phieunhaps.warehouse_id')
@@ -69,8 +71,10 @@ class ImportmedicinesController extends Controller
         $tonkhoRecord = DB::table('tonkhos')
             ->where('medicine_id', $request->input('medicine_id'))
             ->where('warehouse_id', $get_idwarehouse->warehouse_id)
+            // ->groupBy('medicine_id')
             ->first();
-
+        // dd($gpn,$request,$get_idwarehouse,$tonkhoRecord);
+        // dd($request,$tonkhoRecord);
         if ($tonkhoRecord) {
             // Bản ghi tồn tại, thực hiện cập nhật
             $currentSoluong = $tonkhoRecord->Soluong;
@@ -98,7 +102,7 @@ class ImportmedicinesController extends Controller
             // dd("After Insert", $add_warehouse);
         }
 
-        return redirect(route('importmedicines.createpn'));
+        // return redirect(route('importmedicines.createpn'));
     }
 
     public function createAndStore(Request $request)
@@ -108,8 +112,6 @@ class ImportmedicinesController extends Controller
 
         try {
             // Thực hiện insert cho form đầu tiên
-            $this->createpn($request);
-
             // Nếu không có lỗi, thực hiện insert cho form thứ hai
             if (!empty($request->input('id'))) {
                 // Có ID, lưu thông tin liên quan đến ID
@@ -118,6 +120,7 @@ class ImportmedicinesController extends Controller
 
             if (!empty($request->input('phieunhap_id')) && !empty($request->input('medicine_id'))) {
                 // Có thông tin về phiếu nhập và thuốc, lưu thông tin liên quan
+
                 $this->storeghipn($request);
             }
 

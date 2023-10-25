@@ -103,7 +103,7 @@ class SalesController extends Controller
 
         try {
             // Thực hiện insert cho form đầu tiên
-            $this->salesindex($request);
+            // $this->salesindex($request);
 
             // Nếu không có lỗi, thực hiện insert cho form thứ hai
             if (!empty($request->input('id'))) {

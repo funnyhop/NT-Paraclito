@@ -53,6 +53,7 @@
                             <tbody>
                                 @php
                                     $previousThuocID = null;
+                                    $previoustk = null;
                                 @endphp
 
                                 @foreach ($medicines as $medicine)
@@ -68,9 +69,20 @@
                                             @php
                                                 $previousThuocID = $medicine->ThuocID;
                                             @endphp
+                                            @foreach ($tonkho as $tk)
+                                                @if ($tk->medicine_id != $previoustk && $tk->medicine_id == $medicine->ThuocID)
+                                                    <td>{{ $tk->Soluong }}</td>
+                                                    @php
+                                                        $previoustk = $tk->medicine_id;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            {{-- Display default value if no quantity is found --}}
+                                            @if (!isset($previoustk))
+                                                <td>0</td>
+                                            @endif
+                                             <td>{{ $medicine->DVT }}</td>
                                         @endif
-                                        <td>{{ $tonkho->Soluong }}</td>
-                                        <td>{{ $medicine->DVT }}</td>
                                     </tr>
                                 @endforeach
 

@@ -18,8 +18,8 @@ class Medicine extends Model
     public function checkinventory(){
         $checks = DB::table('medicines')
             ->join('suppliers', 'medicines.supplier_id', '=', 'suppliers.NCCID')
-            ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
-            ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
+            // ->join('ghihds', 'medicines.ThuocID', '=', 'ghihds.medicine_id')
+            // ->join('ghipns', 'medicines.ThuocID', '=', 'ghipns.medicine_id')
             ->join('druggrs', 'medicines.druggr_id', '=', 'druggrs.NhomthuocID')
             ->select(
                 'medicines.ThuocID',
@@ -28,8 +28,8 @@ class Medicine extends Model
                 'medicines.DVT',
                 'suppliers.TenNCC',
                 'druggrs.Tennhom',
-                'ghipns.phieunhap_id',
-                'ghihds.Soluong'
+                // 'ghipns.phieunhap_id',
+                // 'ghihds.Soluong'
             )
             ->distinct('medicines.ThuocID')
             ->get();

@@ -19,7 +19,9 @@ class CheckinventoryController extends Controller
     public function index(){
         $medicines = $this->medicine->checkinventory();
         // $phieunhaps = $this->phieunhap->listphieunhap();
-        $tonkho = DB::table('tonkhos')->select('medicine_id', 'warehouse_id', 'Soluong')->first();
+        $tonkho = DB::table('tonkhos')
+            ->select('medicine_id', 'warehouse_id', 'Soluong')
+            ->get();
         return view('warehouse.checkinventory', compact('medicines', 'tonkho'));
     }
 }
