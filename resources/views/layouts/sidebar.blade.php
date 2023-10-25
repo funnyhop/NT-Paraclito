@@ -18,13 +18,13 @@
               <p>Bán hàng<span class="right badge badge-danger">Sales</span></p>
             </a>
             <div class="pl-4">
-                <a href="sales" class="nav-link nav-dopdown collapse" id="salescollapse">
+                <a href="{{ route('sales') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Bán thuốc</p>
                 </a>
                 <a href="{{ route('prescription') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Toa thuốc</p>
                 </a>
-                <a href="customers" class="nav-link nav-dopdown collapse" id="salescollapse">
+                <a href="{{ route('customers') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Khách hàng</p>
                 </a>
             </div>
@@ -35,19 +35,19 @@
               <p>Thuốc<span class="right badge badge-tealgr">Medicine</span></p>
             </a>
             <div class="pl-4">
-                <a href="producers" class="nav-link nav-dopdown collapse" id="collapse1">
+                <a href="{{ route('producers') }}" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Nhà sản xuất</p>
                 </a>
-                <a href="suppliers" class="nav-link nav-dopdown collapse" id="collapse1">
+                <a href="{{ route('suppliers') }}" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Nhà cung cấp</p>
                 </a>
-                <a href="druggr" class="nav-link nav-dopdown collapse" id="collapse1">
+                <a href="{{ route('druggr') }}" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Thêm nhóm thuốc</p>
                 </a>
-                <a href="medicines" class="nav-link nav-dopdown collapse" id="collapse1">
+                <a href="{{ route('medicines') }}" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Thêm thuốc</p>
                 </a>
-                <a href="prices" class="nav-link nav-dopdown collapse" id="collapse1">
+                <a href="{{ route('prices') }}" class="nav-link nav-dopdown collapse" id="collapse1">
                     <p>Giá thuốc</p>
                 </a>
             </div>
@@ -64,13 +64,13 @@
                 <a href="{{ route('importmedicines') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Danh sách phiếu nhập</p>
                 </a>
-                <a href="checkinventory" class="nav-link nav-dopdown collapse" id="collapse2">
+                <a href="{{ route('checkinventory') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Kiểm kho</p>
                 </a>
             </div>
           </li>
           <li class="nav-item">
-            <a href="staffs" class="nav-link">
+            <a href="{{ route('staffs') }}" class="nav-link">
                 <i class="fa-solid fa-user-doctor i-sidebar"></i>
                 <p>Nhân viên</p>
             </a>
@@ -81,10 +81,10 @@
               <p>Quản lý hóa đơn</p>
             </a>
             <div class="pl-4">
-                <a href="bills" class="nav-link nav-dopdown collapse" id="collapse4">
+                <a href="{{ route('bills') }}" class="nav-link nav-dopdown collapse" id="collapse4">
                     <p>Hóa đơn bán</p>
                 </a>
-                <a href="revenue" class="nav-link nav-dopdown collapse" id="collapse4">
+                <a href="{{ route('revenue') }}" class="nav-link nav-dopdown collapse" id="collapse4">
                     <p>Doanh thu</p>
                 </a>
             </div>

@@ -14,20 +14,6 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <!-- SEARCH FORM -->
-                        {{-- <form class="form-inline ml-3 float-right">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form> --}}
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -50,7 +36,7 @@
                 </div>
                 <div class="row pt-1 pl-5">
                     <div class="col-4">
-                        <form action="/sales" method="post">
+                        <form action="{{ route('sales') }}" method="post">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã khách hàng:</label>
@@ -79,7 +65,7 @@
                         </form>
                     </div>
                     <div class="col-4 pl-2 pr-2">
-                        <form action="/sales" method="post">
+                        <form action="{{ route('sales') }}" method="post">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã hóa đơn:</label>
@@ -127,7 +113,7 @@
                         </form>
                     </div>
                     <div class="col-4 pr-5 pb-5">
-                        <form action="/sales" class="pb-1" method="post">
+                        <form action="{{ route('sales') }}" class="pb-1" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-6">

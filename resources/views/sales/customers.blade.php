@@ -37,9 +37,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/customers">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('customers') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="customers/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('customers.create') }}">Thêm</a></li>
                 </div>
                 <div class="pt-5 pl-4 col-10">
                     <table class="table table-bordered text-center">
@@ -58,9 +58,9 @@
                                     <td>{{ $customer->TenKH }}</td>
                                     <td>{{ $customer->SDT }}</td>
                                     <td class="text-left">{{ $customer->Diachi }}</td>
-                                    <td><a href="customers/{{ $customer->KHID }}/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                    <td><a href="customers/{{ $customer->KHID }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
                                     <td>
-                                        <form action="/customers/{{ $customer->KHID }}" method="post">
+                                        <form action="{{ route('customers.destroy',['KHID' => $customer->KHID]) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn-trash">
