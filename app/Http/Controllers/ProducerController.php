@@ -9,7 +9,9 @@ use App\Models\Producer;
 class ProducerController extends Controller
 {
     public function index() {
-        $producers = DB::table('producers')->select('NSXID', 'TenNSX', 'Quocgia')->get();
+        $key = request()->key;
+        $producers = Producer::search($key)->get();
+        // $producers = DB::table('producers')->select('NSXID', 'TenNSX', 'Quocgia')->get();
         return view('medicines.producers', [
             'producers' => $producers
         ]);

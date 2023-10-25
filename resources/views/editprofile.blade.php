@@ -14,6 +14,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
+                        <a class="float-right" href="{{ route('profile') }}"><i class="fa-solid fa-arrow-left-long fa-xl"></i></a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->

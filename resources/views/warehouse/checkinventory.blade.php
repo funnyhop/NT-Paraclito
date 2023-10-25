@@ -17,7 +17,7 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" name="key" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
@@ -63,8 +63,8 @@
                                             <td>{{ $medicine->ThuocID }}</td>
                                             <td class="text-left">{{ $medicine->Tenthuoc }}</td>
                                             <td>{{ $medicine->HSD }}</td>
-                                            <td class="text-left">{{ $medicine->Tennhom }}</td>
-                                            <td>{{ $medicine->TenNCC }}</td>
+                                            <td>{{ $medicine->druggr_id }}</td>
+                                            <td>{{ $medicine->supplier_id }}</td>
                                             {{-- Cập nhật giá trị $previousThuocID --}}
                                             @php
                                                 $previousThuocID = $medicine->ThuocID;

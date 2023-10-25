@@ -9,7 +9,9 @@ use App\Models\Supplier;
 class SupplierController extends Controller
 {
     public function index(){
-        $suppliers = DB::table('suppliers')->select('NCCID', 'TenNCC', 'Diachi')->get();
+        $key = request()->key;
+        $suppliers = Supplier::search($key)->get();
+        // $suppliers = DB::table('suppliers')->select('NCCID', 'TenNCC', 'Diachi')->get();
         return view('medicines.suppliers', [
             'suppliers' => $suppliers
         ]);

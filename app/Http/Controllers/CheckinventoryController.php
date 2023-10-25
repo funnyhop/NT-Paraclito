@@ -17,8 +17,10 @@ class CheckinventoryController extends Controller
 
     }
     public function index(){
-        $medicines = $this->medicine->checkinventory();
+        // $medicines = $this->medicine->checkinventory();
         // $phieunhaps = $this->phieunhap->listphieunhap();
+        $key = request()->key;
+        $medicines = Medicine::search($key)->get();
         $tonkho = DB::table('tonkhos')
             ->select('medicine_id', 'warehouse_id', 'Soluong')
             ->get();

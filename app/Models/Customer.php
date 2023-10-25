@@ -31,7 +31,9 @@ class Customer extends Model
     public function scopeSearch($query, $key) {
         if ($key) {
             $query->where('KHID', 'like', '%' . $key . '%')
-                  ->orWhere('TenKH', 'like', '%' . $key . '%');
+                  ->orWhere('TenKH', 'like', '%' . $key . '%')
+                  ->orWhere('SDT', 'like', '%' . $key . '%')
+                  ->orWhere('Diachi', 'like', '%' . $key . '%');
         }
     }
 

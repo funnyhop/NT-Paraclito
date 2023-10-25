@@ -9,7 +9,9 @@ use App\Models\Staff;
 class StaffController extends Controller
 {
     public function index(){
-        $staffs = DB::table('staffs')->select('NVID', 'TenNV', 'SDT', 'Diachi', 'Chucvu', 'role_id')->get();
+        // $staffs = DB::table('staffs')->select('NVID', 'TenNV', 'SDT', 'Diachi', 'Chucvu', 'role_id')->get();
+        $key = request()->key;
+        $staffs = Staff::search($key)->get();
         return view('staffs.staffs', compact('staffs'));
     }
     public function create(){

@@ -44,7 +44,12 @@ class Medicine extends Model
                 ->orWhere('druggr_id', 'like', '%' . $key . '%')
                 ->orWhere('producer_id', 'like', '%' . $key . '%')
                 ->orWhere('HSD', 'like', '%' . $key . '%')
-                ->orWhere('supplier_id', 'like', '%' . $key . '%');
+                ->orWhere('supplier_id', 'like', '%' . $key . '%')
+                ->orWhere('Chongchidinh', 'like', '%' . $key . '%')
+                ->orWhere('HDSD', 'like', '%' . $key . '%')
+                ->orWhere('Dieutri', 'like', '%' . $key . '%')
+                ->orWhere('NSX', 'like', '%' . $key . '%')
+                ->orWhere('TPhoatchat', 'like', '%' . $key . '%');
         }
         return $query;
     }

@@ -8,8 +8,13 @@ use App\Models\Price;
 class PriceController extends Controller
 {
     public function index(){
-        $prs = DB::table('prices')->select('medicine_id',
-            'ngay_id', 'Gia')->get();
+        $key = request()->key;
+        $prs = DB::table('prices')
+            ->select('medicine_id', 'ngay_id', 'Gia')
+            ->where('medicine_id', 'like', '%' . $key . '%')
+            ->orWhere('ngay_id', 'like', '%' . $key . '%')
+            ->orWhere('Gia', 'like', '%' . $key . '%')
+            ->get();
         $i = 1;
         return view('medicines.prices', compact('prs','i'));
     }

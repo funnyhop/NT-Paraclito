@@ -13,7 +13,8 @@
                         <h3 class="m-0 text-dark">Thanh toán</h3>
                     </div>
                     <!-- /.col -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 ">
+                        <a class="float-right" href="{{ route('bills') }}"><i class="fa-solid fa-arrow-left-long fa-xl"></i></a>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
