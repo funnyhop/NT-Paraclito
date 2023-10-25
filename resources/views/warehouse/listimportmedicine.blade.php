@@ -47,32 +47,44 @@
                             <th>Mã nhân viên</th>
                             <th>Tên thuốc</th>
                             <th>Số lượng</th>
-                            <th>Giá</th>
+                            <th>Đơn giá</th>
                         </thead>
                         <tbody>
                             @php
-                                $uniquePNIDs = $listpn->unique('PNID');
-                                $rowCount = count($listgpn->where('phieunhap_id', $listpn->first()->PNID));
+                                $previousPNID = null;
+                                $row = 0;
+
+                                if ($listpn && $listpn->first() && $listpn->first()->PNID !== null) {
+                                    $row = $listpn->first()->PNID;
+                                    $rowCount = count($listgpn->where('phieunhap_id', $row));
+                                }
                             @endphp
-                            @foreach ($uniquePNIDs as $item)
-                                    <tr>
+                            @foreach ($listpn as $item)
+                                <tr>
+                                    @if ($item->PNID != $previousPNID)
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->PNID }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->warehouse_id }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->staff_id }}</td>
-                                        @foreach ($listgpn as $value)
-                                            @if ($value->phieunhap_id == $item->PNID)
-                                                <tr>
-                                                    <td>{{ $value->Tenthuoc }}</td>
-                                                    <td>{{ $value->Soluong }}</td>
-                                                    <td>{{ $value->Gia }} vnđ</td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    </tr>
+                                        @php
+                                            $previousPNID = $item->PNID;
+                                        @endphp
+                                    @endif
+
+                                    @foreach ($listgpn as $value)
+                                        @if ($value->phieunhap_id == $item->PNID)
+                                            <tr>
+                                                <td>{{ $value->Tenthuoc }}</td>
+                                                <td>{{ $value->Soluong }}</td>
+                                                <td>{{ $value->Gia }} vnđ</td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                </tr>
                             @endforeach
                         </tbody>
+
 
                     </table>
                 </div>

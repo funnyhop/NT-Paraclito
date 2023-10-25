@@ -54,7 +54,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $rowCount = count($listghd->where('bill_id', $listhd->first()->HDID)) @endphp
+                                @php
+                                    $previousHDID = null;
+                                    $row = 0;
+
+                                    if ($listhd && $listhd->first() && $listhd->first()->HDID !== null) {
+                                        $row = $listhd->first()->HDID;
+                                        $rowCount = count($listghd->where('bill_id', $row));
+                                    }
+                                @endphp
                                 @foreach ($listhd as $item)
                                     <tr>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ $item->HDID }}</td>
