@@ -14,20 +14,6 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -38,14 +24,14 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/suppliers">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('suppliers') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="#">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('suppliers.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/suppliers" method="post">
+                        <form action="{{ route('suppliers.store') }}" method="post">
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhà cung cấp:</label>

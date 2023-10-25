@@ -37,6 +37,11 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid pb-5 pr-5">
+                <div class="float-right d-inline-flex pr-2">
+                    <li class="pr-1"><a href="{{ route('prices') }}">Danh sách</a></li>
+                    <a href="#">/</a>
+                    <li class="pl-1"><a href="{{ route('prices.create') }}">Thêm</a></li>
+                </div>
                 <div class="row pt-5 pl-5">
                     <form action="{{ route('prices.priceUpdate', ['ngay_id' => $pr->ngay_id, 'medicine_id' => $pr->medicine_id]) }}" method="POST">
                         @csrf

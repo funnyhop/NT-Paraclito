@@ -37,9 +37,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/prices">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('prices') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="prices/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('prices.create') }}">Thêm</a></li>
                 </div>
                 <div class="pt-5 pl-4 col-8">
                     <div class="table-responsive">

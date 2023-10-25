@@ -22,7 +22,7 @@
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-3"></div>
                     <div class="col-7">
-                        <form action="/druggr/{{ $drs->NhomthuocID }}" method="post">
+                        <form action="{{ route('druggr.edit', ['NhomthuocID' => $drs->NhomthuocID]) }}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="input-group d-flex pb-2">

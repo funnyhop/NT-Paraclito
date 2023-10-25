@@ -64,10 +64,11 @@
                                         <td>{{ $producer->NSXID }}</td>
                                         <td class="text-left">{{ $producer->TenNSX }}</td>
                                         <td>{{ $producer->Quocgia }}</td>
-                                        <td><a href="producers/{{ $producer->NSXID }}/edit"><i
+                                        <td><a href="{{ route('producers.edit', ['NSXID' => $producer->NSXID]) }}"><i
                                                     class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="producers/{{ $producer->NSXID }}" method="post">
+                                            <form action="{{ route('producers.destroy', ['NSXID' => $producer->NSXID]) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

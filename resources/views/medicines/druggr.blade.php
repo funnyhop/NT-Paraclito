@@ -37,9 +37,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="druggr">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('druggr') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="druggr/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('druggr.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-4 d-flex">
                     {{-- <div class="input-group input-group-sm">
@@ -61,10 +61,10 @@
                                     <tr>
                                         <td>{{ $dr->NhomthuocID }}</td>
                                         <td class="text-left">{{ $dr->Tennhom }}</td>
-                                        <td><a href="druggr/{{ $dr->NhomthuocID }}/edit"><i
+                                        <td><a href="{{ route('druggr.edit', ['NhomthuocID' => $dr->NhomthuocID]) }}"><i
                                                     class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="druggr/{{ $dr->NhomthuocID }}" method="post">
+                                            <form action="{{ route('druggr.destroy', ['NhomthuocID' => $dr->NhomthuocID]) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

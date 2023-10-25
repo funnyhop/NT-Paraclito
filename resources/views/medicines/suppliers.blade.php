@@ -17,7 +17,7 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                <input class="form-control form-control-navbar" name="key" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
@@ -37,9 +37,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/suppliers">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('suppliers') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="suppliers/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('suppliers.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-4 d-flex">
                     <div class="col-1"></div>
@@ -60,10 +60,11 @@
                                         <td>{{ $supplier->NCCID }}</td>
                                         <td class="text-left">{{ $supplier->TenNCC }}</td>
                                         <td class="text-left">{{ $supplier->Diachi }}</td>
-                                        <td><a href="suppliers/{{ $supplier->NCCID }}/edit"><i
+                                        <td><a href="{{ route('suppliers.edit', ['NCCID' => $supplier->NCCID]) }}"><i
                                                     class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="suppliers/{{ $supplier->NCCID }}" method="post">
+                                            <form action="{{ route('suppliers.destroy', ['NCCID' => $supplier->NCCID]) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

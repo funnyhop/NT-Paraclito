@@ -38,13 +38,13 @@
         <div class="content">
             <div class="container-fluid pb-5">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/medicines">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('medicines') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="#">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('medicines.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-5">
                     {{-- <themthuoc> --}}
-                    <form action="/medicines" method="post">
+                    <form action="{{ route('medicines.store') }}" method="post">
                         @csrf
                         <div class="d-flex">
                             <div class="col-6 d-block">

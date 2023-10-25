@@ -37,9 +37,9 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/medicines">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('medicines') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="medicines/create">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('medicines.create') }}">Thêm</a></li>
                 </div>
                 <div class="pt-5 pb-5">
                     <div class="table-responsive">
@@ -77,10 +77,10 @@
                                         <td class="text-left">{{ $medicine->druggr_id }}</td>
                                         <td class="text-left">{{ $medicine->supplier_id }}</td>
                                         <td class="text-left">{{ $medicine->producer_id }}</td>
-                                        <td><a href="medicines/{{ $medicine->ThuocID }}/edit"><i
+                                        <td><a href="{{ route('medicines.edit', ['ThuocID' => $medicine->ThuocID]) }}"><i
                                                     class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td>
-                                            <form action="medicines/{{ $medicine->ThuocID }}" method="POST">
+                                            <form action="{{ route('medicines.destroy', ['ThuocID' => $medicine->ThuocID]) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn-trash">

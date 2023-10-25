@@ -15,20 +15,6 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <!-- SEARCH FORM -->
-                        <form class="form-inline ml-3 float-right">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -38,13 +24,13 @@
         <div class="content">
             <div class="container-fluid pb-5">
                 <div class="float-right d-inline-flex pr-2">
-                    <li class="pr-1"><a href="/medicines">Danh sách</a></li>
+                    <li class="pr-1"><a href="{{ route('medicines') }}">Danh sách</a></li>
                     <a href="#">/</a>
-                    <li class="pl-1"><a href="#">Thêm</a></li>
+                    <li class="pl-1"><a href="{{ route('medicines.create') }}">Thêm</a></li>
                 </div>
                 <div class="row pt-5 pl-5">
                     {{-- <themthuoc> --}}
-                    <form action="/medicines/{{ $medicine->ThuocID }}" method="post">
+                    <form action="{{ route('medicines.update', ['ThuocID' => $medicine->ThuocID]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="d-flex">
@@ -113,9 +99,8 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã nhà sản xuất:</label>
-                                            <input type="text" class="input-form pl-2" name="pd_id"
-                                                id="exampleInput1" value="{{ $medicine->producer_id }}"
-                                                placeholder="NSX01">
+                                            <input type="text" class="input-form pl-2" name="pd_id" id="exampleInput1"
+                                                value="{{ $medicine->producer_id }}" placeholder="NSX01">
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +109,8 @@
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Ngày sản xuất:</label>
                                             <input type="text" class="input-form pl-2" name="mfg"
-                                                id="exampleInput1" value="{{ $medicine->NSX }}" placeholder="2023-01-01">
+                                                id="exampleInput1" value="{{ $medicine->NSX }}"
+                                                placeholder="2023-01-01">
                                         </div>
                                     </div>
                                     <div class="col-6">
