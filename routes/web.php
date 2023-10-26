@@ -3,6 +3,8 @@
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillsController;
+use App\Http\Controllers\GhihdController;
+use App\Http\Controllers\GhipnController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StaffController;
@@ -34,6 +36,14 @@ Route::middleware(['web','auth'])->group(function () {
         Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales')->middleware('permission.checker:admin|staff');
         Route::post('/sales', [SalesController::class, 'createAndStore'])->name('sales.createAndStore')->middleware('permission.checker:admin|staff');
     //</route_sale>
+    //<ghihd>
+        Route::get('ghihds', [GhihdController::class, 'index'])->name('ghihds')->middleware('permission.checker:admin|staff');
+        Route::get('ghihds/create', [GhihdController::class, 'create'])->name('ghihds.create')->middleware('permission.checker:admin');
+        Route::post('ghihds',[GhihdController::class,'store'])->name('ghihds.store')->middleware('permission.checker:admin');
+        Route::get('ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'edit'])->name('ghihds.edit')->middleware('permission.checker:admin');
+        Route::match(['put','patch'],'ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'update'])->name('ghihds.update')->middleware('permission.checker:admin');
+        Route::delete('ghihds/{bill_id}/{medicine_id}',[GhihdController::class, 'destroy'])->name('ghihds.destroy')->middleware('permission.checker:admin');
+    //</ghihd>
     //<customer>
         Route::get('customers', [SalesController::class, 'index'])->name('customers')->middleware('permission.checker:admin|cashier|staff');
         Route::get('customers/create', [SalesController::class, 'create'])->name('customers.create')->middleware('permission.checker:admin|staff');
@@ -90,7 +100,7 @@ Route::middleware(['web','auth'])->group(function () {
     // Route::resource('/producers', ProducerController::class)->middleware('permission.checker:admin|staff');
 //</nsx>
 //<nhomthuoc>
-    Route::get('druggr', [DruggrController::class, 'index'])->name('druggr')->middleware('permission.checker:admin|cashier|staff');
+    Route::get('druggr', [DruggrController::class, 'index'])->name('druggr')->middleware('permission.checker:admin|staff');
     Route::get('druggr/create', [DruggrController::class, 'create'])->name('druggr.create')->middleware('permission.checker:admin|staff');
     Route::post('druggr',[DruggrController::class,'store'])->name('druggr.store')->middleware('permission.checker:admin|staff');
     Route::get('druggr/{NhomthuocID}', [DruggrController::class, 'edit'])->name('druggr.edit')->middleware('permission.checker:admin|staff');
@@ -106,6 +116,14 @@ Route::middleware(['web','auth'])->group(function () {
 //<kiemkho>
     Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory')->middleware('permission.checker:admin|staff');
 //</kiemkho>
+//<ghipn>
+    Route::get('ghipns', [GhipnController::class, 'index'])->name('ghipns')->middleware('permission.checker:admin|staff');
+    Route::get('ghipns/create', [GhipnController::class, 'create'])->name('ghipns.create')->middleware('permission.checker:admin');
+    Route::post('ghipns',[GhipnController::class,'store'])->name('ghipns.store')->middleware('permission.checker:admin');
+    Route::get('ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'edit'])->name('ghipns.edit')->middleware('permission.checker:admin');
+    Route::match(['put','patch'],'ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'update'])->name('ghipns.update')->middleware('permission.checker:admin');
+    Route::delete('ghipns/{phieunhap_id}/{medicine_id}',[GhipnController::class, 'destroy'])->name('ghipns.destroy')->middleware('permission.checker:admin');
+//</ghipn>
 //<nhanvien>
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs')->middleware('permission.checker:admin');
     Route::get('staffs/create', [StaffController::class, 'create'])->name('staffs.create')->middleware('permission.checker:admin');

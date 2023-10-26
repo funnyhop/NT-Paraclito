@@ -24,6 +24,9 @@
                 <a href="{{ route('prescription') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Toa thuốc</p>
                 </a>
+                <a href="{{ route('ghihds') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
+                    <p>Ghi đơn thuốc</p>
+                </a>
                 <a href="{{ route('customers') }}" class="nav-link nav-dopdown collapse" id="salescollapse">
                     <p>Khách hàng</p>
                 </a>
@@ -63,6 +66,9 @@
                 </a>
                 <a href="{{ route('importmedicines') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Danh sách phiếu nhập</p>
+                </a>
+                <a href="{{ route('ghipns') }}" class="nav-link nav-dopdown collapse" id="collapse2">
+                    <p>Ghi phiếu nhập</p>
                 </a>
                 <a href="{{ route('checkinventory') }}" class="nav-link nav-dopdown collapse" id="collapse2">
                     <p>Kiểm kho</p>
