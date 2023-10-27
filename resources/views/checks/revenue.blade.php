@@ -170,13 +170,16 @@
                                             @endphp
                                             @foreach ($day_dangerous as $dangerous)
                                                 @if ($dangerous->Soluong < 1000)
-                                                    <b>Sắp hết hàng!!</b>
+                                                    <p class="m-0 p-0" style="font-family: scandia-web; font-size: 10px;display: inline-block; margin-right: 5px;">{{ $dangerous->medicine_id }}</p>
                                                     @php
                                                         $hasLowQuantity = true;
                                                     @endphp
                                                 @endif
                                             @endforeach
-                                            @if (!$hasLowQuantity)
+                                            @if ($hasLowQuantity)
+                                                <br>
+                                                <b>Sắp hết hàng!!</b>
+                                            @else
                                                 <b>Còn hàng!!!</b>
                                             @endif
                                         </p>

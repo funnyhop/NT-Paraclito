@@ -56,51 +56,46 @@
                             <tbody>
                                 @php
                                     $previousThuocID = null;
-                                    $previoustk = null;
-                                @endphp
+                                    $row = 0;
 
+                                    if ($medicines && $medicines->first() && $medicines->first()->ThuocID !== null) {
+                                        $row = $medicines->first()->ThuocID;
+                                        $rowCount = count($tonkho->where('medicine_id', $row));
+                                    }
+                                @endphp
                                 @foreach ($medicines as $medicine)
                                     <tr>
-                                        @foreach ($tonkho as $tk)
-                                            {{-- Kiểm tra xem $medicine->ThuocID có khác với $previousThuocID không --}}
-                                            @if ($medicine->ThuocID != $previousThuocID && $medicine->ThuocID == $tk->medicine_id)
-                                                <td>{{ $medicine->ThuocID }}</td>
-                                                <td class="text-left">{{ $medicine->Tenthuoc }}</td>
-                                                <td>{{ $medicine->HSD }}</td>
-                                                <td>{{ $medicine->druggr_id }}</td>
-                                                <td>{{ $medicine->supplier_id }}</td>
-                                                {{-- Cập nhật giá trị $previousThuocID --}}
-                                                @php
-                                                    $previousThuocID = $medicine->ThuocID;
-                                                @endphp
-                                            @endif
-                                            @if ($tk->medicine_id != $previoustk && $tk->medicine_id == $medicine->ThuocID )
-                                                <td>{{ $tk->warehouse_id }}</td>
-                                                <td>{{ $tk->Soluong }}</td>
-                                                <td>{{ $medicine->DVT }}</td>
-                                                <td><a
-                                                        href="{{ route('checkinventory.edit', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}">
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->ThuocID }}</td>
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->Tenthuoc }}</td>
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->HSD }}</td>
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->druggr_id }}</td>
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->supplier_id }}</td>
+                                        <td rowspan="{{ $medicines ? $rowCount + 1 : 0 }}">{{ $medicine->DVT }}</td>
+                                        @foreach ($tonkho as $value)
+                                            @if ($value->medicine_id == $medicine->ThuocID)
+                                                <tr>
+                                                    <td>{{ $value->warehouse_id }}</td>
+                                                    <td>{{ $value->Soluong }}</td>
+                                                    <td><a
+                                                        href="{{ route('checkinventory.edit', ['warehouse_id' => $value->warehouse_id, 'medicine_id' => $value->medicine_id]) }}">
                                                         <i class="fa-solid fa-pen-to-square"></i></a>
-                                                </td>
-                                                <td>
-                                                    <form
-                                                        action="{{ route('checkinventory.destroy', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-trash">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                                @php
-                                                    $previoustk = $tk->medicine_id;
-                                                @endphp
+                                                    </td>
+                                                    <td>
+                                                        <form
+                                                            action="{{ route('checkinventory.destroy', ['warehouse_id' => $value->warehouse_id, 'medicine_id' => $value->medicine_id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-trash">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             @endif
                                         @endforeach
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
