@@ -39,7 +39,7 @@ class RevenueController extends Controller
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
             ->whereRaw('MONTH(phieunhaps.created_at) = MONTH(NOW())')
             ->first();
-        $month_increment = ($month_revenue->revenue * 0.9 - $month_pay->pay);
+        $month_increment = ($month_revenue->revenue * 0.95 - $month_pay->pay);
             // dd($month_increment);
         $day_dangerous = DB::table('tonkhos')
             ->join('medicines', 'tonkhos.medicine_id', '=', 'medicines.ThuocID')
@@ -81,13 +81,12 @@ class RevenueController extends Controller
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
             ->whereRaw('MONTH(phieunhaps.created_at) = ?', [$this->month])
             ->first();
-        $month_increment = ($month_revenue->revenue * 0.9 - $month_pay->pay);
+        $month_increment = ($month_revenue->revenue * 0.95 - $month_pay->pay);
 
-        $day_dangerous = DB::table('medicines')
-            ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
-            ->whereRaw('(tonkhos.Soluong) > 1000')
-            ->select(DB::raw('ThuocID as dangerous'))
-            ->first();
+        $day_dangerous = DB::table('tonkhos')
+            ->join('medicines', 'tonkhos.medicine_id', '=', 'medicines.ThuocID')
+            ->select('medicine_id', 'Soluong')
+            ->get();
 
         return view('checks.revenue', compact('day_dangerous','month_increment','month_pay','months', 'years', 'day_revenue', 'month_revenue', 'year_revenue'));
     }
