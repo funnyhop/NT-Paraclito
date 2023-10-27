@@ -43,12 +43,10 @@ class RevenueController extends Controller
         $month_increment = ($month_revenue->revenue - $month_pay->pay)* 0.9;
 
             // dd($month_increment);
-        $day_dangerous = DB::table('medicines')
-            ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
-            ->whereRaw('(tonkhos.Soluong) > 1000')
-            ->select(DB::raw('ThuocID as dangerous'))
-            ->first();
-
+        $day_dangerous = DB::table('tonkhos')
+            ->join('medicines', 'tonkhos.medicine_id', '=', 'medicines.ThuocID')
+            ->select('medicine_id', 'Soluong')
+            ->get();
         return view('checks.revenue', compact('day_dangerous','month_increment', 'year_revenue','month_pay','months', 'years', 'day_revenue','month_revenue'));
     }
     public function see_revenue(Request $request)

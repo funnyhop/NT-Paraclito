@@ -61,47 +61,43 @@
 
                                 @foreach ($medicines as $medicine)
                                     <tr>
-                                        {{-- Kiểm tra xem $medicine->ThuocID có khác với $previousThuocID không --}}
-                                        @if ($medicine->ThuocID != $previousThuocID)
-                                            <td>{{ $medicine->ThuocID }}</td>
-                                            <td class="text-left">{{ $medicine->Tenthuoc }}</td>
-                                            <td>{{ $medicine->HSD }}</td>
-                                            <td>{{ $medicine->druggr_id }}</td>
-                                            <td>{{ $medicine->supplier_id }}</td>
-                                            {{-- Cập nhật giá trị $previousThuocID --}}
-                                            @php
-                                                $previousThuocID = $medicine->ThuocID;
-                                            @endphp
-                                            @foreach ($tonkho as $tk)
-                                                @if ($tk->medicine_id != $previoustk && $tk->medicine_id == $medicine->ThuocID)
-                                                    <td>{{ $tk->warehouse_id }}</td>
-                                                    <td>{{ $tk->Soluong }}</td>
-                                                    <td>{{ $medicine->DVT }}</td>
-                                                    <td><a
-                                                            href="{{ route('checkinventory.edit', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}">
-                                                            <i class="fa-solid fa-pen-to-square"></i></a>
-                                                    </td>
-                                                    <td>
-                                                        <form
-                                                            action="{{ route('checkinventory.destroy', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn-trash">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                    @php
-                                                        $previoustk = $tk->medicine_id;
-                                                    @endphp
-                                                @endif
-                                            @endforeach
-                                            {{-- Display default value if no quantity is found --}}
-                                            @if (!isset($previoustk))
-                                                <td>0</td>
+                                        @foreach ($tonkho as $tk)
+                                            {{-- Kiểm tra xem $medicine->ThuocID có khác với $previousThuocID không --}}
+                                            @if ($medicine->ThuocID != $previousThuocID && $medicine->ThuocID == $tk->medicine_id)
+                                                <td>{{ $medicine->ThuocID }}</td>
+                                                <td class="text-left">{{ $medicine->Tenthuoc }}</td>
+                                                <td>{{ $medicine->HSD }}</td>
+                                                <td>{{ $medicine->druggr_id }}</td>
+                                                <td>{{ $medicine->supplier_id }}</td>
+                                                {{-- Cập nhật giá trị $previousThuocID --}}
+                                                @php
+                                                    $previousThuocID = $medicine->ThuocID;
+                                                @endphp
                                             @endif
-                                        @endif
+                                            @if ($tk->medicine_id != $previoustk && $tk->medicine_id == $medicine->ThuocID )
+                                                <td>{{ $tk->warehouse_id }}</td>
+                                                <td>{{ $tk->Soluong }}</td>
+                                                <td>{{ $medicine->DVT }}</td>
+                                                <td><a
+                                                        href="{{ route('checkinventory.edit', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}">
+                                                        <i class="fa-solid fa-pen-to-square"></i></a>
+                                                </td>
+                                                <td>
+                                                    <form
+                                                        action="{{ route('checkinventory.destroy', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn-trash">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                @php
+                                                    $previoustk = $tk->medicine_id;
+                                                @endphp
+                                            @endif
+                                        @endforeach
                                     </tr>
                                 @endforeach
 

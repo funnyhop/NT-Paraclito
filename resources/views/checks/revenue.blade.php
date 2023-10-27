@@ -165,13 +165,23 @@
                                     <div class="card-content">
                                         <h6><i>Cảnh báo thuốc:</i></h6>
                                         <p style="font-size: 18px">
-                                            @if (!empty($day_dangerous) && $day_dangerous->dangerous != 0)
+                                            @php
+                                                $hasLowQuantity = false;
+                                            @endphp
+                                            @foreach ($day_dangerous as $dangerous)
+                                                @if ($dangerous->Soluong < 1000)
+                                                    <b>Sắp hết hàng!!</b>
+                                                    @php
+                                                        $hasLowQuantity = true;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            @if (!$hasLowQuantity)
                                                 <b>Còn hàng!!!</b>
-                                            @else
-                                                <b>Sắp hết hàng!!</b>
                                             @endif
                                         </p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

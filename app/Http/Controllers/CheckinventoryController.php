@@ -24,6 +24,7 @@ class CheckinventoryController extends Controller
         $tonkho = DB::table('tonkhos')
             ->select('medicine_id', 'warehouse_id', 'Soluong')
             ->get();
+        // dd($tonkho);
         return view('warehouse.checkinventory', compact('medicines', 'tonkho'));
     }
 
