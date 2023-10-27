@@ -36,16 +36,27 @@ class GhipnController extends Controller
     }
     public function edit($phieunhap_id, $medicine_id){
         $ghipn = DB::table('ghipns')
-        ->select('medicine_id', 'phieunhap_id', 'Soluong', 'Gia')
-        ->where('phieunhap_id', $phieunhap_id)
-        ->where('medicine_id', $medicine_id)
-        ->first();
+            ->select('medicine_id', 'phieunhap_id', 'Soluong', 'Gia')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->first();
+        $getwarehouse_id = DB::table('tonkhos')
+            ->join('warehouses', 'tonkhos.warehouse_id', '=', 'warehouses.KhoID')
+            ->where('medicine_id', $medicine_id)
+            ->select('KhoID', 'TenKho')
+            ->get();
 
         return view('warehouse.editghipn', [
-            'ghipn' => $ghipn
+            'ghipn' => $ghipn,
+            'getwarehouse_id' => $getwarehouse_id
         ]);
     }
     public function update(Request $request, $phieunhap_id, $medicine_id){
+        $currentSoluongGhipns = DB::table('ghipns')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->value('Soluong');
+
         $ghipn = DB::table('ghipns')
         ->where('phieunhap_id', $phieunhap_id)
         ->where('medicine_id', $medicine_id)
@@ -55,6 +66,15 @@ class GhipnController extends Controller
             'Soluong' => $request->input('Soluong'),
             'Gia' => $request->input('gia'),
         ]);
+
+        $updateSoluong =  $currentSoluongGhipns - $request->input('Soluong');
+        $tonkho = DB::table('tonkhos')
+            ->where('warehouse_id', $request->input('warehouse_id'))
+            ->where('medicine_id', $medicine_id)
+            ->update([
+                'Soluong' => DB::raw('Soluong + ' . $updateSoluong)
+            ]);
+
         return redirect()->route('ghipns');
     }
     public function destroy($phieunhap_id, $medicine_id)

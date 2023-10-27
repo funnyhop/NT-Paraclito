@@ -77,6 +77,18 @@
                                         value="{{ $ghipn->Gia }}" placeholder="7000">
                                 </div>
                             </div>
+                            <div class="col-3">
+                                <div class="input-group pb-1">
+                                    <label for="mat">Chọn kho nhà thuốc:</label>
+                                    {{-- <input type="text" class="input-form" id="exampleInput1" placeholder="TKV01"> --}}
+                                    <select class="input-select pl-2" name="warehouse_id" id="mat">
+                                        {{-- <option selected disabled>Chọn kho</option> --}}
+                                        @foreach ($getwarehouse_id as $warehouse_id)
+                                            <option value="{{ $warehouse_id->KhoID }}">{{ $warehouse_id->TenKho }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row pl-5  d-flex">
                             <div class="col">
