@@ -38,11 +38,11 @@ Route::middleware(['web','auth'])->group(function () {
     //</route_sale>
     //<ghihd>
         Route::get('ghihds', [GhihdController::class, 'index'])->name('ghihds')->middleware('permission.checker:admin|staff');
-        Route::get('ghihds/create', [GhihdController::class, 'create'])->name('ghihds.create')->middleware('permission.checker:admin');
+        Route::get('ghihds/create', [GhihdController::class, 'create'])->name('ghihds.create')->middleware('permission.checker:admin|staff');
         Route::post('ghihds',[GhihdController::class,'store'])->name('ghihds.store')->middleware('permission.checker:admin');
-        Route::get('ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'edit'])->name('ghihds.edit')->middleware('permission.checker:admin');
-        Route::match(['put','patch'],'ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'update'])->name('ghihds.update')->middleware('permission.checker:admin');
-        Route::delete('ghihds/{bill_id}/{medicine_id}',[GhihdController::class, 'destroy'])->name('ghihds.destroy')->middleware('permission.checker:admin');
+        Route::get('ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'edit'])->name('ghihds.edit')->middleware('permission.checker:admin|staff');
+        Route::match(['put','patch'],'ghihds/{bill_id}/{medicine_id}', [GhihdController::class, 'update'])->name('ghihds.update')->middleware('permission.checker:admin|staff');
+        Route::delete('ghihds/{bill_id}/{medicine_id}',[GhihdController::class, 'destroy'])->name('ghihds.destroy')->middleware('permission.checker:admin|staff');
     //</ghihd>
     //<customer>
         Route::get('customers', [SalesController::class, 'index'])->name('customers')->middleware('permission.checker:admin|cashier|staff');
@@ -123,11 +123,11 @@ Route::middleware(['web','auth'])->group(function () {
 //</kiemkho>
 //<ghipn>
     Route::get('ghipns', [GhipnController::class, 'index'])->name('ghipns')->middleware('permission.checker:admin|staff');
-    Route::get('ghipns/create', [GhipnController::class, 'create'])->name('ghipns.create')->middleware('permission.checker:admin');
-    Route::post('ghipns',[GhipnController::class,'store'])->name('ghipns.store')->middleware('permission.checker:admin');
-    Route::get('ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'edit'])->name('ghipns.edit')->middleware('permission.checker:admin');
-    Route::match(['put','patch'],'ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'update'])->name('ghipns.update')->middleware('permission.checker:admin');
-    Route::delete('ghipns/{phieunhap_id}/{medicine_id}',[GhipnController::class, 'destroy'])->name('ghipns.destroy')->middleware('permission.checker:admin');
+    Route::get('ghipns/create', [GhipnController::class, 'create'])->name('ghipns.create')->middleware('permission.checker:admin|staff');
+    Route::post('ghipns',[GhipnController::class,'store'])->name('ghipns.store')->middleware('permission.checker:admin|staff');
+    Route::get('ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'edit'])->name('ghipns.edit')->middleware('permission.checker:admin|staff');
+    Route::match(['put','patch'],'ghipns/{phieunhap_id}/{medicine_id}', [GhipnController::class, 'update'])->name('ghipns.update')->middleware('permission.checker:admin|staff');
+    Route::delete('ghipns/{phieunhap_id}/{medicine_id}',[GhipnController::class, 'destroy'])->name('ghipns.destroy')->middleware('permission.checker:admin|staff');
 //</ghipn>
 //<nhanvien>
     Route::get('staffs', [StaffController::class, 'index'])->name('staffs')->middleware('permission.checker:admin');

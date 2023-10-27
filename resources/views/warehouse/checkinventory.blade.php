@@ -47,8 +47,8 @@
                                     <th>Nhóm thuốc</th>
                                     <th>Nhà cung cấp</th>
                                     <th>Kho</th>
-                                    <th>Số lượng</th>
                                     <th>Đơn vị tính</th>
+                                    <th>Số lượng</th>
                                     <th>Sửa</th>
                                     <th>Xóa</th>
                                 </tr>
