@@ -17,8 +17,8 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" name="key" placeholder="Search"
-                                    aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" name="key"
+                                    placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
                                         style="background-color: #e0f8f1;
@@ -45,6 +45,8 @@
                             <th>Ngày nhập</th>
                             <th>Số lô sản xuất</th>
                             <th>Mã nhân viên</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
                             <th>Tên thuốc</th>
                             <th>Số lượng</th>
                             <th>Đơn giá</th>
@@ -67,6 +69,21 @@
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
                                         <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->staff_id }}</td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}"><a
+                                                href="{{ route('importmedicines.edit', ['PNID' => $item->PNID]) }}">
+                                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                        </td>
+                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">
+                                            <form
+                                                action="{{ route('importmedicines.destroy', ['PNID' => $item->PNID]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-trash">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                         @php
                                             $previousPNID = $item->PNID;
                                         @endphp
@@ -74,14 +91,14 @@
 
                                     @foreach ($listgpn as $value)
                                         @if ($value->phieunhap_id == $item->PNID)
-                                            <tr>
-                                                <td>{{ $value->Tenthuoc }}</td>
-                                                <td>{{ $value->Soluong }}</td>
-                                                <td>{{ $value->Gia }} vnđ</td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
+                                <tr>
+                                    <td>{{ $value->Tenthuoc }}</td>
+                                    <td>{{ $value->Soluong }}</td>
+                                    <td>{{ $value->Gia }} vnđ</td>
                                 </tr>
+                            @endif
+                            @endforeach
+                            </tr>
                             @endforeach
                         </tbody>
 

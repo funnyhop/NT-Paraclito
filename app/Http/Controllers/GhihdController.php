@@ -81,6 +81,22 @@ class GhihdController extends Controller
 
     public function destroy($bill_id, $medicine_id)
     {
+        $currentSoluongGhihds = DB::table('ghihds')
+            ->where('bill_id', $bill_id)
+            ->where('medicine_id', $medicine_id)
+            ->value('Soluong');
+
+        $getwarehouse_id = DB::table('tonkhos')
+            ->where('medicine_id', $medicine_id)
+            ->where('warehouse_id', 'K0001')
+            ->first();
+
+        $tonkho = DB::table('tonkhos')
+                ->where('warehouse_id', 'K0001')
+                ->where('medicine_id', $medicine_id)
+                ->update([
+                    'Soluong' => DB::raw('Soluong + ' . $currentSoluongGhihds)
+                ]);
         DB::table('ghihds')
             ->where('bill_id', $bill_id)
             ->where('medicine_id', $medicine_id)

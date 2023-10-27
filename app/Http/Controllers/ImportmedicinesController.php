@@ -27,6 +27,33 @@ class ImportmedicinesController extends Controller
 
         return view('warehouse.listimportmedicine', compact('listgpn', 'listpn'));
     }
+    public function edit($PNID)
+    {
+        $importmedicine = DB::table('phieunhaps')
+        ->select('PNID','created_at','Lothuoc','warehouse_id','staff_id')
+        ->where('PNID', $PNID)
+        ->first();
+        return view('warehouse.editimportmedicine', compact('importmedicine'));
+    }
+    public function update(Request $request, $PNID)
+    {
+        $importmedicine = DB::table('phieunhaps')->where('PNID', $PNID)
+            ->update([
+                'PNID' => $request->input('PNID'),
+                'created_at' => $request->input('created_at'),
+                'Lothuoc' => $request->input('Lothuoc'),
+                'warehouse_id' => $request->input('warehouse_id'),
+                'staff_id' => $request->input('staff_id'),
+            ]);
+
+        return redirect()->route('importmedicines');
+    }
+    public function destroy($PNID)
+    {
+        $importmedicine = DB::table('phieunhaps')->where('PNID', $PNID)->delete();
+
+        return redirect()->route('importmedicines');
+    }
     public function createpn()
     {
         $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();

@@ -48,6 +48,7 @@
                                     <th>Đối tượng SD</th>
                                     <th>Trị giá <i>(vnđ)</i></th>
                                     <th>Thanh toán</th>
+                                    <th>Sửa</th>
                                     <th>Xóa</th>
                                     <th>Tên thuốc</th>
                                     <th>Số lượng <i>(viên)</i></th>
@@ -75,6 +76,10 @@
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
                                             <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                        </td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}"><a
+                                            href="{{ route('bills.edit', ['HDID' => $item->HDID]) }}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
                                             <form action="{{ route('bills.destroy', ['HDID' => $item->HDID]) }}" method="post">

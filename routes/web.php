@@ -112,6 +112,9 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('/createpn', [ImportmedicinesController::class, 'createpn'])->name('importmedicines.createpn')->middleware('permission.checker:admin|staff');
     Route::post('/createpn', [ImportmedicinesController::class, 'createAndStore'])->name('importmedicines.createAndStore')->middleware('permission.checker:admin|staff');
     Route::match(['get', 'head'],'/importmedicines', [ImportmedicinesController::class, 'index'])->name('importmedicines')->middleware('permission.checker:admin|staff');
+    Route::get('importmedicines/{PNID}', [ImportmedicinesController::class, 'edit'])->name('importmedicines.edit')->middleware('permission.checker:admin|staff');
+    Route::match(['put','patch'],'importmedicines/{PNID}', [ImportmedicinesController::class, 'update'])->name('importmedicines.update')->middleware('permission.checker:admin|staff');
+    Route::delete('importmedicines/{PNID}', [ImportmedicinesController::class, 'destroy'])->name('importmedicines.destroy')->middleware('permission.checker:admin|staff');
 //</kho>
 //<kiemkho>
     Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory')->middleware('permission.checker:admin|staff');
@@ -142,6 +145,8 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('/bills', [BillsController::class, 'index'])->name('bills')->middleware('permission.checker:admin|staff'); //hoadonban
     Route::get('pay/{HDID}', [BillsController::class, 'indexpay'])->name('pay')->middleware('permission.checker:admin|staff');
     Route::match(['put', 'patch'], 'pay/{HDID}', [BillsController::class, 'updatehd'])->name('updatehd')->middleware('permission.checker:admin|staff');
+    Route::get('bills/{HDID}', [BillsController::class, 'edit'])->name('bills.edit')->middleware('permission.checker:admin|staff');
+    Route::match(['put','patch'],'bills/{HDID}', [BillsController::class, 'update'])->name('bills.update')->middleware('permission.checker:admin|staff');
     Route::delete('bills/{HDID}', [BillsController::class, 'destroy'])->name('bills.destroy')->middleware('permission.checker:admin');
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue')->middleware('permission.checker:admin');

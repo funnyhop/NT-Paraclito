@@ -26,6 +26,29 @@ class BillsController extends Controller
         $prices = DB::table('prices')->select('medicine_id', 'Gia', 'ngay_id')->get();
         return view('checks.bills', compact('listghd', 'listhd', 'prices'));
     }
+    public function edit($HDID)
+    {
+        $bill = DB::table('bills')
+        ->select('HDID','created_at','DoituongSD','customer_id','staff_id','prescription_id')
+        ->where('HDID', $HDID)
+        ->first();
+        return view('checks.editbill', compact('bill'));
+    }
+
+    public function update(Request $request, $HDID)
+    {
+        $bill = DB::table('bills')->where('HDID', $HDID)
+            ->update([
+                'HDID' => $request->input('HDID'),
+                'created_at' => $request->input('created_at'),
+                'DoituongSD' => $request->input('DoituongSD'),
+                'customer_id' => $request->input('customer_id'),
+                'staff_id' => $request->input('staff_id'),
+                'prescription_id' => $request->input('prescription_id'),
+            ]);
+
+        return redirect()->route('bills');
+    }
 
     public function indexpay($id){
         $ghd = DB::table('ghihds')

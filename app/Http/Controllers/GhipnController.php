@@ -79,6 +79,22 @@ class GhipnController extends Controller
     }
     public function destroy($phieunhap_id, $medicine_id)
     {
+        $currentSoluongGhipns = DB::table('ghipns')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->value('Soluong');
+
+        $getwarehouse_id = DB::table('tonkhos')
+            ->where('medicine_id', $medicine_id)
+            ->where('warehouse_id', 'K0001')
+            ->first();
+
+        $tonkho = DB::table('tonkhos')
+                ->where('warehouse_id', 'K0001')
+                ->where('medicine_id', $medicine_id)
+                ->update([
+                    'Soluong' => DB::raw('Soluong - ' . $currentSoluongGhipns)
+                ]);
         DB::table('ghipns')
             ->where('phieunhap_id', $phieunhap_id)
             ->where('medicine_id', $medicine_id)
