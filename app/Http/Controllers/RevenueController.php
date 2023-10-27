@@ -39,9 +39,7 @@ class RevenueController extends Controller
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
             ->whereRaw('MONTH(phieunhaps.created_at) = MONTH(NOW())')
             ->first();
-//(giaban x soluong bán - gia nhập x soluong bán) - (giaban x soluong bán - gia nhập x soluong bán)*10%
-        $month_increment = ($month_revenue->revenue - $month_pay->pay)* 0.9;
-
+        $month_increment = ($month_revenue->revenue * 0.9 - $month_pay->pay);
             // dd($month_increment);
         $day_dangerous = DB::table('tonkhos')
             ->join('medicines', 'tonkhos.medicine_id', '=', 'medicines.ThuocID')
@@ -83,7 +81,7 @@ class RevenueController extends Controller
             ->select(DB::raw('SUM(Soluong*Gia) as pay'))
             ->whereRaw('MONTH(phieunhaps.created_at) = ?', [$this->month])
             ->first();
-        $month_increment = ($month_revenue->revenue - $month_pay->pay)* 0.9;
+        $month_increment = ($month_revenue->revenue * 0.9 - $month_pay->pay);
 
         $day_dangerous = DB::table('medicines')
             ->join('tonkhos', 'medicines.ThuocID', '=', 'tonkhos.medicine_id')
