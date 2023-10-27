@@ -17,8 +17,8 @@
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" name="key" type="search" placeholder="Search"
-                                    aria-label="Search">
+                                <input class="form-control form-control-navbar" name="key" type="search"
+                                    placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
                                         style="background-color: #e0f8f1;
@@ -46,8 +46,11 @@
                                     <th>HSD</th>
                                     <th>Nhóm thuốc</th>
                                     <th>Nhà cung cấp</th>
+                                    <th>Kho</th>
                                     <th>Số lượng</th>
                                     <th>Đơn vị tính</th>
+                                    <th>Sửa</th>
+                                    <th>Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,7 +74,24 @@
                                             @endphp
                                             @foreach ($tonkho as $tk)
                                                 @if ($tk->medicine_id != $previoustk && $tk->medicine_id == $medicine->ThuocID)
+                                                    <td>{{ $tk->warehouse_id }}</td>
                                                     <td>{{ $tk->Soluong }}</td>
+                                                    <td>{{ $medicine->DVT }}</td>
+                                                    <td><a
+                                                            href="{{ route('checkinventory.edit', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}">
+                                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                                    </td>
+                                                    <td>
+                                                        <form
+                                                            action="{{ route('checkinventory.destroy', ['warehouse_id' => $tk->warehouse_id, 'medicine_id' => $tk->medicine_id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-trash">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                     @php
                                                         $previoustk = $tk->medicine_id;
                                                     @endphp
@@ -81,7 +101,6 @@
                                             @if (!isset($previoustk))
                                                 <td>0</td>
                                             @endif
-                                             <td>{{ $medicine->DVT }}</td>
                                         @endif
                                     </tr>
                                 @endforeach

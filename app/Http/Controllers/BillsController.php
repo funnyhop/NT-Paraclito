@@ -58,4 +58,12 @@ class BillsController extends Controller
     return redirect('/bills');
     }
 
+    public function destroy(Request $request, $HDID)
+    {
+        $drs = DB::table('bills')
+        ->where('HDID', '=', $HDID)
+        ->delete();
+
+    return redirect('/bills');
+    }
 }

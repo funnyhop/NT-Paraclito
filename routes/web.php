@@ -115,6 +115,11 @@ Route::middleware(['web','auth'])->group(function () {
 //</kho>
 //<kiemkho>
     Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory')->middleware('permission.checker:admin|staff');
+    Route::get('checkinventory/create', [CheckinventoryController::class, 'create'])->name('checkinventory.create')->middleware('permission.checker:admin');
+    Route::post('checkinventory',[CheckinventoryController::class,'store'])->name('checkinventory.store')->middleware('permission.checker:admin');
+    Route::get('checkinventory/{warehouse_id}/{medicine_id}', [CheckinventoryController::class, 'edit'])->name('checkinventory.edit')->middleware('permission.checker:admin');
+    Route::match(['put','patch'],'checkinventory/{warehouse_id}/{medicine_id}', [CheckinventoryController::class, 'update'])->name('checkinventory.update')->middleware('permission.checker:admin');
+    Route::delete('checkinventory/{warehouse_id}/{medicine_id}',[CheckinventoryController::class, 'destroy'])->name('checkinventory.destroy')->middleware('permission.checker:admin');
 //</kiemkho>
 //<ghipn>
     Route::get('ghipns', [GhipnController::class, 'index'])->name('ghipns')->middleware('permission.checker:admin|staff');
@@ -137,6 +142,7 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('/bills', [BillsController::class, 'index'])->name('bills')->middleware('permission.checker:admin|staff'); //hoadonban
     Route::get('pay/{HDID}', [BillsController::class, 'indexpay'])->name('pay')->middleware('permission.checker:admin|staff');
     Route::match(['put', 'patch'], 'pay/{HDID}', [BillsController::class, 'updatehd'])->name('updatehd')->middleware('permission.checker:admin|staff');
+    Route::delete('bills/{HDID}', [BillsController::class, 'destroy'])->name('bills.destroy')->middleware('permission.checker:admin');
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue')->middleware('permission.checker:admin');
     Route::post('/revenue', [RevenueController::class, 'see_revenue'])->name('see_revenue')->middleware('permission.checker:admin');

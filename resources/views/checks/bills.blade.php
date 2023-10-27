@@ -48,6 +48,7 @@
                                     <th>Đối tượng SD</th>
                                     <th>Trị giá <i>(vnđ)</i></th>
                                     <th>Thanh toán</th>
+                                    <th>Xóa</th>
                                     <th>Tên thuốc</th>
                                     <th>Số lượng <i>(viên)</i></th>
                                     <th>Đơn giá <i>(vnđ)</i></th>
@@ -74,6 +75,15 @@
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
                                         <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
                                             <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-money-bill-1-wave"></i></a>
+                                        </td>
+                                        <td rowspan="{{ $listhd ? $rowCount + 1 : 0 }}">
+                                            <form action="{{ route('bills.destroy', ['HDID' => $item->HDID]) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn-trash">
+                                                    <i class="fa-solid fa-trash "></i>
+                                                </button>
+                                            </form>
                                         </td>
                                         @foreach ($listghd as $value)
                                             @if ($value->bill_id == $item->HDID)

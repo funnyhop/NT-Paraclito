@@ -26,4 +26,36 @@ class CheckinventoryController extends Controller
             ->get();
         return view('warehouse.checkinventory', compact('medicines', 'tonkho'));
     }
+
+    public function edit($warehouse_id, $medicine_id){
+        $inventory = DB::table('tonkhos')
+        ->select('medicine_id', 'warehouse_id', 'Soluong')
+        ->where('warehouse_id', $warehouse_id)
+        ->where('medicine_id', $medicine_id)
+        ->first();
+
+        return view('warehouse.editinventory', [
+            'inventory' => $inventory
+        ]);
+    }
+    public function update(Request $request, $warehouse_id, $medicine_id){
+        $inventory = DB::table('tonkhos')
+        ->where('warehouse_id', $warehouse_id)
+        ->where('medicine_id', $medicine_id)
+        ->update([
+            'medicine_id' => $request->input('medicine_id'),
+            'warehouse_id' => $request->input('warehouse_id'),
+            'Soluong' => $request->input('Soluong'),
+        ]);
+        return redirect()->route('checkinventory');
+    }
+    public function destroy($warehouse_id, $medicine_id)
+    {
+        DB::table('tonkhos')
+            ->where('warehouse_id', $warehouse_id)
+            ->where('medicine_id', $medicine_id)
+            ->delete();
+
+        return redirect()->route('checkinventory');
+    }
 }
