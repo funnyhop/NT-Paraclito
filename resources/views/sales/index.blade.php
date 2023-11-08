@@ -86,10 +86,11 @@
                                 <label for="manv">Mã nhân viên lập hóa đơn:</label>
                                 {{-- <input type="text" class="input-form" id="exampleInput1" placeholder="BT001"> --}}
                                 <select class="input-select pl-2" name="staff_id" id="manv">
-                                    <option selected disabled>Chọn nhân viên</option>
-                                    @foreach ($staffs as $staff)
+                                    <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->NVID : '' }}">{{ Auth::user()->TenNV }}</option>
+                                    {{-- <option selected disabled>Chọn nhân viên</option> --}}
+                                    {{-- @foreach ($staffs as $staff)
                                         <option value="{{ $staff->NVID }}">{{ $staff->TenNV }}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
                             </div>
                             <div class="input-group d-flex pb-2">

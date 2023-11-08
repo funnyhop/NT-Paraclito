@@ -69,10 +69,11 @@
                                             {{-- <input type="text" class="input-form pl-2" name="staff_id" id="exampleInput1"
                                                 placeholder="210319"> --}}
                                             <select class="input-select pl-2" name="staff_id" id="manv">
-                                                <option selected disabled>Chọn nhân viên</option>
+                                                <option value="{{ Auth::check() && Auth::user()->NVID ? Auth::user()->NVID : '' }}">{{ Auth::user()->TenNV }}</option>
+                                                {{-- <option selected disabled>Chọn nhân viên</option>
                                                 @foreach ($staffs as $staff)
                                                     <option value="{{ $staff->NVID }}">{{ $staff->TenNV }}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
