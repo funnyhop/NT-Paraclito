@@ -40,7 +40,7 @@
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã khách hàng:</label>
-                                <input type="text" class="input-form" name="id" id="exampleInput1"
+                                <input type="text" class="input-form" name="id" value="{{ $newKHID }}" id="exampleInput1"
                                     placeholder="KH001">
                             </div>
                             <div class="input-group d-flex pb-2">
@@ -69,7 +69,7 @@
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã hóa đơn:</label>
-                                <input type="text" class="input-form" name="idhd" id="exampleInput1" placeholder="HD001">
+                                <input type="text" class="input-form" name="idhd" value="{{ $newHDID }}" id="exampleInput1" placeholder="HD001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Toa thuốc:</label>

@@ -56,11 +56,14 @@ class ImportmedicinesController extends Controller
     }
     public function createpn()
     {
+        $maxPNID = DB::table('phieunhaps')->max(DB::raw('CAST(SUBSTRING(PNID, 3, 3) AS SIGNED)'));
+        $newPNID = 'PN' . str_pad($maxPNID + 1, 3, '0', STR_PAD_LEFT);
+
         $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();
         $whs = DB::table('warehouses')->select('KhoID', 'Tenkho')->get();
         $drs = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
         $pn = DB::table('phieunhaps')->select('PNID')->get();
-        return view('warehouse.importmedicines', compact('pn','drs','whs','staffs'));
+        return view('warehouse.importmedicines', compact('pn','drs','whs','staffs','newPNID'));
     }
 
     public function storepn(Request $request)

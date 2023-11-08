@@ -37,7 +37,7 @@
                                     <div class="col-6">
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã phiếu nhập:</label>
-                                            <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
+                                            <input type="text" class="input-form pl-2" name="id" value="{{ $newPNID }}" id="exampleInput1"
                                                 placeholder="PN001">
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                                             {{-- <input type="text" class="input-form pl-2" name="makho"
                                                 id="exampleInput1" placeholder="K0001"> --}}
                                             <select class="input-select pl-2" name="warehouse_id" id="makho">
-                                                <option selected disabled>Chọn kho</option>
+                                                {{-- <option selected disabled>Chọn kho</option> --}}
                                                 @foreach ($whs as $wh)
                                                     <option value="{{ $wh->KhoID }}">{{ $wh->Tenkho }}</option>
                                                 @endforeach

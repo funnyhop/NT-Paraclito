@@ -17,12 +17,18 @@ class SalesController extends Controller
     }
 //<sale>
     public function salesindex(){
+        $maxHDID = DB::table('bills')->max(DB::raw('CAST(SUBSTRING(HDID, 3, 3) AS SIGNED)'));//CAST biến chuỗi thành số để phù hợp với hàm max
+        $newHDID = 'HD' . str_pad($maxHDID + 1, 3, '0', STR_PAD_LEFT);//3, '0' STR_PAD_LEFT hiển thị bắt buộc 3 ký tự, nếu max = 1 thì sẽ chèn thêm 3 số không vào bên trái số 1
+
+        $maxKHID = DB::table('customers')->max(DB::raw('CAST(SUBSTRING(KHID, 3, 3) AS SIGNED)'));
+        $newKHID = 'KH' . str_pad($maxKHID + 1, 3, '0', STR_PAD_LEFT);
+
         $pres = DB::table('prescriptions')->select('ToaID')->get();
         $bills = DB::table('bills')->select('HDID')->get();
         $customers = DB::table('customers')->select('KHID', 'TenKH')->get();
         $drs = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
         $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();
-        return view('sales.index', compact('staffs', 'drs', 'customers', 'bills', 'pres'));
+        return view('sales.index', compact('staffs', 'drs', 'customers', 'bills', 'pres','newHDID','newKHID'));
     }
     public function storecustomer(Request $request){
         $createdCustomer = $this->customer->insertcus($request);
