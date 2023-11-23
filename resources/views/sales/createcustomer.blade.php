@@ -33,7 +33,7 @@
                             @csrf
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Mã khách hàng:</label>
-                                <input type="text" class="input-form" name="id" id="exampleInput1" placeholder="KH001">
+                                <input type="text" class="input-form" name="id" id="exampleInput1" value="{{ $newKHID }}" placeholder="KH001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1">Tên khách hàng:</label>

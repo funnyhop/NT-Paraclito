@@ -20,7 +20,10 @@ class MedicineController extends Controller
         $drs = DB::table('druggrs')->select('NhomthuocID', 'Tennhom')->get();
         $suppliers = DB::table('suppliers')->select('NCCID', 'TenNCC')->get();
         $producers = DB::table('producers')->select('NSXID', 'TenNSX')->get();
-        return view('medicines.createmedicine', compact('drs','producers','suppliers'));
+
+        $maxThuocID = DB::table('medicines')->max(DB::raw('CAST(SUBSTRING(ThuocID, 3, 3) AS SIGNED)'));
+        $newThuocID = 'TH' . str_pad($maxThuocID + 1, 3, '0', STR_PAD_LEFT);
+        return view('medicines.createmedicine', compact('drs','producers','suppliers','newThuocID'));
     }
     public function store(Request $request){
         $medicine = Medicine::create([

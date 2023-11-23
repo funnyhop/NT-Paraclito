@@ -17,7 +17,9 @@ class ProducerController extends Controller
         ]);
     }
     public function create() {
-        return view('medicines.createproducer');
+        $maxNSXID = DB::table('producers')->max(DB::raw('CAST(SUBSTRING(NSXID, 4, 2) AS SIGNED)'));
+        $newNSXID = 'NSX' . str_pad($maxNSXID + 1, 2, '0', STR_PAD_LEFT);
+        return view('medicines.createproducer', compact('newNSXID'));
     }
     public function store(Request $request) {
         $producers = Producer::create([

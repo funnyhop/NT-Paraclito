@@ -32,7 +32,7 @@
                         @csrf
                         <div class="input-group d-flex pb-2">
                             <label for="exampleInput1">Mã toa thuốc:</label>
-                            <input type="text" class="input-form" name="id" id="exampleInput1" placeholder="T0001">
+                            <input type="text" class="input-form" name="id" id="exampleInput1" value="{{ $newToaID }}" placeholder="T0001">
                         </div>
                         <div class="input-group d-flex pb-2">
                             <label for="exampleInput1">Tên bác sĩ:</label>

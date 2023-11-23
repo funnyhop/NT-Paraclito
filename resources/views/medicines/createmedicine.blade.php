@@ -53,7 +53,7 @@
                                         <div class="input-group pb-1">
                                             <label for="exampleInput1">Mã thuốc:</label>
                                             <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                                placeholder="TKV01">
+                                            value="{{ $newThuocID }}"    placeholder="TKV01">
                                         </div>
                                     </div>
                                     <div class="col-6">

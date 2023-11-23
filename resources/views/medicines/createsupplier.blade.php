@@ -36,7 +36,7 @@
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhà cung cấp:</label>
                                 <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                    placeholder="LC207">
+                                value="{{ $newNCCID }}"    placeholder="LC207">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Tên nhà cung cấp:</label>

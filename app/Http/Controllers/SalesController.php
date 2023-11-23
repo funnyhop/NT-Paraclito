@@ -146,11 +146,12 @@ class SalesController extends Controller
         // $customers = $this->customer->displaycus();
         $key = request()->key; // Retrieve the key from the request;
         $customers = Customer::search($key)->get();
-
         return view('sales.customers', compact('customers'));
     }
     public function create(){
-        return view('sales.createcustomer');
+        $maxKHID = DB::table('customers')->max(DB::raw('CAST(SUBSTRING(KHID, 3, 3) AS SIGNED)'));
+        $newKHID = 'KH' . str_pad($maxKHID + 1, 3, '0', STR_PAD_LEFT);
+        return view('sales.createcustomer', compact('newKHID'));
     }
     public function store(Request $request){
         $createdCustomer = $this->customer->insertcus($request);
@@ -186,7 +187,9 @@ class SalesController extends Controller
         return view('sales.prescription', compact('prs'));
     }
     public function pre_create(){
-        return view('sales.createprescription');
+        $maxToaID = DB::table('prescriptions')->max(DB::raw('CAST(SUBSTRING(ToaID, 3, 3) AS SIGNED)'));
+        $newToaID = 'T0' . str_pad($maxToaID + 1, 3, '0', STR_PAD_LEFT);
+        return view('sales.createprescription', compact('newToaID'));
     }
     public function pre_store(Request $request){
         $pre = $this->prescription->createprescription($request);

@@ -15,7 +15,9 @@ class StaffController extends Controller
         return view('staffs.staffs', compact('staffs'));
     }
     public function create(){
-        return view('staffs.createstaff');
+        $maxNVID = DB::table('staffs')->max(DB::raw('CAST(SUBSTRING(NVID, 3, 3) AS SIGNED)'));
+        $newNVID = 'BT' . str_pad($maxNVID + 1, 3, '0', STR_PAD_LEFT);
+        return view('staffs.createstaff', compact('newNVID'));
     }
     public function store(Request $request){
         $staff = Staff::create([

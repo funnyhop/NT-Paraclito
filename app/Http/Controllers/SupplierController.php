@@ -17,7 +17,9 @@ class SupplierController extends Controller
         ]);
     }
     public function create(){
-        return view('medicines.createsupplier');
+        $maxNCCID = DB::table('suppliers')->max(DB::raw('CAST(SUBSTRING(NCCID, 4, 2) AS SIGNED)'));
+        $newNCCID = 'NCC' . str_pad($maxNCCID + 1, 2, '0', STR_PAD_LEFT);
+        return view('medicines.createsupplier', compact('newNCCID'));
     }
     public function store(Request $request){
         $suppliers = Supplier::create([

@@ -35,7 +35,7 @@
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhóm thuốc:</label>
                                 <input type="text" class="input-form pl-2" name="ma" id="exampleInput1"
-                                    placeholder="KS001">
+                                value="{{ $newNhomthuocID }}"    placeholder="KS001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Tên nhóm thuốc:</label>

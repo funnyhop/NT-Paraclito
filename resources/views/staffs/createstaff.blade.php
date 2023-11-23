@@ -50,7 +50,7 @@
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput1" class="pr-2">Mã nhân viên:</label>
                                 <input type="text" class="input-form pl-2" name="id" id="exampleInput1"
-                                    placeholder="BT001">
+                                value="{{ $newNVID }}"    placeholder="BT001">
                             </div>
                             <div class="input-group d-flex pb-2">
                                 <label for="exampleInput2" class="pr-2">Tên nhân viên:</label>
