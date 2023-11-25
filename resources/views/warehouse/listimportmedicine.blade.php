@@ -1,7 +1,9 @@
 @extends('layouts.admin')
+
 @section('title')
     <title>Danh sách phiếu nhập</title>
 @endsection
+
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -12,7 +14,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">Phiếu nhập</h1>
                     </div>
-                    <!-- /.col -->
                     <div class="col-sm-6">
                         <!-- SEARCH FORM -->
                         <form class="form-inline ml-3 float-right">
@@ -21,16 +22,15 @@
                                     placeholder="Search" aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit"
-                                        style="background-color: #e0f8f1;
-                            border-color: silver;">
+                                        style="background-color: #e0f8f1; border-color: silver;">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.content-header -->
 
@@ -55,27 +55,33 @@
                             @php
                                 $previousPNID = null;
                                 $row = 0;
-
-                                if ($listpn && $listpn->first() && $listpn->first()->PNID !== null) {
-                                    $row = $listpn->first()->PNID;
-                                    $rowCount = count($listgpn->where('phieunhap_id', $row));
-                                }
                             @endphp
+
                             @foreach ($listpn as $item)
                                 <tr>
                                     @if ($item->PNID != $previousPNID)
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->PNID }}</td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->warehouse_id }}</td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->created_at }}</td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->Lothuoc }}</td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">{{ $item->staff_id }}</td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}"><a
-                                                href="{{ route('importmedicines.edit', ['PNID' => $item->PNID]) }}">
-                                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            {{ $item->PNID }}
                                         </td>
-                                        <td rowspan="{{ $listpn ? $rowCount + 1 : 0 }}">
-                                            <form
-                                                action="{{ route('importmedicines.destroy', ['PNID' => $item->PNID]) }}"
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            {{ $item->warehouse_id }}
+                                        </td>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            {{ $item->created_at }}
+                                        </td>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            {{ $item->Lothuoc }}
+                                        </td>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            {{ $item->staff_id }}
+                                        </td>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            <a href="{{ route('importmedicines.edit', ['PNID' => $item->PNID]) }}">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                        </td>
+                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                            <form action="{{ route('importmedicines.destroy', ['PNID' => $item->PNID]) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -89,23 +95,19 @@
                                         @endphp
                                     @endif
 
-                                    @foreach ($listgpn as $value)
-                                        @if ($value->phieunhap_id == $item->PNID)
-                                <tr>
-                                    <td>{{ $value->Tenthuoc }}</td>
-                                    <td>{{ $value->Soluong }}</td>
-                                    <td>{{ $value->Gia }} vnđ</td>
+                                    @foreach ($listgpn->where('phieunhap_id', $item->PNID) as $value)
+                                        <tr>
+                                            <td>{{ $value->Tenthuoc }}</td>
+                                            <td>{{ $value->Soluong }}</td>
+                                            <td>{{ $value->Gia }} vnđ</td>
+                                        </tr>
+                                    @endforeach
                                 </tr>
-                            @endif
-                            @endforeach
-                            </tr>
                             @endforeach
                         </tbody>
-
-
                     </table>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
         <!-- /.content -->
     </div>
