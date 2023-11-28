@@ -67,7 +67,7 @@ class GhipnController extends Controller
             'Gia' => $request->input('gia'),
         ]);
 
-        $updateSoluong =  $currentSoluongGhipns - $request->input('Soluong');
+        $updateSoluong = $request->input('Soluong') - $currentSoluongGhipns ;
         $tonkho = DB::table('tonkhos')
             ->where('warehouse_id', $request->input('warehouse_id'))
             ->where('medicine_id', $medicine_id)

@@ -27,7 +27,7 @@
                     <b class="col-6 pl-5 pt-4 pb-1">Thêm phiếu nhập:</b>
                     <b class="col-6 pl-4 pt-4 pb-1">Ghi phiếu nhập:</b>
                 </div>
-                <div class="row pl-5 d-flex">
+                <div class="row pl-5 d-flex pr-3">
                     {{-- <formthem> --}}
                     <div class="col-6">
                         <form action="{{ route('importmedicines.createAndStore') }}" method="POST">
@@ -89,7 +89,7 @@
                     </div>
                     {{-- </formthem> --}}
                     {{-- <formghi> --}}
-                    <div class="col-6">
+                    <div class="col-6 pb-5">
                         <form action="{{ route('importmedicines.createAndStore') }}" method="POST">
                             @csrf
                             <div class="d-block">
@@ -100,7 +100,7 @@
                                             {{-- <input type="text" class="input-form pl-2" name="phieunhap_id" id="mapn"
                                                 placeholder="PN001"> --}}
                                             <select class="input-select pl-2" name="phieunhap_id" id="mapn">
-                                                <option selected disabled>Chọn mã</option>
+                                                <option selected value="{{ $newID }}">{{ $newID }}</option>
                                                 @foreach ($pn as $item)
                                                     <option value="{{ $item->PNID }}">{{ $item->PNID }}</option>
                                                 @endforeach
@@ -145,6 +145,75 @@
                         </form>
                     </div>
                     {{-- </formghi> --}}
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <th>IDPN</th>
+                            <th>Mã kho</th>
+                            <th>Ngày nhập</th>
+                            <th>Số lô sản xuất</th>
+                            <th>Mã nhân viên</th>
+                            <th>Tên thuốc</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </thead>
+                        <tbody>
+                            @php
+                                $previousPNID = null;
+                                $row = 0;
+                            @endphp
+
+                            @foreach ($listpn as $item)
+                                @if ($item->PNID == $newID)
+                                    <tr>
+                                        @if ($item->PNID != $previousPNID)
+                                            <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                                <a href="{{ route('chitietpn', ['PNID' => $item->PNID]) }}">{{ $item->PNID }}</a>
+                                            </td>
+                                            <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                                {{ $item->warehouse_id }}
+                                            </td>
+                                            <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                                {{ $item->created_at }}
+                                            </td>
+                                            <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                                {{ $item->Lothuoc }}
+                                            </td>
+                                            <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                                {{ $item->staff_id }}
+                                            </td>
+                                            @php
+                                                $previousPNID = $item->PNID;
+                                            @endphp
+                                        @endif
+
+                                        @foreach ($listgpn->where('phieunhap_id', $item->PNID) as $value)
+                                            <tr>
+                                                <td>{{ $value->Tenthuoc }}</td>
+                                                <td>{{ $value->Soluong }}</td>
+                                                <td>{{ $value->Gia }} vnđ</td>
+                                                <td>
+                                                    <a
+                                                    href="{{ route('createpn.edit', ['phieunhap_id' => $value->phieunhap_id, 'medicine_id' => $value->medicine_id]) }}">
+                                                    <i class="fa-solid fa-pen-to-square"></i></a>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('createpn.destroy', ['phieunhap_id' => $value->phieunhap_id, 'medicine_id' => $value->medicine_id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn-trash">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div><!-- /.container-fluid -->
         </div>

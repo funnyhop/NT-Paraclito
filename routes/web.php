@@ -122,6 +122,11 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('importmedicines/{PNID}', [ImportmedicinesController::class, 'edit'])->name('importmedicines.edit')->middleware('permission.checker:admin|staff');
     Route::match(['put','patch'],'importmedicines/{PNID}', [ImportmedicinesController::class, 'update'])->name('importmedicines.update')->middleware('permission.checker:admin|staff');
     Route::delete('importmedicines/{PNID}', [ImportmedicinesController::class, 'destroy'])->name('importmedicines.destroy')->middleware('permission.checker:admin|staff');
+
+    Route::get('createpn/{PNID}', [ImportmedicinesController::class, 'chitietpn'])->name('chitietpn')->middleware('permission.checker:admin|staff');
+    Route::get('createpn/{phieunhap_id}/{medicine_id}', [ImportmedicinesController::class, 'edit_ct'])->name('createpn.edit')->middleware('permission.checker:admin|staff');
+    Route::match(['put','patch'],'createpn/{phieunhap_id}/{medicine_id}', [ImportmedicinesController::class, 'update_ct'])->name('createpn.update')->middleware('permission.checker:admin|staff');
+    Route::delete('createpn/{phieunhap_id}/{medicine_id}',[ImportmedicinesController::class, 'destroy_ct'])->name('createpn.destroy')->middleware('permission.checker:admin|staff');
 //</kho>
 //<kiemkho>
     Route::get('/checkinventory', [CheckinventoryController::class, 'index'])->name('checkinventory')->middleware('permission.checker:admin|staff');

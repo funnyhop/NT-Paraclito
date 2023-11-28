@@ -58,12 +58,18 @@ class ImportmedicinesController extends Controller
     {
         $maxPNID = DB::table('phieunhaps')->max(DB::raw('CAST(SUBSTRING(PNID, 3, 3) AS SIGNED)'));
         $newPNID = 'PN' . str_pad($maxPNID + 1, 3, '0', STR_PAD_LEFT);
+        $newID = 'PN' . str_pad($maxPNID, 3, '0', STR_PAD_LEFT);
 
         $staffs = DB::table('staffs')->select('NVID', 'TenNV')->get();
         $whs = DB::table('warehouses')->select('KhoID', 'Tenkho')->get();
         $drs = DB::table('medicines')->select('ThuocID', 'Tenthuoc')->get();
         $pn = DB::table('phieunhaps')->select('PNID')->get();
-        return view('warehouse.importmedicines', compact('pn','drs','whs','staffs','newPNID'));
+
+        $listgpn = $this->values->listghipn();
+        $listpn=$this->list->listphieunhap();
+        $key = request()->key;
+        $listpn = Phieunhap::search($key)->get();
+        return view('warehouse.importmedicines', compact('newID','listgpn', 'listpn','pn','drs','whs','staffs','newPNID'));
     }
 
     public function storepn(Request $request)
@@ -168,4 +174,83 @@ class ImportmedicinesController extends Controller
         }
     }
 
+
+    public function chitietpn(Request $request, $id)
+    {
+        // dd($request);
+        $ghipns = DB::table('ghipns')
+            ->select('medicine_id', 'phieunhap_id', 'Soluong', 'Gia')
+            ->where('phieunhap_id', $id)
+            ->get();
+        $i = 1;
+        return view('warehouse.chitiet', compact('ghipns', 'i'));
+    }
+    public function edit_ct($phieunhap_id, $medicine_id){
+        $ghipn = DB::table('ghipns')
+            ->select('medicine_id', 'phieunhap_id', 'Soluong', 'Gia')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->first();
+        $getwarehouse_id = DB::table('tonkhos')
+            ->join('warehouses', 'tonkhos.warehouse_id', '=', 'warehouses.KhoID')
+            ->where('medicine_id', $medicine_id)
+            ->select('KhoID', 'TenKho')
+            ->get();
+
+        return view('warehouse.editchitiet', [
+            'ghipn' => $ghipn,
+            'getwarehouse_id' => $getwarehouse_id
+        ]);
+    }
+    public function update_ct(Request $request, $phieunhap_id, $medicine_id){
+        $currentSoluongGhipns = DB::table('ghipns')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->value('Soluong');
+
+        $ghipn = DB::table('ghipns')
+        ->where('phieunhap_id', $phieunhap_id)
+        ->where('medicine_id', $medicine_id)
+        ->update([
+            'medicine_id' => $request->input('medicine_id'),
+            'phieunhap_id' => $request->input('phieunhap_id'),
+            'Soluong' => $request->input('Soluong'),
+            'Gia' => $request->input('gia'),
+        ]);
+
+        $updateSoluong = $request->input('Soluong') - $currentSoluongGhipns ;
+        $tonkho = DB::table('tonkhos')
+            ->where('warehouse_id', $request->input('warehouse_id'))
+            ->where('medicine_id', $medicine_id)
+            ->update([
+                'Soluong' => DB::raw('Soluong + ' . $updateSoluong)
+            ]);
+
+        return redirect()->route('importmedicines.createpn');
+    }
+    public function destroy_ct($phieunhap_id, $medicine_id)
+    {
+        $currentSoluongGhipns = DB::table('ghipns')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->value('Soluong');
+
+        $getwarehouse_id = DB::table('tonkhos')
+            ->where('medicine_id', $medicine_id)
+            ->where('warehouse_id', 'K0001')
+            ->first();
+
+        $tonkho = DB::table('tonkhos')
+                ->where('warehouse_id', 'K0001')
+                ->where('medicine_id', $medicine_id)
+                ->update([
+                    'Soluong' => DB::raw('Soluong - ' . $currentSoluongGhipns)
+                ]);
+        DB::table('ghipns')
+            ->where('phieunhap_id', $phieunhap_id)
+            ->where('medicine_id', $medicine_id)
+            ->delete();
+
+        return redirect()->route('importmedicines.createpn');
+    }
 }

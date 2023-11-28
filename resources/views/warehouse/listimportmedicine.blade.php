@@ -47,40 +47,40 @@
                             <th>Mã nhân viên</th>
                             <th>Sửa</th>
                             <th>Xóa</th>
-                            <th>Tên thuốc</th>
+                            {{-- <th>Tên thuốc</th>
                             <th>Số lượng</th>
-                            <th>Đơn giá</th>
+                            <th>Đơn giá</th> --}}
                         </thead>
                         <tbody>
                             @php
                                 $previousPNID = null;
                                 $row = 0;
                             @endphp
-
+                    {{-- rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}" --}}
                             @foreach ($listpn as $item)
                                 <tr>
                                     @if ($item->PNID != $previousPNID)
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
-                                            {{ $item->PNID }}
+                                        <td>
+                                            <a href="{{ route('chitietpn', ['PNID' => $item->PNID]) }}">{{ $item->PNID }}</a>
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             {{ $item->warehouse_id }}
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             {{ $item->created_at }}
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             {{ $item->Lothuoc }}
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             {{ $item->staff_id }}
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             <a href="{{ route('importmedicines.edit', ['PNID' => $item->PNID]) }}">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
                                         </td>
-                                        <td rowspan="{{ count($listgpn->where('phieunhap_id', $item->PNID)) + 1 }}">
+                                        <td>
                                             <form action="{{ route('importmedicines.destroy', ['PNID' => $item->PNID]) }}"
                                                 method="POST">
                                                 @csrf
@@ -95,13 +95,13 @@
                                         @endphp
                                     @endif
 
-                                    @foreach ($listgpn->where('phieunhap_id', $item->PNID) as $value)
+                                    {{-- @foreach ($listgpn->where('phieunhap_id', $item->PNID) as $value)
                                         <tr>
                                             <td>{{ $value->Tenthuoc }}</td>
                                             <td>{{ $value->Soluong }}</td>
                                             <td>{{ $value->Gia }} vnđ</td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tr>
                             @endforeach
                         </tbody>
