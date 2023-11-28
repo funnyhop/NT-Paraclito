@@ -80,8 +80,8 @@
                             </div>
                         </form>
                     </div>
-                    <div class="row pl-4">
-                        <form action="{{ route('sales') }}" method="post">
+                    <div class="row pl-4 pr-3">
+                        <form class="pb-5" action="{{ route('sales') }}" method="post">
                             @csrf
                             <div>
                                 <b>Ghi đơn thuốc:</b>
@@ -91,7 +91,7 @@
                                     <label for="exampleInput1">Mã hóa đơn:</label>
                                     {{-- <input type="text" class="input-form" id="exampleInput1" placeholder="HD001"> --}}
                                     <select class="input-select pl-2" name="bill_id" id="mat">
-                                        <option selected disabled>Chọn HD</option>
+                                        <option selected value="{{ $newID }}">{{ $newID }}</option>
                                         @foreach ($bills as $bill)
                                             <option value="{{ $bill->HDID }}">{{ $bill->HDID }}</option>
                                         @endforeach
@@ -116,6 +116,88 @@
                                 <button type="submit" class="btn btn-primary">Ghi</button>
                             </div>
                         </form>
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <!-- Table Header Row -->
+                                <tr>
+                                    <!-- Hóa đơn Header Columns -->
+                                    <th>Mã hóa đơn</th>
+                                    <th>Ngày lập</th>
+                                    <th>Nhân viên</th>
+                                    <th>Khách hàng</th>
+                                    <th>Mã toa</th>
+                                    <th>Đối tượng SD</th>
+                                    <th>Trị giá <i>(vnđ)</i></th>
+                                    <th>Thanh toán</th>
+                                    <!-- Thuốc Header Columns -->
+                                    <th>Tên thuốc</th>
+                                    <th>Số lượng <i>(viên)</i></th>
+                                    <th>Đơn giá <i>(vnđ)</i></th>
+                                    <th>Sửa</th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Loop through main Hóa đơn (invoices) -->
+                                @php
+                                    $previousHDID = null;
+                                    $row = 0;
+                                @endphp
+                                @foreach ($listhd as $item)
+                                    @php
+                                        // Calculate the number of rows for the current main row
+                                        $rowCount = count($listghd->where('bill_id', $item->HDID));
+                                    @endphp
+                                    <tr>
+                                        @if ($item->HDID == $newID)
+                                                <!-- Hóa đơn Main Row -->
+                                            <td rowspan="{{ $rowCount + 1 }}"><a href="{{ route('chitiet',['HDID' => $item->HDID]) }}">{{ $item->HDID }}</a></td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ $item->created_at }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ $item->staff_id }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ $item->customer_id }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ $item->prescription_id }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ $item->DoituongSD }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
+                                            <td rowspan="{{ $rowCount + 1 }}">
+                                                <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i
+                                                        class="fa-solid fa-money-bill-1-wave"></i></a>
+                                            </td>
+                                            <!-- Loop through associated ghd (medicine details) -->
+                                            @foreach ($listghd as $value)
+                                                <!-- Check if the ghd belongs to the current main Hóa đơn -->
+                                                @if ($value->bill_id == $item->HDID)
+                                                    <!-- Nested Row for ghd details -->
+                                                    <tr>
+                                                        <td>{{ $value->Tenthuoc }}</td>
+                                                        <td>{{ $value->Soluong }}</td>
+                                                        <!-- Loop through prices to find corresponding Đơn giá -->
+                                                        @foreach ($prices as $price)
+                                                            @if ($value->medicine_id == $price->medicine_id)
+                                                                <td>{{ number_format($price->Gia, 2) }}</td>
+                                                            @endif
+                                                        @endforeach
+                                                        <td>
+                                                            <a
+                                                            href="{{ route('chitiet.edit', ['bill_id' => $value->bill_id, 'medicine_id' => $value->medicine_id]) }}">
+                                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                                        </td>
+                                                        <td>
+                                                            <form action="{{ route('chitiet.destroy', ['bill_id' => $value->bill_id, 'medicine_id' => $value->medicine_id]) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn-trash">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!-- /.row -->

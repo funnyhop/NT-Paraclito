@@ -35,6 +35,13 @@ Route::middleware(['web','auth'])->group(function () {
     //<route_sale>
         Route::get('/sales', [SalesController::class, 'salesindex'])->name('sales')->middleware('permission.checker:admin|staff');
         Route::post('/sales', [SalesController::class, 'createAndStore'])->name('sales.createAndStore')->middleware('permission.checker:admin|staff');
+        Route::get('pay/{HDID}', [SalesController::class, 'indexpay'])->name('pay')->middleware('permission.checker:admin|staff');
+        Route::match(['put', 'patch'], 'pay/{HDID}', [SalesController::class, 'updatehd'])->name('updatehd')->middleware('permission.checker:admin|staff');
+
+        Route::get('sales/{HDID}', [SalesController::class, 'chitiet'])->name('chitiet')->middleware('permission.checker:admin|staff');
+        Route::get('sales/{bill_id}/{medicine_id}', [SalesController::class, 'edit_ct'])->name('chitiet.edit')->middleware('permission.checker:admin|staff');
+        Route::match(['put','patch'],'sales/{bill_id}/{medicine_id}', [SalesController::class, 'update_ct'])->name('chitiet.update')->middleware('permission.checker:admin|staff');
+        Route::delete('sales/{bill_id}/{medicine_id}',[SalesController::class, 'destroy_ct'])->name('chitiet.destroy')->middleware('permission.checker:admin|staff');
     //</route_sale>
     //<ghihd>
         Route::get('ghihds', [GhihdController::class, 'index'])->name('ghihds')->middleware('permission.checker:admin|staff');
