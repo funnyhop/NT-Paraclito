@@ -54,13 +54,13 @@
                                     <th>Mã toa</th>
                                     <th>Đối tượng SD</th>
                                     <th>Trị giá <i>(vnđ)</i></th>
-                                    <th>Thanh toán</th>
-                                    <th>Sửa</th>
+                                    <th>Print</th>
+                                    {{-- <th>Sửa</th> --}}
                                     <th>Xóa</th>
                                     <!-- Thuốc Header Columns -->
-                                    <th>Tên thuốc</th>
+                                    {{-- <th>Tên thuốc</th>
                                     <th>Số lượng <i>(viên)</i></th>
-                                    <th>Đơn giá <i>(vnđ)</i></th>
+                                    <th>Đơn giá <i>(vnđ)</i></th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,27 +71,26 @@
                                 @endphp
                                 @foreach ($listhd as $item)
                                     @php
-                                        // Calculate the number of rows for the current main row
+                                        // Calculate the number of rows for the current main row rowspan="{{ $rowCount + 1 }}"
                                         $rowCount = count($listghd->where('bill_id', $item->HDID));
                                     @endphp
                                     <tr>
                                         <!-- Hóa đơn Main Row -->
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->HDID }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->created_at }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->staff_id }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->customer_id }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->prescription_id }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ $item->DoituongSD }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
-                                        <td rowspan="{{ $rowCount + 1 }}">
-                                            <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i
-                                                    class="fa-solid fa-money-bill-1-wave"></i></a>
+                                        <td><a href="{{ route('chitiet',['HDID' => $item->HDID]) }}">{{ $item->HDID }}</a></td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td>{{ $item->staff_id }}</td>
+                                        <td>{{ $item->customer_id }}</td>
+                                        <td>{{ $item->prescription_id }}</td>
+                                        <td>{{ $item->DoituongSD }}</td>
+                                        <td>{{ number_format($item->Tongtien, 2, '.', ',') }}</td>
+                                        <td>
+                                            <a href="{{ route('pay', ['HDID' => $item->HDID]) }}"><i class="fa-solid fa-print"></i></a>
                                         </td>
-                                        <td rowspan="{{ $rowCount + 1 }}"><a
+                                        {{-- <td><a
                                                 href="{{ route('bills.edit', ['HDID' => $item->HDID]) }}">
                                                 <i class="fa-solid fa-pen-to-square"></i></a>
-                                        </td>
-                                        <td rowspan="{{ $rowCount + 1 }}">
+                                        </td> --}}
+                                        <td>
                                             <form action="{{ route('bills.destroy', ['HDID' => $item->HDID]) }}"
                                                 method="post">
                                                 @csrf
@@ -102,7 +101,7 @@
                                             </form>
                                         </td>
                                         <!-- Loop through associated ghd (medicine details) -->
-                                        @foreach ($listghd as $value)
+                                        {{-- @foreach ($listghd as $value)
                                             <!-- Check if the ghd belongs to the current main Hóa đơn -->
                                             @if ($value->bill_id == $item->HDID)
                                                 <!-- Nested Row for ghd details -->
@@ -117,7 +116,7 @@
                                                     @endforeach
                                                 </tr>
                                             @endif
-                                        @endforeach
+                                        @endforeach --}}
                                     </tr>
                                 @endforeach
                             </tbody>
